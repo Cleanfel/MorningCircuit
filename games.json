@@ -1,0 +1,433 @@
+{
+  "groups": [
+    {
+      "title": "The warm-up",
+      "subtitle": "Start easy · quick guesses and intuition",
+      "key": "warmup",
+      "start": 0,
+      "end": 7
+    },
+    {
+      "title": "Find your rhythm",
+      "subtitle": "Recall, estimates and familiar patterns",
+      "key": "building",
+      "start": 7,
+      "end": 24
+    },
+    {
+      "title": "Deep thinking",
+      "subtitle": "Wordplay and longer reasoning chains",
+      "key": "thinking",
+      "start": 24,
+      "end": 32
+    },
+    {
+      "title": "New York Times",
+      "subtitle": "A complete three-game word puzzle block",
+      "key": "nyt",
+      "start": 32,
+      "end": 35
+    },
+    {
+      "title": "LinkedIn",
+      "subtitle": "Eight games in one uninterrupted block",
+      "key": "linkedin",
+      "start": 35,
+      "end": 43
+    },
+    {
+      "title": "The peak",
+      "subtitle": "Your toughest mental challenges",
+      "key": "peak",
+      "start": 43,
+      "end": 49
+    },
+    {
+      "title": "The cooldown",
+      "subtitle": "Wind down with games you enjoy",
+      "key": "cooldown",
+      "start": 49,
+      "end": 54
+    }
+  ],
+  "games": [
+    {
+      "id": "costcodle",
+      "name": "Costcodle",
+      "url": "https://costcodle.com/?mode=classic",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "more-or-less",
+      "name": "More or Less",
+      "url": "https://lessgames.com/moreless",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "size-it-up",
+      "name": "Magnitudle / Size It Up",
+      "url": "https://magnitudle.com/size-it-up",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "angle",
+      "name": "Angle",
+      "url": "https://angle.wtf/",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "foodguessr",
+      "name": "FoodGuessr",
+      "url": "https://www.foodguessr.com/game/daily",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "noillirk",
+      "name": "Noillirk",
+      "url": "https://krillion.me/noillirk",
+      "phase": "warmup",
+      "review": false
+    },
+    {
+      "id": "amountdle",
+      "name": "Amountdle",
+      "url": "https://amountle.dev/",
+      "phase": "warmup",
+      "review": true
+    },
+    {
+      "id": "worldle",
+      "name": "Worldle",
+      "url": "https://worldle.teuteuf.fr/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "globle",
+      "name": "Globle",
+      "url": "https://globle-game.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "maptap",
+      "name": "MapTap",
+      "url": "https://maptap.gg/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "gamedle",
+      "name": "Gamedle",
+      "url": "https://www.gamedle.wtf/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "pokedoku",
+      "name": "Pokedoku",
+      "url": "https://pokedoku.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "daily-dozen-trivia",
+      "name": "Daily Dozen Trivia",
+      "url": "https://dailydozentrivia.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "thrice",
+      "name": "Thrice",
+      "url": "https://thrice.geekswhodrink.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "wranker",
+      "name": "Wranker",
+      "url": "https://wranker.app/daily",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "box-office-game",
+      "name": "Box Office Game",
+      "url": "https://boxofficega.me/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "fridgedle",
+      "name": "Fridgedle",
+      "url": "https://fridgle.net/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "powerscadle",
+      "name": "Powerscadle",
+      "url": "https://www.powerscadle.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "dartle",
+      "name": "Dartle",
+      "url": "https://dartle.net/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "krillion",
+      "name": "Krillion",
+      "url": "https://krillion.io/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "juxtastat",
+      "name": "Juxtastat",
+      "url": "https://urbanstats.org/quiz.html",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "disorderly",
+      "name": "Disorderly",
+      "url": "https://playdisorderly.com/",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "jeopardium",
+      "name": "Jeopardium",
+      "url": "https://jeopardiem.com/",
+      "phase": "building",
+      "review": true
+    },
+    {
+      "id": "timeguessr",
+      "name": "TimeGuessr",
+      "url": "https://timeguessr.com/play?mode=daily",
+      "phase": "building",
+      "review": false
+    },
+    {
+      "id": "keiko-words",
+      "name": "Keiko Words",
+      "url": "https://keikowords.com/",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "betweendle",
+      "name": "Betweendle",
+      "url": "https://betweenle.com/",
+      "phase": "thinking",
+      "review": true
+    },
+    {
+      "id": "parseword",
+      "name": "Parseword",
+      "url": "https://www.parseword.com/daily",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "catfishing",
+      "name": "Catfishing",
+      "url": "https://catfishing.net/",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "plaingame",
+      "name": "Plain.game",
+      "url": "https://plaingame.app/?mode=daily",
+      "phase": "thinking",
+      "review": true
+    },
+    {
+      "id": "waffle",
+      "name": "Waffle",
+      "url": "https://wafflegame.net/",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "travle",
+      "name": "Travle",
+      "url": "https://travle.earth/",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "contexto",
+      "name": "Contexto",
+      "url": "https://contexto.me/en/",
+      "phase": "thinking",
+      "review": false
+    },
+    {
+      "id": "wordle",
+      "name": "Wordle",
+      "url": "https://www.nytimes.com/games/wordle/index.html",
+      "phase": "nyt",
+      "review": false
+    },
+    {
+      "id": "strands",
+      "name": "Strands",
+      "url": "https://www.nytimes.com/games/strands",
+      "phase": "nyt",
+      "review": false
+    },
+    {
+      "id": "connections",
+      "name": "Connections",
+      "url": "https://www.nytimes.com/games/connections",
+      "phase": "nyt",
+      "review": false
+    },
+    {
+      "id": "pinpoint",
+      "name": "Pinpoint",
+      "url": "https://www.linkedin.com/games/pinpoint",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "crossclimb",
+      "name": "Crossclimb",
+      "url": "https://www.linkedin.com/games/crossclimb",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "wend",
+      "name": "Wend",
+      "url": "https://www.linkedin.com/games/wend",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "zip",
+      "name": "Zip",
+      "url": "https://www.linkedin.com/games/zip",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "mini-sudoku",
+      "name": "Mini Sudoku",
+      "url": "https://www.linkedin.com/games/mini-sudoku",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "tango",
+      "name": "Tango",
+      "url": "https://www.linkedin.com/games/tango",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "patches",
+      "name": "Patches",
+      "url": "https://www.linkedin.com/games/patches",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "queens",
+      "name": "Queens",
+      "url": "https://www.linkedin.com/games/queens",
+      "phase": "linkedin",
+      "review": false
+    },
+    {
+      "id": "daily-orbs",
+      "name": "Daily Orbs",
+      "url": "https://dailyorbs.com/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "cutle",
+      "name": "Cutle",
+      "url": "https://pfiffel.com/cutle/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "nerdle",
+      "name": "Nerdle",
+      "url": "https://nerdlegame.com/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "fermi",
+      "name": "Fermi",
+      "url": "https://fermi.gg/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "clues-by-sam",
+      "name": "Clues by Sam",
+      "url": "https://cluesbysam.com/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "minute-cryptic",
+      "name": "Minute Cryptic",
+      "url": "https://www.minutecryptic.com/",
+      "phase": "peak",
+      "review": false
+    },
+    {
+      "id": "framed",
+      "name": "Framed",
+      "url": "https://framed.wtf/",
+      "phase": "cooldown",
+      "review": false
+    },
+    {
+      "id": "guess-the-game",
+      "name": "Guess the Game",
+      "url": "https://guessthe.game/",
+      "phase": "cooldown",
+      "review": false
+    },
+    {
+      "id": "scrandle",
+      "name": "Scrandle",
+      "url": "https://scrandle.com/",
+      "phase": "cooldown",
+      "review": false
+    },
+    {
+      "id": "letterboxdle",
+      "name": "Letterboxdle",
+      "url": "https://letterboxdle.net/classic",
+      "phase": "cooldown",
+      "review": false
+    },
+    {
+      "id": "kinda-hard-golf",
+      "name": "Kinda Hard Golf",
+      "url": "https://kindahardgolf.com/",
+      "phase": "cooldown",
+      "review": false
+    }
+  ]
+}
