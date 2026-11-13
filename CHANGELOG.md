@@ -2,7 +2,7 @@
 
 A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scorebook.
 
-**Current release:** `v2.2.6`  
+**Current release:** `v2.2.7`  
 **Versioning:** `MAJOR.MINOR.PATCH` — major releases mark a substantial change to the experience; minor releases add meaningful capabilities; patches refine, polish, or fix what's already there.
 
 > **Historical naming note:** Early development files used a different version sequence (including labels such as “v5.4.1”). The release numbers below are the agreed, retrospective canonical history. Some adjacent milestones were shipped together, rather than as separate deployments.
@@ -11,8 +11,18 @@ A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scoreboo
 
 ## v2 — Statistics, personalization & polish
 
-### [2.2.6] — Search & Skip for Today
+### [2.2.7] — Dark Mode & Desk Settings
 **Patch · Current**
+- Added a warm dark-wood study theme with soft lamplight, restrained stars, and muted colored notes.
+- Added Light, Dark, and System appearance choices; signed-in appearance preferences synchronize through existing board settings.
+- Applied dark styling to the corkboard, Scorebook, account panel, game organizer, search, score forms, and navigation.
+- Grouped appearance, compact notes, desk sounds, and reduced motion in a single Desk Settings panel.
+- Added matching dark logo and icon assets, including a dark manifest for compatible browsers; iOS Home Screen icons may still require reinstalling because iOS caches installed icons.
+- Preserved puzzle order, scores, saved progress, and existing Supabase tables. No SQL migration required.
+
+### [2.2.6] — Search & Skip for Today
+**Patch**
+- **Maintenance fix (no version bump):** Added PNG/ICO favicon fallbacks for browser bookmarks and kept the dotted Up Next outline visible at narrow screen widths.
 - Added a search box above the corkboard to quickly find games without changing their order.
 - Added a small **Skip for Today** action on unfinished game notes.
 - Skipped notes become compact and distinct from completed notes; they don't increase completion totals or score averages.

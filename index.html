@@ -3,14 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f8efdc">
+<meta name="theme-color" id="browserThemeColor" content="#f8efdc">
 <meta name="description" content="Your daily puzzle checklist: 54 games from gentle warm-ups to deep thinking, with scores and progress in one place.">
 <title>Morning Circuit — A little brain food</title>
-<link rel="manifest" href="manifest.webmanifest?v=226">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=226b">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=226b">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=226b">
-<link rel="apple-touch-icon" href="assets/icon-192.png?v=226">
+<link rel="manifest" id="appManifest" href="manifest.webmanifest?v=227">
+<link rel="icon" id="faviconIco" type="image/x-icon" href="favicon.ico?v=227">
+<link rel="icon" id="faviconPng" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=227">
+<link rel="icon" id="faviconSvg" type="image/svg+xml" href="assets/favicon.svg?v=227">
+<link rel="apple-touch-icon" id="touchIcon" href="assets/icon-192.png?v=227">
+<script>
+// Paint the last selected desk mood before the main interface loads.
+try {
+ const choice=localStorage.getItem('morning-circuit-appearance-hint-v1')||'light';
+ document.documentElement.dataset.theme=choice==='dark'||(choice==='system'&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
+} catch { document.documentElement.dataset.theme='light'; }
+</script>
 <style>
 :root {
   color-scheme:light;
@@ -345,6 +352,156 @@ html{scroll-padding-top:95px}
 }
 
 
+
+/* v2.2.7 — two paper-and-wood moods. No images, animation, or extra frameworks. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.desk-settings{margin:12px 0 23px;text-align:left;background:#fff9eb;border:1px solid #e4d7bf;border-radius:14px;box-shadow:2px 3px 0 #eee2cc;overflow:hidden}
+.desk-settings-heading{display:flex;align-items:center;gap:13px;padding:19px 21px 15px;background:linear-gradient(105deg,#f7ebd3,#fffaf0);border-bottom:1px solid #e7d8bb}
+.desk-settings-symbol{display:grid;place-items:center;width:43px;height:43px;border:1px dashed #c69961;border-radius:50%;background:#f9dd9e;color:#895d37;font:700 23px Georgia,serif;flex:0 0 auto}
+.desk-settings-eyebrow{font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#9c7e57}
+.desk-settings-heading h2{font:700 27px/1.08 Georgia,serif;letter-spacing:-.03em;margin:4px 0 6px;color:#34523d}
+.desk-settings-heading p{font-size:12px;line-height:1.5;color:#73715f;margin:0}
+.desk-setting-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:13px 21px;border-bottom:1px solid #ebdfcb}
+.desk-setting-row:last-child{border-bottom:0}
+.desk-setting-row strong{display:block;color:#435c49;font-size:13px}
+.desk-setting-row p{font-size:12px;line-height:1.42;color:#7c796b;margin:3px 0 0;max-width:490px}
+.desk-setting-row .motion-control{min-width:112px;justify-content:flex-end}
+.appearance-control select{min-height:40px;min-width:139px;padding:8px 30px 8px 12px;background:#fffdf5;border:1px solid #c6b695;border-radius:8px;color:#35503c;font:800 12px system-ui,sans-serif;cursor:pointer}
+.appearance-control select:focus-visible{outline:3px solid #3e7e72;outline-offset:2px}
+@media(max-width:520px){.desk-settings-heading{padding:16px 14px}.desk-setting-row{padding:12px 14px}.desk-setting-row p{font-size:11px}.desk-setting-row .motion-control{min-width:87px}.appearance-control select{min-width:116px}}
+/* A quiet lamplit study, rather than an inverted daytime palette. */
+html[data-theme="dark"]{color-scheme:dark;--ink:#e9dec9;--ink-deep:#f1e3c8;--muted:#c4b39a;--paper:#2d2825;--cream:#332d27;--wood:#513b2d;--sun:#f0bf66;--outline:#59483a;--shadow:rgba(0,0,0,.34);--green:#92b59a}
+html[data-theme="dark"] body{color:#e9ddc9;background-color:#211a19;background-image:radial-gradient(circle at 76% 5%,rgba(231,179,93,.14),transparent 26%),radial-gradient(1px 1px at 14% 22%,rgba(245,223,179,.65) 97%,transparent),radial-gradient(1px 1px at 65% 18%,rgba(245,223,179,.5) 97%,transparent),radial-gradient(1px 1px at 87% 42%,rgba(245,223,179,.38) 97%,transparent),repeating-linear-gradient(92deg,#211a19 0 6px,#261e1b 7px 9px,#241c1a 10px 30px);background-size:auto,230px 181px,315px 270px,410px 340px,auto}
+html[data-theme="dark"] .hero:before{content:"";position:absolute;inset:-20px -14px 0 18%;background:radial-gradient(ellipse at 78% 49%,rgba(238,172,72,.17),transparent 60%);pointer-events:none}
+html[data-theme="dark"] .topbar{background:#2b2420;border-color:#4d3d30;box-shadow:0 5px 16px rgba(0,0,0,.22)}
+html[data-theme="dark"] .brand,html[data-theme="dark"] h1,html[data-theme="dark"] .stats-title{color:#f3e6c9}
+html[data-theme="dark"] .brand-version{color:#bbad96}
+html[data-theme="dark"] .topright time{color:#d1b995}
+html[data-theme="dark"] .overline,html[data-theme="dark"] .stats-small-cap{color:#e1ad6e}
+html[data-theme="dark"] .overline:before{background:#dcac6c}
+html[data-theme="dark"] h1 .highlight:after{background:#c68c45;opacity:.52}
+html[data-theme="dark"] .lede,html[data-theme="dark"] .stats-intro,html[data-theme="dark"] .stats-helper,html[data-theme="dark"] .stats-subnote{color:#cdbda7}
+html[data-theme="dark"] .sketch{filter:sepia(.12) brightness(.85) drop-shadow(0 5px 5px rgba(0,0,0,.3))}
+html[data-theme="dark"] .art-dart{background:repeating-radial-gradient(circle,#c9b68e 0 9px,#987353 10px 12px);border-color:#bc8856;color:#563323}
+html[data-theme="dark"] .progress-card,html[data-theme="dark"] .find-paper,html[data-theme="dark"] .arrange-paper,html[data-theme="dark"] .account-panel,html[data-theme="dark"] .settings-paper{background:#322923;border-color:#6d5340;color:#eadcc5;box-shadow:3px 4px 0 #1a1614}
+html[data-theme="dark"] .card-kicker,html[data-theme="dark"] .card-kicker #resetCountdown,html[data-theme="dark"] .progress-note,html[data-theme="dark"] .progress-foot,html[data-theme="dark"] .progress-label small{color:#d6b993}
+html[data-theme="dark"] .progress-label,html[data-theme="dark"] .progress-percent{color:#e8d6ae}
+html[data-theme="dark"] .progress-track{background:#4d4132;border-color:#76634a}
+html[data-theme="dark"] .next-card{background:#3d4c3f;border-color:#687b61;box-shadow:3px 4px 0 #202820}
+html[data-theme="dark"] .next-name,html[data-theme="dark"] .next-sub,html[data-theme="dark"] .next-card .card-kicker{color:#e3eacc}
+html[data-theme="dark"] .action-done{background:rgba(225,236,210,.12);color:#e4edcc;border-color:#849d7e}
+html[data-theme="dark"] .action-done:hover{background:#536751}
+html[data-theme="dark"] .board-wrap{background:#4e342a;border-color:#35241e;box-shadow:0 9px 0 #221915,0 22px 28px rgba(0,0,0,.38),inset 0 1px 3px rgba(239,174,99,.15)}
+html[data-theme="dark"] .board{background-color:#674734;border-color:#78553b;background-image:radial-gradient(rgba(237,180,113,.14) 1px,transparent 1.4px),radial-gradient(rgba(28,18,15,.24) 1px,transparent 2px),repeating-linear-gradient(3deg,rgba(23,16,12,.075) 0 1px,transparent 1px 10px);background-size:9px 9px,14px 15px,auto}
+html[data-theme="dark"] .board-title,html[data-theme="dark"] .board-title .ico,html[data-theme="dark"] .section-header h3{color:#f4e4c7;text-shadow:none}
+html[data-theme="dark"] .board-sub,html[data-theme="dark"] .section-header p,html[data-theme="dark"] .doodle-left,html[data-theme="dark"] .doodle-right{color:#e1c09a}
+html[data-theme="dark"] .section-badge{color:#efdec4;background:#55382c;border-color:#a77d58;box-shadow:2px 3px 0 rgba(0,0,0,.2)}
+html[data-theme="dark"] .section-count{background:#4c382a;border-color:#8c684c;color:#edd1a8}
+html[data-theme="dark"] .tool-btn{background:#3d2d26;border-color:#775b43;border-bottom-color:#6b4c35;color:#ead7b9}
+html[data-theme="dark"] .tool-btn:hover{background:#59402f}
+html[data-theme="dark"] .tool-btn[aria-pressed="true"]{background:#435849;border-color:#76987a;color:#eef4e4}
+html[data-theme="dark"] .game-note{--note:#d6be83;--note-edge:#a58b5d;color:#2f332c;box-shadow:3px 5px 0 rgba(25,17,13,.36),3px 9px 10px rgba(0,0,0,.15)}
+html[data-theme="dark"] .note-color-0{--note:#d8ba77;--note-edge:#b9955d}
+html[data-theme="dark"] .note-color-1{--note:#abc5a8;--note-edge:#7f9e7b}
+html[data-theme="dark"] .note-color-2{--note:#d2a899;--note-edge:#af8373}
+html[data-theme="dark"] .note-color-3{--note:#a6bfcb;--note-edge:#7c9da9}
+html[data-theme="dark"] .note-color-4{--note:#c3b0c7;--note-edge:#9a85a4}
+html[data-theme="dark"] .note-color-5{--note:#d4c196;--note-edge:#ac956c}
+html[data-theme="dark"] .game-note .note-name,html[data-theme="dark"] .compact-pending .compact-name{color:#26382f}
+html[data-theme="dark"] .game-note .note-number,html[data-theme="dark"] .game-note .note-tag,html[data-theme="dark"] .game-note .note-edit,html[data-theme="dark"] .game-note .note-skip{color:#554832}
+html[data-theme="dark"] .game-note .note-icon{border-color:rgba(42,48,38,.3);color:#354b3c}
+html[data-theme="dark"] .game-note .note-done{color:#334f3a;border-color:#6b8465;background:rgba(255,251,229,.33)}
+html[data-theme="dark"] .game-note .note-done:hover{background:rgba(255,251,229,.63)}
+html[data-theme="dark"] .game-note .note-skip{background:rgba(255,251,229,.14)}
+html[data-theme="dark"] .game-note.is-next{outline-color:#e5c178}
+html[data-theme="dark"] .game-note.completed,html[data-theme="dark"] .game-note.completed:not(.editing-score),html[data-theme="dark"] .game-note.completed.editing-score{background:#879e86;border-color:#6d8b6f;filter:none;box-shadow:2px 3px 0 rgba(0,0,0,.27)}
+html[data-theme="dark"] .compact-icon,html[data-theme="dark"] .compact-score,html[data-theme="dark"] .compact-undo,html[data-theme="dark"] .compact-edit{background:#bbccb0;border-color:#66806a;color:#284c35}
+html[data-theme="dark"] .game-note.completed .compact-name{color:#36543a;text-decoration-color:#5c7b5f}
+html[data-theme="dark"] .game-note.skipped{background:#b5a28b;border-color:#8f7965}
+html[data-theme="dark"] .skipped .compact-name{color:#5a4936}
+html[data-theme="dark"] .skipped-label{background:#d8c5a8;border-color:#a58d74;color:#604936}
+html[data-theme="dark"] .score-form label,html[data-theme="dark"] .score-guided-field>span,html[data-theme="dark"] .score-guided .score-unit,html[data-theme="dark"] .score-form .score-hint{color:#354637}
+html[data-theme="dark"] .score-form input,html[data-theme="dark"] .score-guided input,html[data-theme="dark"] .score-guided select{background:#f4ecd8;color:#293d31;border-color:#938a70}
+html[data-theme="dark"] .score-form .score-mode-toggle{color:#264e3a}
+html[data-theme="dark"] .recent-score,html[data-theme="dark"] .finish-banner{background:#46392b;border-color:#8d7351;color:#f0e4c5;box-shadow:none}
+html[data-theme="dark"] .recent-score strong,html[data-theme="dark"] .finish-banner strong{color:#f0e3bf}
+html[data-theme="dark"] .find-label,html[data-theme="dark"] .find-label>span,html[data-theme="dark"] .search-summary{color:#d9c7a7}
+html[data-theme="dark"] .find-label small{color:#b8a48d}
+html[data-theme="dark"] .find-field{background:#251f1c;border-color:#7e624b}
+html[data-theme="dark"] .find-field input{color:#f2e2c8}
+html[data-theme="dark"] .find-field input::placeholder{color:#b09c84}
+html[data-theme="dark"] .search-clear{border-color:#684e3d;color:#e2cbab}
+html[data-theme="dark"] .search-clear:hover{background:#48362d}
+html[data-theme="dark"] .account-toggle,html[data-theme="dark"] .notebook-toggle,html[data-theme="dark"] .account-secondary{background:#47352b;border-color:#8d6c50;color:#f0dfc1}
+html[data-theme="dark"] .account-toggle:hover,html[data-theme="dark"] .notebook-toggle:hover,html[data-theme="dark"] .account-secondary:hover{background:#5b4434}
+html[data-theme="dark"] .account-form label,html[data-theme="dark"] .account-heading h2,html[data-theme="dark"] .account-identity strong,html[data-theme="dark"] .settings-paper strong{color:#ead9bd}
+html[data-theme="dark"] .account-heading p,html[data-theme="dark"] .account-fine,html[data-theme="dark"] .account-kicker,html[data-theme="dark"] .settings-paper p,html[data-theme="dark"] .account-close,html[data-theme="dark"] .account-text{color:#d0b99a}
+html[data-theme="dark"] .account-form input{color:#f4e5cd;background:#211c1a;border-color:#79624b}
+html[data-theme="dark"] .account-primary{background:#739579;color:#172b1b;border-color:#85a98a}
+html[data-theme="dark"] .account-primary:hover{background:#8ab28e}
+html[data-theme="dark"] .stats-paper{background:#302824;border-color:#755c47;box-shadow:4px 5px 0 #1b1614,0 16px 25px rgba(0,0,0,.14)}
+html[data-theme="dark"] .stats-paper:before{background:#825e52}
+html[data-theme="dark"] .stats-topline{color:#debb87;border-bottom-color:#68513e}
+html[data-theme="dark"] .stats-stat{background:#4b3a2d;border-color:#806447}
+html[data-theme="dark"] .stats-stat:nth-child(2){background:#374c3c;border-color:#668269}
+html[data-theme="dark"] .stats-stat:nth-child(3){background:#50392f;border-color:#876452}
+html[data-theme="dark"] .stats-stat:nth-child(4){background:#374752;border-color:#627783}
+html[data-theme="dark"] .stats-stat-num,html[data-theme="dark"] .stats-block-heading h2,html[data-theme="dark"] .stats-game-name{color:#f2e3c8}
+html[data-theme="dark"] .stats-stat-label{color:#e1cba9}
+html[data-theme="dark"] .stats-block{border-bottom-color:#604d3d}
+html[data-theme="dark"] .heat-0{background:#3b3430;color:#d4c6b2;border-color:#665448}
+html[data-theme="dark"] .heat-1{background:#52644d;color:#f6edce;border-color:#78876a}
+html[data-theme="dark"] .heat-2{background:#6f916b;color:#f8edce;border-color:#759470}
+html[data-theme="dark"] .heat-3{background:#7f9d78;color:#182c20;border-color:#92b18c}
+html[data-theme="dark"] .heat-4{background:#bbd3a0;color:#203621;border-color:#bbd3a0}
+html[data-theme="dark"] .stats-day.today{outline-color:#e7bc75}
+html[data-theme="dark"] .stats-legend,html[data-theme="dark"] .stats-picker-label{color:#d4b999}
+html[data-theme="dark"] .stats-picker-label select,html[data-theme="dark"] .stats-game-detail,html[data-theme="dark"] .stats-mini{background:#39312b;border-color:#715a44;color:#e8dac2}
+html[data-theme="dark"] .stats-mini strong,html[data-theme="dark"] .stats-entry strong{color:#e8eacb}
+html[data-theme="dark"] .stats-mini span,html[data-theme="dark"] .stats-entry,html[data-theme="dark"] .stats-empty{color:#cbbfa9}
+html[data-theme="dark"] .stats-score-summary{background:#38493a;color:#ebecd3}
+html[data-theme="dark"] .stats-score-summary small{color:#cedabf}
+html[data-theme="dark"] .stats-entries h4{color:#e7d8b6}
+html[data-theme="dark"] .stats-entry{border-top-color:#5b4d40}
+html[data-theme="dark"] .stats-favorite{background:#43362b;border-color:#715a45;color:#f0dfc8}
+html[data-theme="dark"] .stats-favorite:hover{background:#574533}
+html[data-theme="dark"] .stats-caveat{background:#42372d;color:#d9c7ab}
+html[data-theme="dark"] .stats-title em{color:#acc9a6}
+html[data-theme="dark"] .arrange-heading h2{color:#f3e6cd}
+html[data-theme="dark"] .arrange-heading p,html[data-theme="dark"] .arrange-actions span{color:#cbbba4}
+html[data-theme="dark"] .arrange-group{background:#322a24;border-color:#765c47}
+html[data-theme="dark"] .arrange-group h3{background:#49372d;color:#efd9b6}
+html[data-theme="dark"] .arrange-group-help{color:#d4bf9f;border-bottom-color:#66513e}
+html[data-theme="dark"] .arrange-row{background:#342b26;border-bottom-color:#614c3c;color:#ebd8bb}
+html[data-theme="dark"] .arrange-row.is-hidden{background:#292321;opacity:.7}
+html[data-theme="dark"] .arrange-grip{color:#ccb089}
+html[data-theme="dark"] .arrange-row button,html[data-theme="dark"] .arrange-row select{background:#4d3a2e;color:#f5e6ce;border-color:#82644c}
+html[data-theme="dark"] .arrange-row button:hover{background:#654c37}
+html[data-theme="dark"] .footer{color:#c7b59d}
+html[data-theme="dark"] .footer strong,html[data-theme="dark"] .footer-mark{color:#ead6ac}
+html[data-theme="dark"] .desk-settings{background:#322923;border-color:#705740;box-shadow:2px 3px 0 #181310}
+html[data-theme="dark"] .desk-settings-heading{background:linear-gradient(105deg,#443025,#362922);border-bottom-color:#644b37}
+html[data-theme="dark"] .desk-settings-symbol{background:#654632;border-color:#ad8755;color:#f1c77d}
+html[data-theme="dark"] .desk-settings-eyebrow{color:#e7ba78}
+html[data-theme="dark"] .desk-settings-heading h2,html[data-theme="dark"] .desk-setting-row strong{color:#f1e2c9}
+html[data-theme="dark"] .desk-settings-heading p,html[data-theme="dark"] .desk-setting-row p{color:#cabba5}
+html[data-theme="dark"] .desk-setting-row{border-bottom-color:#574535}
+html[data-theme="dark"] .appearance-control select{background:#241f1b;color:#efe0c8;border-color:#8a6d4d}
+html[data-theme="dark"] .motion-control{color:#f0debf}
+html[data-theme="dark"] .motion-control input:not(:checked)+.switch-track{background:#554438;border-color:#8c6c52}
+html[data-theme="dark"] .motion-control input:checked+.switch-track{background:#699676;border-color:#86ae8b}
+html[data-theme="dark"] .toast{background:#e9d29b;color:#2e291e}
+html[data-theme="dark"] .toast-undo{background:#554b37;color:#ffe9b9;border-color:#9d8c62}
+html[data-theme="dark"] .sync-pill.ok{background:#334b3b;color:#d8f1d9;border-color:#63856a}
+html[data-theme="dark"] .sync-pill.pending{background:#51402b;color:#f5dcab;border-color:#927448}
+html[data-theme="dark"] .sync-pill.syncing{background:#35434c;color:#d3e5f4;border-color:#678395}
+html[data-theme="dark"] .sync-pill.offline,html[data-theme="dark"] .sync-pill.error{background:#594139;color:#f5d6c6;border-color:#9d6c59}
+/* Reduced motion also removes the nighttime atmosphere's decorative layers. */
+html[data-theme="dark"].calm-view body{background:#241c1a!important;background-image:none!important}
+html[data-theme="dark"].calm-view .board{background:#624332!important;background-image:none!important}
+html[data-theme="dark"].calm-view .hero:before{display:none!important}
+@media (max-width:520px){html[data-theme="dark"] .hero:before{inset:0}}
+
 </style>
 </head>
 <body>
@@ -372,7 +529,7 @@ html{scroll-padding-top:95px}
 </defs></svg>
 <div class="shell">
   <header class="topbar" id="top">
-    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img src="assets/logo.svg?v=226" width="42" height="42" alt="" aria-hidden="true"></span><span class="brand-copy"><span>Morning Circuit</span><small class="brand-version" title="Current release · v2.2.6">v2.2.6</small></span></a>
+    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img id="brandLogo" src="assets/logo.svg?v=227" width="42" height="42" alt="" aria-hidden="true"></span><span class="brand-copy"><span>Morning Circuit</span><small class="brand-version" title="Current release · v2.2.7">v2.2.7</small></span></a>
     <div class="topright"><time id="dateLabel">Today</time><button class="sync-pill hidden" id="syncPill" type="button" aria-live="polite" aria-label="Cloud sync status: connecting. Open account details" title="Open sync details"><span class="sync-pill-icon" aria-hidden="true">↻</span><span class="sync-pill-label">Connecting…</span></button><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
   <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
@@ -411,7 +568,7 @@ html{scroll-padding-top:95px}
     </section>
     <div class="board-wrap" id="board"><div class="board">
       <div class="board-doodles" aria-hidden="true"><div class="doodle-left">A + B = C · 42° · 3.14 · ?</div><div class="doodle-right">LAT 34.1° · LONG 84.2°</div></div>
-      <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Continue</button><button class="tool-btn" id="compactToggle" aria-pressed="false">Compact view</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
+      <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Continue</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
       <div id="listRoot"></div><div id="finishBanner" class="finish-banner hidden" role="status"><span class="finish-sun" aria-hidden="true">☀</span><div><strong>Every note checked off!</strong><p>Your circuit is complete for today. Enjoy the rest of your day.</p></div></div>
     </div></div>
     <section class="arrange-paper hidden" id="arrangePanel" aria-labelledby="arrangeTitle">
@@ -421,8 +578,13 @@ html{scroll-padding-top:95px}
     </section>
     <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div>
       <div class="settings-paper"><div><strong>Your puzzle lineup</strong><p>Move games between stages, change their order, or hide ones you don't play. Your scores stay saved, and the layout syncs to your account.</p></div><button type="button" class="account-secondary" id="arrangeToggle" aria-expanded="false" aria-controls="arrangePanel">✎ Arrange games</button></div>
-      <div class="settings-paper"><div><strong>Little desk sounds</strong><p>Gentle stamp on Done and a pencil scratch when you save a score. No audio files or keyboard clicks. Turn this off anytime.</p></div><label class="motion-control"><input type="checkbox" id="soundToggle" aria-label="Enable subtle game completion and score sounds"><span class="switch-track" aria-hidden="true"></span><span>Sounds</span></label></div>
-      <div class="settings-paper"><div><strong>Lighten the effects</strong><p>Reduce hover motion, heavy shadows, and decorative textures for smoother scrolling, especially on desktop.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduce motion</span></label></div>
+      <section class="desk-settings" aria-labelledby="deskSettingsTitle">
+        <div class="desk-settings-heading"><span class="desk-settings-symbol" aria-hidden="true">✦</span><div><span class="desk-settings-eyebrow">Make yourself at home</span><h2 id="deskSettingsTitle">Desk settings</h2><p>Choose the atmosphere and little details that feel right for your routine.</p></div></div>
+        <div class="desk-setting-row"><div><strong>Desk atmosphere</strong><p>Sunlit coffee &amp; colorful paper, or a quiet lamplit study. System follows your device.</p></div><label class="appearance-control" for="themeSelect"><span class="sr-only">Appearance</span><select id="themeSelect" aria-label="Desk appearance"><option value="light">☀ Light</option><option value="dark">☾ Dark</option><option value="system">◐ System</option></select></label></div>
+        <div class="desk-setting-row"><div><strong>Compact notes</strong><p>Use smaller notes for games still waiting to be played.</p></div><label class="motion-control"><input type="checkbox" id="compactSettingToggle" aria-label="Use compact unfinished sticky notes"><span class="switch-track" aria-hidden="true"></span><span>Compact</span></label></div>
+        <div class="desk-setting-row"><div><strong>Little desk sounds</strong><p>A gentle stamp on Done and a pencil scratch when you save a score.</p></div><label class="motion-control"><input type="checkbox" id="soundToggle" aria-label="Enable subtle game completion and score sounds"><span class="switch-track" aria-hidden="true"></span><span>Sounds</span></label></div>
+        <div class="desk-setting-row"><div><strong>Reduce motion</strong><p>Turn down hover effects, shadows, and decorative textures for a lighter feel.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduced</span></label></div>
+      </section>
       <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>In guest mode, everything stays on this device. When signed in, results and preferences sync privately across devices; offline changes are kept on your device until sync succeeds. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
   </main>
   <section id="statsView" class="stats-view hidden" aria-label="Statistics notebook">
@@ -548,7 +710,8 @@ function normalizeBoardPrefs(input={}){
    order[group.key]=[...new Set([...requested.filter(id=>allowed.includes(id)),...allowed])];
  }
  const hidden=[...new Set((Array.isArray(safe.hidden)?safe.hidden:[]).filter(id=>GAME_BY_ID.has(id)))];
- return {phases,order,hidden,compact:!!safe.compact};
+ const theme=['light','dark','system'].includes(safe.theme)?safe.theme:'light';
+ return {phases,order,hidden,compact:!!safe.compact,theme};
 }
 function phaseFor(gameId){return boardPrefs.phases[gameId]||GAME_BY_ID.get(gameId)?.phase;}
 function groupGames(key,includeHidden=false){
@@ -560,7 +723,7 @@ function activeDoneCount(){return activeGames().filter(g=>completed.has(g.id)).l
 function saveBoardPrefs(){
  boardPrefs=normalizeBoardPrefs(boardPrefs);
  if(cloudAccount)queueCloudSettings();else saveJSON(BOARD_PREFS_KEY,boardPrefs);
- render();renderArranger();
+ applyTheme();syncSettingsControls();render();renderArranger();
 }
 let arrangerOpen=false;
 function renderArranger(){
@@ -598,7 +761,7 @@ $('arrangeClose').addEventListener('click',()=>{
 });
 $('arrangeReset').addEventListener('click',()=>{
  if(!window.confirm('Restore the original 54-game order and show all games? Your scores and progress will stay saved.'))return;
- boardPrefs=normalizeBoardPrefs({});saveBoardPrefs();toast('Your original circuit is back!');
+ boardPrefs=normalizeBoardPrefs({theme:boardPrefs.theme,compact:boardPrefs.compact});saveBoardPrefs();toast('Your original circuit is back!');
 });
 $('arrangeList').addEventListener('click',e=>{
  const hidden=e.target.closest('[data-arrange-hide]');
@@ -632,8 +795,33 @@ $('arrangeList').addEventListener('drop',e=>{
  if(source)moveGame(source,row.dataset.arrangeId);
 });
 $('arrangeList').addEventListener('dragend',()=>{draggedGameId=null;$('arrangeList').querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));});
-$('compactToggle').addEventListener('click',()=>{boardPrefs.compact=!boardPrefs.compact;saveBoardPrefs();});
+$('compactSettingToggle').addEventListener('change',e=>{boardPrefs.compact=e.target.checked;saveBoardPrefs();});
+$('themeSelect').addEventListener('change',e=>{boardPrefs.theme=e.target.value;saveBoardPrefs();toast(boardPrefs.theme==='system'?'Desk follows your device appearance.':boardPrefs.theme==='dark'?'The lamplight is on.':'A fresh, sunny desk.');});
 
+function syncSettingsControls(){
+ const appearance=$('themeSelect');if(appearance&&appearance.value!==boardPrefs.theme)appearance.value=boardPrefs.theme;
+ const compact=$('compactSettingToggle');if(compact)compact.checked=boardPrefs.compact;
+}
+const darkMedia=window.matchMedia?.('(prefers-color-scheme: dark)');
+function effectiveTheme(){return boardPrefs.theme==='system'?(darkMedia?.matches?'dark':'light'):boardPrefs.theme;}
+function applyTheme(){
+ const theme=effectiveTheme(), dark=theme==='dark';
+ document.documentElement.dataset.theme=theme;
+ const asset=dark?'-dark':'';
+ const image=$('brandLogo');if(image)image.src=`assets/logo${asset}.svg?v=227`;
+ const colors=$('browserThemeColor');if(colors)colors.content=dark?'#211a19':'#f8efdc';
+ // Browser icons can follow the chosen mood; previously installed iOS icons are controlled by iOS caching.
+ for(const [id,href] of Object.entries({
+  faviconSvg:`assets/favicon${asset}.svg?v=227`,faviconPng:`assets/favicon${asset}-32.png?v=227`,
+  faviconIco:`favicon${asset}.ico?v=227`,touchIcon:`assets/icon${asset}-192.png?v=227`,
+  appManifest:`manifest${asset}.webmanifest?v=227`
+ })) {const el=$(id);if(el&&el.getAttribute('href')!==href)el.setAttribute('href',href);}
+ try{localStorage.setItem('morning-circuit-appearance-hint-v1',boardPrefs.theme);}catch{}
+ syncSettingsControls();
+}
+if(darkMedia){const onMoodChange=()=>{if(boardPrefs.theme==='system')applyTheme();};
+ if(darkMedia.addEventListener)darkMedia.addEventListener('change',onMoodChange);
+ else if(darkMedia.addListener)darkMedia.addListener(onMoodChange);}
 function applyMotion(){document.documentElement.classList.toggle('calm-view',reduceMotion);$('calmToggle').checked=reduceMotion;}
 function persistScores(){if(cloudAccount){saveCloudCache();return;}scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
 // Scores remain strings in the existing local/cloud schema; no migration is necessary.
@@ -774,7 +962,7 @@ function render(){
    recent.classList.remove('hidden');
  }else{recent.classList.add('hidden');recent.innerHTML='';}
  $('toggleFilter').textContent=unfinishedOnly?'Show all notes':'Show unfinished';$('toggleFilter').setAttribute('aria-pressed',String(unfinishedOnly));
- $('compactToggle').textContent=boardPrefs.compact?'Comfortable view':'Compact view';$('compactToggle').setAttribute('aria-pressed',String(boardPrefs.compact));
+ $('compactSettingToggle').checked=boardPrefs.compact;
  const out=DATA.groups.map((group,gi)=>{
   const all=groupGames(group.key);
   const visible=all.filter(g=>((!unfinishedOnly||(!completed.has(g.id)&&!skipped.has(g.id)))||(scoreEditorWhere==='card'&&scoreEditorId===g.id))&&(!searchQuery||g.name.toLocaleLowerCase().includes(searchQuery)));
@@ -851,7 +1039,7 @@ window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVE
  const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
  scoreArchive=loadJSON(SCORES_KEY,{});if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};scores={...(scoreArchive[day]||{})};
   const guestSkipped=loadJSON(SKIPS_KEY,{});skipped=new Set(guestSkipped.date===day&&Array.isArray(guestSkipped.ids)?guestSkipped.ids:[]);soundEnabled=loadJSON(SOUND_KEY,true);$('soundToggle').checked=soundEnabled;
-  reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
+  reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyTheme();applyMotion();render();renderArranger();
 }});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){syncDay();if(cloudAccount)scheduleCloudSync(150);}});
 window.addEventListener('online',()=>{if(cloudAccount)scheduleCloudSync(250);});
@@ -884,7 +1072,7 @@ function applyAccountView(){
  if(!cloudAccount)return;
  readAccountDay();
  overrides={...cloudCache.settings.overrides};reduceMotion=!!cloudCache.settings.reduceMotion;boardPrefs=normalizeBoardPrefs(cloudCache.settings.board);
- applyMotion();render();renderArranger();
+ applyTheme();applyMotion();render();renderArranger();
 }
 function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=scores[gameId]??null,skip=skipped.has(gameId)){
  if(!cloudAccount||!cloudCache)return;
@@ -1030,7 +1218,7 @@ function restoreGuest(){
  migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});scoreArchive=loadJSON(SCORES_KEY,{});
  if(!scoreArchive||typeof scoreArchive!=='object')scoreArchive={};scores={...(scoreArchive[day]||{})};
  const guestSkipped=loadJSON(SKIPS_KEY,{});skipped=new Set(guestSkipped.date===day&&Array.isArray(guestSkipped.ids)?guestSkipped.ids:[]);
- reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
+ reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyTheme();applyMotion();render();renderArranger();
 }
 async function setCloudSession(session){
  const user=session?.user||null;
@@ -1310,6 +1498,7 @@ refreshResetCountdown();
 setInterval(refreshResetCountdown,1000);
 document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'instant'});});
 
+applyTheme();
 applyMotion();
 render();
 void initializeCloud();

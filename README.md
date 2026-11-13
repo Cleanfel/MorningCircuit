@@ -2,7 +2,7 @@
 
 A cozy, mobile-friendly corkboard for your daily puzzles, with 54 games, optional scores, a separate Scorebook, and private cross-device synchronization.
 
-**Current release:** `v2.2.6`  
+**Current release:** `v2.2.7`  
 **Website:** https://cleanfel.github.io/MorningCircuit/  
 **Version history:** [CHANGELOG.md](CHANGELOG.md)
 
@@ -13,7 +13,7 @@ A cozy, mobile-friendly corkboard for your daily puzzles, with 54 games, optiona
 3. Commit the changes. GitHub Pages will republish from the configured branch.
 4. Reopen the site on desktop and mobile. You may need to close and reopen the phone's Home Screen app to load the new version.
 
-The package contains only website assets and documentation. **Supabase SQL migrations are distributed separately, not inside this deployment ZIP.** If your Supabase project is already up to date and syncing correctly, do not rerun old migrations. For a fresh installation, use the appropriate database setup/migration scripts for the features you plan to enable.
+The root `favicon.ico` and `assets/favicon-32.png` support browsers and bookmark surfaces that cache or prefer raster favicons. The package contains only website assets and documentation. **Supabase SQL migrations are distributed separately, not inside this deployment ZIP.** Dark Mode uses the existing board preferences column and requires no SQL migration. If your Supabase project is already up to date and syncing correctly, do not rerun old migrations. For a fresh installation, use the appropriate database setup/migration scripts for the features you plan to enable.
 
 ## Daily use
 
@@ -23,7 +23,8 @@ The package contains only website assets and documentation. **Supabase SQL migra
 - **Show Unfinished / Show All:** Controls visibility without deleting history.
 - **Scorebook:** Shows score history, comparable averages, trends, and activity.
 - **Arrange Games:** Lets you reorder or hide games; hidden results remain saved.
-- **Sound and Reduce Motion:** Optional preferences for a quieter and lighter experience.
+- **Desk Settings:** Light, Dark, or System appearance, compact notes, gentle sounds, and Reduce Motion all in one place.
+- **App and browser icons:** Matching daytime and nighttime variants are available; iOS may cache an icon installed before a theme change.
 
 ## Accounts and data
 
