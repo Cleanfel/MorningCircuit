@@ -1,4 +1,4 @@
-# Morning Circuit v5.4.1 — Branding & sync indicator cleanup
+# Morning Circuit v2.2.2 — Branding & sync indicator cleanup
 
 ## Update your GitHub Pages site
 1. Open your `cleanfel/MorningCircuit` GitHub repository.
