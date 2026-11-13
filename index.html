@@ -241,6 +241,42 @@ html{scroll-padding-top:95px}
 .score-form .score-guided input[type=number]::-webkit-outer-spin-button,.score-form .score-guided input[type=number]::-webkit-inner-spin-button{appearance:none;margin:0}
 @media(max-width:520px){.score-guided{flex-basis:100%}.score-guided-field{flex-basis:100%}.score-form .score-hint{flex-basis:100%}}
 
+
+/* v5.2–5.4: light statistics, discreet controls, and a tidy organizer. */
+.sync-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:850;color:#446f50;border:1px solid #b9ceb5;background:#e9f3e3;border-radius:20px;padding:5px 8px;white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+.sync-pill.pending{background:#fff0d4;color:#95693a;border-color:#ead3a8}.sync-pill.offline{background:#f6e9df;color:#875847;border-color:#e5bbad}
+.finish-banner{margin:10px 0 0;position:relative;z-index:2;background:#fff4d6;border:1px dashed #9c8061;border-radius:10px;padding:15px 18px;color:#355846;display:flex;align-items:center;gap:12px}
+.finish-banner strong{font:700 20px Georgia,serif}.finish-banner p{font-size:12px;margin:3px 0 0}.finish-sun{font-size:34px;line-height:1}
+.game-note.compact-pending{min-height:55px;padding:10px 11px 9px;gap:8px;transform:none;box-shadow:2px 3px 0 rgba(106,68,35,.18);flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.game-note.compact-pending:hover{transform:none;box-shadow:2px 3px 0 rgba(106,68,35,.18)}
+.compact-pending .compact-left{flex:1 1 145px}
+.compact-pending .compact-name{text-decoration:none;color:#304738;font-size:15px}
+.compact-pending .compact-icon{background:rgba(255,255,255,.4);border-color:rgba(84,78,58,.18)}
+.compact-pending .compact-tools{gap:5px}
+.compact-pending .note-play{min-height:35px;padding:5px 12px;font-size:12px}
+.compact-pending .compact-undo{border-color:#a4b69d;min-height:35px;width:36px;flex-basis:36px;background:rgba(255,255,255,.45)}
+.compact-pending .compact-edit{min-height:35px;width:36px;flex-basis:36px;background:rgba(255,255,255,.35)}
+.arrange-paper{margin:27px auto 0;max-width:1040px;background:#fffaed;border:1px solid #e0cbaa;border-radius:12px;padding:23px 23px 19px;box-shadow:4px 6px 0 #e5d3b5;color:#3b5441}
+.arrange-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.arrange-heading h2{font:700 34px Georgia,serif;margin:4px 0 7px}.arrange-heading p{max-width:720px;font-size:13px;line-height:1.55;margin:0;color:#697365}
+.arrange-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:16px 0 15px}.arrange-actions span{font-size:12px;color:#677663;font-weight:800}
+.arrange-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}.arrange-group{border:1px solid #e1d2b8;background:#fffdf6;border-radius:9px;overflow:hidden;min-width:0}
+.arrange-group h3{background:#f4e6c9;color:#5b4534;font:700 19px Georgia,serif;margin:0;padding:10px 13px}.arrange-group-help{font-size:11px;color:#737464;padding:6px 13px;border-bottom:1px solid #eee4d6}
+.arrange-row{display:flex;align-items:center;gap:7px;padding:7px 9px;border-bottom:1px solid #eee7db;min-width:0;background:#fffdf6}.arrange-row:last-child{border-bottom:0}
+.arrange-row.drag-over{outline:2px dashed #538464;outline-offset:-3px;background:#e8f1e2}.arrange-row.is-hidden{opacity:.6;background:#f3f1e9}
+.arrange-grip{font-size:15px;color:#a79579;cursor:grab;user-select:none}
+.arrange-name{flex:1;min-width:70px;font-size:12px;font-weight:800;overflow-wrap:anywhere}
+.arrange-row button,.arrange-row select{border:1px solid #d7c5a7;background:#fffbef;color:#46634e;border-radius:7px;min-height:32px;font:800 11px/1.1 system-ui,sans-serif;padding:5px 7px}
+.arrange-row button:hover{background:#e6efd9}.arrange-row select{min-width:0;max-width:120px;width:auto;font-weight:650}
+.arrange-row button:disabled{opacity:.3;cursor:default}.arrange-row .arrange-hide{min-width:45px}.arrange-row .arrange-move{width:30px;padding:4px}
+.trend-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:13px 0}.trend-panel{background:#fff6e3;border:1px solid #e5d9c2;border-radius:8px;padding:10px;min-width:0}
+.trend-panel span{display:block;font-size:10px;color:#697566;font-weight:850}.trend-panel strong{display:block;font:700 21px Georgia,serif;color:#385b45;margin:5px 0 3px;overflow-wrap:anywhere}
+.trend-panel small{display:block;font-size:10px;color:#7d8575}.trend-context{font-size:12px;color:#48664c;line-height:1.55;margin:10px 0}
+.trend-line{width:100%;height:94px;display:block;border-radius:7px;border:1px solid #e7dfcc;background:#fffaf0}
+.trend-caption{font-size:10px;color:#7c8072;margin:5px 0 14px;line-height:1.4}
+.trend-badge{display:inline-block;background:#e7efdf;padding:5px 8px;border-radius:7px;font-size:11px;color:#3f674b;font-weight:800}
+@media(max-width:900px){.arrange-list{grid-template-columns:1fr}}
+@media(max-width:520px){.sync-pill{font-size:9px;padding:4px 6px;max-width:84px}.arrange-paper{margin-top:20px;padding:16px 12px}.arrange-heading{flex-direction:column}.arrange-heading h2{font-size:30px}.arrange-list{gap:12px}.arrange-row{gap:4px;padding:7px 5px}.arrange-name{font-size:11px;min-width:60px}.arrange-row select{max-width:90px;font-size:10px;padding:4px}.arrange-row button{font-size:10px;min-height:34px;padding:4px}.arrange-grip{display:none}.trend-panels{gap:5px}.trend-panel{padding:8px 6px}.trend-panel strong{font-size:18px}.trend-panel span{font-size:9px}}
+
 </style>
 </head>
 <body>
@@ -269,7 +305,7 @@ html{scroll-padding-top:95px}
 <div class="shell">
   <header class="topbar" id="top">
     <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span><span>Morning Circuit</span></a>
-    <div class="topright"><time id="dateLabel">Today</time><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
+    <div class="topright"><time id="dateLabel">Today</time><span class="sync-pill hidden" id="syncPill" role="status" aria-label="Cloud sync status">● Synced</span><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
   <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
     <div class="account-heading"><div><span class="account-kicker">Your puzzle passport</span><h2>Keep your morning in sync</h2><p id="accountHint">Sign in to save your games across your phone and computer. Guest mode always works.</p></div><button type="button" class="account-close" id="accountClose" aria-label="Close account panel">×</button></div>
@@ -302,10 +338,16 @@ html{scroll-padding-top:95px}
     </div>
     <div class="board-wrap" id="board"><div class="board">
       <div class="board-doodles" aria-hidden="true"><div class="doodle-left">A + B = C · 42° · 3.14 · ?</div><div class="doodle-right">LAT 34.1° · LONG 84.2°</div></div>
-      <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Find next</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
-      <div id="listRoot"></div>
+      <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Continue</button><button class="tool-btn" id="compactToggle" aria-pressed="false">Compact view</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
+      <div id="listRoot"></div><div id="finishBanner" class="finish-banner hidden" role="status"><span class="finish-sun" aria-hidden="true">☀</span><div><strong>Every note checked off!</strong><p>Your circuit is complete for today. Enjoy the rest of your day.</p></div></div>
     </div></div>
+    <section class="arrange-paper hidden" id="arrangePanel" aria-labelledby="arrangeTitle">
+      <div class="arrange-heading"><div><div class="stats-small-cap">Make it yours</div><h2 id="arrangeTitle">Arrange your circuit</h2><p>Use arrows to change the order, or move a game to another stage. Hide games without losing their history. Drag rows on desktop, too. NYT and LinkedIn stay together in their own stages.</p></div><button type="button" class="account-secondary" id="arrangeClose">Done arranging</button></div>
+      <div class="arrange-actions"><button type="button" class="account-secondary" id="arrangeReset">↺ Restore original order and show all games</button><span id="arrangeCount" aria-live="polite"></span></div>
+      <div id="arrangeList" class="arrange-list"></div>
+    </section>
     <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div>
+      <div class="settings-paper"><div><strong>Your puzzle lineup</strong><p>Move games between stages, change their order, or hide ones you don't play. Your scores stay saved, and the layout syncs to your account.</p></div><button type="button" class="account-secondary" id="arrangeToggle" aria-expanded="false" aria-controls="arrangePanel">✎ Arrange games</button></div>
       <div class="settings-paper"><div><strong>Lighten the effects</strong><p>Reduce hover motion, heavy shadows, and decorative textures for smoother scrolling, especially on desktop.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduce motion</span></label></div>
       <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>In guest mode, everything stays on this device. When signed in, results and preferences sync privately across devices; offline changes are kept on your device until sync succeeds. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
   </main>
@@ -324,7 +366,7 @@ html{scroll-padding-top:95px}
         <div class="stats-legend"><span>Fewer finished</span><span class="legend-box heat-0"></span><span class="legend-box heat-1"></span><span class="legend-box heat-2"></span><span class="legend-box heat-3"></span><span class="legend-box heat-4"></span><span>More finished</span></div>
       </section>
       <section class="stats-block" aria-labelledby="statsGameTitle">
-        <div class="stats-block-heading stats-game-heading"><div><div class="stats-small-cap">One puzzle at a time</div><h2 id="statsGameTitle">Game scorecards</h2><p class="stats-helper">Choose a game to see its saved results and averages.</p></div>
+        <div class="stats-block-heading stats-game-heading"><div><div class="stats-small-cap">One puzzle at a time</div><h2 id="statsGameTitle">Game scorecards</h2><p class="stats-helper">Your recent form, lifetime averages, and personal records—when scores can be compared.</p></div>
         <label class="stats-picker-label" for="statsGameSelect">GAME<select id="statsGameSelect" aria-label="Choose a game for statistics"></select></label></div>
         <div class="stats-game-detail" id="statsGameDetail" aria-live="polite"></div>
       </section>
@@ -346,6 +388,7 @@ const STORAGE_KEY='morning-circuit-daily-v1';
 const OVERRIDES_KEY='morning-circuit-links-v1';
 const SCORES_KEY='morning-circuit-scores-v1';
 const MOTION_KEY='morning-circuit-reduce-motion-v1';
+const BOARD_PREFS_KEY='morning-circuit-board-prefs-v1';
 const $=id=>document.getElementById(id);
 const ICONS={
  'costcodle':'jar','more-or-less':'math','size-it-up':'jar','angle':'math','amountdle':'jar',
@@ -373,12 +416,118 @@ let scoreArchive=loadJSON(SCORES_KEY,{});
 if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};
 let scores={...(scoreArchive[day]||{})};
 let reduceMotion=loadJSON(MOTION_KEY,false);
+const FIXED_PHASES=new Set(['nyt','linkedin']);
+const GAME_BY_ID=new Map(DATA.games.map(g=>[g.id,g]));
+let boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));
 let scoreEditorId=null,scoreEditorWhere=null;
 let unfinishedOnly=false;let toastTimer;
 let cloudClient=null,cloudAccount=null,cloudCache=null,cloudSyncBusy=false,cloudSyncTimer=null,cloudReady=false;
 const CLOUD_URL='https://yazjrurzrageyfunsskk.supabase.co';
 const CLOUD_PUBLIC_KEY='sb_publishable_Kp9iCIz8WxkMi6NACi0LlA_T_ZN8wpE';
 const CLOUD_CACHE_PREFIX='morning-circuit-cloud-v1-';
+
+
+// Layout is a personal preference, not a change to the default 54-game lineup.
+// NYT and LinkedIn stay in their own uninterrupted stages.
+function normalizeBoardPrefs(input={}){
+ const safe=input&&typeof input==='object'&&!Array.isArray(input)?input:{};
+ const phases={};
+ for(const g of DATA.games){
+  const requested=safe.phases?.[g.id];
+  phases[g.id]=!FIXED_PHASES.has(g.phase)&&DATA.groups.some(x=>x.key===requested&&!FIXED_PHASES.has(x.key))?requested:g.phase;
+ }
+ const order={};
+ for(const group of DATA.groups){
+   const allowed=DATA.games.filter(g=>phases[g.id]===group.key).map(g=>g.id);
+   const requested=Array.isArray(safe.order?.[group.key])?safe.order[group.key]:[];
+   order[group.key]=[...new Set([...requested.filter(id=>allowed.includes(id)),...allowed])];
+ }
+ const hidden=[...new Set((Array.isArray(safe.hidden)?safe.hidden:[]).filter(id=>GAME_BY_ID.has(id)))];
+ return {phases,order,hidden,compact:!!safe.compact};
+}
+function phaseFor(gameId){return boardPrefs.phases[gameId]||GAME_BY_ID.get(gameId)?.phase;}
+function groupGames(key,includeHidden=false){
+ return (boardPrefs.order[key]||[]).map(id=>GAME_BY_ID.get(id)).filter(g=>g&&(includeHidden||!boardPrefs.hidden.includes(g.id)));
+}
+function activeGames(){return DATA.groups.flatMap(g=>groupGames(g.key));}
+function activeTotal(){return activeGames().length;}
+function activeDoneCount(){return activeGames().filter(g=>completed.has(g.id)).length;}
+function saveBoardPrefs(){
+ boardPrefs=normalizeBoardPrefs(boardPrefs);
+ if(cloudAccount)queueCloudSettings();else saveJSON(BOARD_PREFS_KEY,boardPrefs);
+ render();renderArranger();
+}
+let arrangerOpen=false;
+function renderArranger(){
+ if(!arrangerOpen)return;
+ $('arrangeCount').textContent=`${activeTotal()} of ${TOTAL} games shown`;
+ const opts=DATA.groups.filter(g=>!FIXED_PHASES.has(g.key));
+ $('arrangeList').innerHTML=DATA.groups.map(group=>{
+   const games=groupGames(group.key,true);
+   return `<section class="arrange-group"><h3>${escapeHTML(group.title)}</h3><div class="arrange-group-help">${games.length} games · ${FIXED_PHASES.has(group.key)?'This block stays together':'Use arrows or drag to reorder'}</div>${games.map((g,i)=>{
+     const hidden=boardPrefs.hidden.includes(g.id),fixed=FIXED_PHASES.has(g.phase);
+     const select=fixed?'':`<select data-arrange-phase="${g.id}" aria-label="Stage for ${escapeHTML(g.name)}">${opts.map(o=>`<option value="${o.key}"${o.key===group.key?' selected':''}>${escapeHTML(o.title)}</option>`).join('')}</select>`;
+     return `<div class="arrange-row${hidden?' is-hidden':''}" data-arrange-id="${g.id}" data-arrange-group="${group.key}" draggable="true"><span class="arrange-grip" aria-hidden="true">⠿</span><span class="arrange-name">${escapeHTML(g.name)}</span>${select}<button class="arrange-move" data-arrange-up="${g.id}" ${i===0?'disabled':''} aria-label="Move ${escapeHTML(g.name)} up">↑</button><button class="arrange-move" data-arrange-down="${g.id}" ${i===games.length-1?'disabled':''} aria-label="Move ${escapeHTML(g.name)} down">↓</button><button class="arrange-hide" data-arrange-hide="${g.id}" aria-pressed="${hidden}">${hidden?'Show':'Hide'}</button></div>`;
+   }).join('')}</section>`;
+ }).join('');
+}
+function moveGame(id,targetId){
+ if(id===targetId||!GAME_BY_ID.has(id)||!GAME_BY_ID.has(targetId))return;
+ const from=phaseFor(id),to=phaseFor(targetId);
+ // Only user-assigned movable games can cross stages. NYT/LinkedIn remain grouped.
+ if(from!==to&&(FIXED_PHASES.has(from)||FIXED_PHASES.has(to)))return;
+ for(const key of Object.keys(boardPrefs.order))boardPrefs.order[key]=boardPrefs.order[key].filter(x=>x!==id);
+ boardPrefs.phases[id]=to;
+ const dest=boardPrefs.order[to],at=dest.indexOf(targetId);
+ dest.splice(at<0?dest.length:at,0,id);
+ saveBoardPrefs();
+}
+$('arrangeToggle').addEventListener('click',()=>{
+ arrangerOpen=!arrangerOpen;
+ $('arrangePanel').classList.toggle('hidden',!arrangerOpen);$('arrangeToggle').setAttribute('aria-expanded',String(arrangerOpen));
+ if(arrangerOpen){renderArranger();$('arrangePanel').scrollIntoView({behavior:'instant',block:'start'});}
+});
+$('arrangeClose').addEventListener('click',()=>{
+ arrangerOpen=false;$('arrangePanel').classList.add('hidden');$('arrangeToggle').setAttribute('aria-expanded','false');
+ $('arrangeToggle').scrollIntoView({behavior:'instant',block:'center'});
+});
+$('arrangeReset').addEventListener('click',()=>{
+ if(!window.confirm('Restore the original 54-game order and show all games? Your scores and progress will stay saved.'))return;
+ boardPrefs=normalizeBoardPrefs({});saveBoardPrefs();toast('Your original circuit is back!');
+});
+$('arrangeList').addEventListener('click',e=>{
+ const hidden=e.target.closest('[data-arrange-hide]');
+ if(hidden){const id=hidden.dataset.arrangeHide;boardPrefs.hidden=boardPrefs.hidden.includes(id)?boardPrefs.hidden.filter(x=>x!==id):[...boardPrefs.hidden,id];saveBoardPrefs();return;}
+ const up=e.target.closest('[data-arrange-up]'),down=e.target.closest('[data-arrange-down]');
+ if(up||down){const id=up?.dataset.arrangeUp||down.dataset.arrangeDown,group=phaseFor(id),list=boardPrefs.order[group],i=list.indexOf(id),j=i+(up?-1:1);if(j<0||j>=list.length)return;[list[i],list[j]]=[list[j],list[i]];saveBoardPrefs();}
+});
+$('arrangeList').addEventListener('change',e=>{
+ const select=e.target.closest('[data-arrange-phase]');if(!select)return;
+ const id=select.dataset.arrangePhase,to=select.value,from=phaseFor(id);
+ if(FIXED_PHASES.has(from)||FIXED_PHASES.has(to)||!DATA.groups.some(x=>x.key===to))return;
+ boardPrefs.order[from]=boardPrefs.order[from].filter(x=>x!==id);
+ boardPrefs.phases[id]=to;boardPrefs.order[to].push(id);saveBoardPrefs();
+});
+let draggedGameId=null;
+$('arrangeList').addEventListener('dragstart',e=>{
+ const row=e.target.closest('[data-arrange-id]');if(!row)return;
+ draggedGameId=row.dataset.arrangeId;e.dataTransfer?.setData('text/plain',draggedGameId);
+ if(e.dataTransfer)e.dataTransfer.effectAllowed='move';
+});
+$('arrangeList').addEventListener('dragover',e=>{
+ const row=e.target.closest('[data-arrange-id]');if(!row||!draggedGameId||row.dataset.arrangeId===draggedGameId)return;
+ const from=phaseFor(draggedGameId),to=phaseFor(row.dataset.arrangeId);
+ if(from!==to&&(FIXED_PHASES.has(from)||FIXED_PHASES.has(to)))return;
+ e.preventDefault();row.classList.add('drag-over');
+});
+$('arrangeList').addEventListener('dragleave',e=>{const row=e.target.closest('[data-arrange-id]');if(row&&!row.contains(e.relatedTarget))row.classList.remove('drag-over');});
+$('arrangeList').addEventListener('drop',e=>{
+ const row=e.target.closest('[data-arrange-id]');if(!row)return;e.preventDefault();
+ const source=draggedGameId||e.dataTransfer?.getData('text/plain');draggedGameId=null;
+ if(source)moveGame(source,row.dataset.arrangeId);
+});
+$('arrangeList').addEventListener('dragend',()=>{draggedGameId=null;$('arrangeList').querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));});
+$('compactToggle').addEventListener('click',()=>{boardPrefs.compact=!boardPrefs.compact;saveBoardPrefs();});
 
 function applyMotion(){document.documentElement.classList.toggle('calm-view',reduceMotion);$('calmToggle').checked=reduceMotion;}
 function persistScores(){if(cloudAccount){saveCloudCache();return;}scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
@@ -470,24 +619,25 @@ function iconHTML(name){return `<svg class="ico" aria-hidden="true"><use href="#
 function persist(){if(cloudAccount){saveCloudCache();return;}saveJSON(STORAGE_KEY,{date:day,completed:[...completed]});}
 function syncDay(){const current=dayKey();if(current===day)return;day=current;if(cloudAccount){readAccountDay();}else{completed.clear();scores={...(scoreArchive[day]||{})};}scoreEditorId=null;scoreEditorWhere=null;persist();render();if(cloudAccount)scheduleCloudSync();toast('Fresh day, fresh board. Good morning!');}
 function toast(s){const e=$('toast');e.textContent=s;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700);}
-function nextGame(){return DATA.games.find(g=>!completed.has(g.id));}
-function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;scoreEditorMode=scoreGuidedValue(id,scores[id]||'')===null?'free':'guided';}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
+function nextGame(){return activeGames().find(g=>!completed.has(g.id));}
+function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;scoreEditorMode=scoreGuidedValue(id,scores[id]||'')===null?'free':'guided';}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every visible sticky note finished. See you tomorrow!');}
 function render(){
- const n=completed.size, pct=Math.round((n/TOTAL)*100);
+ const total=activeTotal(), n=activeDoneCount(), pct=total?Math.round((n/total)*100):0;
  $('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
- $('progressLabel').innerHTML=`${n} <small>/ ${TOTAL}</small>`;
- $('progressFill').style.width=pct+'%';$('progressTrack').setAttribute('aria-valuenow',String(n));$('progressPercent').textContent=pct+'%';
- $('progressMessage').textContent=n===TOTAL?'Board cleared!':n===0?'Ready when you are.':`${TOTAL-n} to go. You’ve got this!`;
- const next=nextGame(),idx=next?DATA.games.findIndex(g=>g.id===next.id):-1;
+ $('progressLabel').innerHTML=`${n} <small>/ ${total}</small>`;
+ $('progressFill').style.width=pct+'%';$('progressTrack').setAttribute('aria-valuenow',String(n));$('progressTrack').setAttribute('aria-valuemax',String(total));$('progressPercent').textContent=pct+'%';
+ $('progressMessage').textContent=total===0?'No games shown yet.':n===total?'Board cleared!':n===0?'Ready when you are.':`${total-n} to go. You’ve got this!`;
+ $('finishBanner').classList.toggle('hidden',total===0||n!==total);
+ const next=nextGame(),idx=next?activeGames().findIndex(g=>g.id===next.id):-1;
  if(next){
-  const section=DATA.groups.find(g=>idx>=g.start&&idx<g.end);
-  $('nextEyebrow').textContent=`✦ Up next · ${String(idx+1).padStart(2,'0')} of ${TOTAL}`;
+  const section=DATA.groups.find(g=>g.key===phaseFor(next.id));
+  $('nextEyebrow').textContent=`✦ Up next · ${String(idx+1).padStart(2,'0')} of ${total}`;
   $('nextName').textContent=next.name;$('nextDescription').textContent=section.subtitle;
   $('nextPlay').href=urlFor(next);$('nextPlay').classList.remove('hidden');$('nextDone').classList.remove('hidden');
   $('nextDone').dataset.done=next.id;
  }else{
-  $('nextEyebrow').textContent='✦ All finished';$('nextName').textContent='You did it!';
-  $('nextDescription').textContent='A full board of little wins. Come back tomorrow!';
+  $('nextEyebrow').textContent='✦ All finished';$('nextName').textContent=total?'You did it!':'Your board is empty';
+  $('nextDescription').textContent=total?'A full board of little wins. Come back tomorrow!':'Open Arrange games below to show some notes.';
   $('nextPlay').classList.add('hidden');$('nextDone').classList.add('hidden');
  }
  const recent=$('recentScore');
@@ -497,13 +647,14 @@ function render(){
    recent.classList.remove('hidden');
  }else{recent.classList.add('hidden');recent.innerHTML='';}
  $('toggleFilter').textContent=unfinishedOnly?'Show all notes':'Show unfinished';$('toggleFilter').setAttribute('aria-pressed',String(unfinishedOnly));
+ $('compactToggle').textContent=boardPrefs.compact?'Comfortable view':'Compact view';$('compactToggle').setAttribute('aria-pressed',String(boardPrefs.compact));
  const out=DATA.groups.map((group,gi)=>{
-  const all=DATA.games.slice(group.start,group.end);
+  const all=groupGames(group.key);
   const visible=all.filter(g=>!(unfinishedOnly&&completed.has(g.id))||(scoreEditorWhere==='card'&&scoreEditorId===g.id));
   if(!visible.length&&unfinishedOnly)return '';
   const done=all.filter(g=>completed.has(g.id)).length;
   const notes=visible.map((g,li)=>{
-   const i=DATA.games.findIndex(x=>x.id===g.id);
+   const i=activeGames().findIndex(x=>x.id===g.id);
    const finished=completed.has(g.id),color=(PALETTE[group.key]+li)%6;
    const badge=overrides[g.id]?'Custom link':'Daily puzzle';
    const scoreText=scores[g.id]||'';
@@ -513,6 +664,12 @@ function render(){
        <div class="compact-left"><span class="compact-icon">${iconHTML(ICONS[g.id]||'tiles')}</span><h4 class="compact-name">${escapeHTML(g.name)}</h4></div>
        <div class="compact-tools"><button class="compact-score" type="button" data-score-open="${g.id}" aria-label="${scoreText?'Edit score for':'Add a score for'} ${escapeHTML(g.name)}">${scoreText?'✎ '+escapeHTML(scoreText):'+ Score'}</button><button class="compact-undo note-done" type="button" data-done="${g.id}" aria-pressed="true" title="Mark unfinished" aria-label="Mark ${escapeHTML(g.name)} unfinished">${iconHTML('check')}</button><button class="compact-edit note-edit" type="button" data-edit="${g.id}" title="Edit game link" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
        ${editing?`<div class="compact-score-editor">${scoreFormHTML(g.id)}</div>`:''}
+     </article>`;
+   }
+   if(boardPrefs.compact){
+     return `<article class="game-note compact-pending note-color-${color}${next&&next.id===g.id?' is-next':''}" id="game-${g.id}" data-id="${g.id}">
+       <div class="compact-left"><span class="compact-icon">${iconHTML(ICONS[g.id]||'tiles')}</span><h4 class="compact-name">${escapeHTML(g.name)}</h4></div>
+       <div class="compact-tools"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)}">Play ${iconHTML('arrow')}</a><button class="compact-undo note-done" type="button" data-done="${g.id}" aria-label="Mark ${escapeHTML(g.name)} done">${iconHTML('check')}</button><button class="compact-edit note-edit" type="button" data-edit="${g.id}" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
      </article>`;
    }
    return `<article class="game-note note-color-${color}${next&&next.id===g.id?' is-next':''}" id="game-${g.id}" style="--tilt:${TILTS[i%TILTS.length]}" data-id="${g.id}">
@@ -547,24 +704,25 @@ $('listRoot').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]')){closeScore();return;}handleScoreAction(e);});
 $('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;if(cloudAccount)queueCloudSettings();else saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
-window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY].includes(e.key)){
+window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY,BOARD_PREFS_KEY].includes(e.key)){
  const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
  scoreArchive=loadJSON(SCORES_KEY,{});if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};scores={...(scoreArchive[day]||{})};
- reduceMotion=loadJSON(MOTION_KEY,false);applyMotion();render();
+ reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
 }});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){syncDay();if(cloudAccount)scheduleCloudSync(150);}});
 window.addEventListener('online',()=>{if(cloudAccount)scheduleCloudSync(250);});
 setInterval(syncDay,30000);
 // v4: accounts and cloud sync. The existing guest storage stays untouched.
 function cloudLocalKey(userId){return CLOUD_CACHE_PREFIX+userId;}
-function newCloudCache(){return {rows:{},pending:{},settings:{overrides:{},reduceMotion:false},pendingSettings:null};}
+function newCloudCache(){return {rows:{},pending:{},settings:{overrides:{},reduceMotion:false,board:normalizeBoardPrefs({})},pendingSettings:null};}
 function loadCloudCache(userId){
  const state=loadJSON(cloudLocalKey(userId),newCloudCache());
  if(!state||typeof state!=='object')return newCloudCache();
  state.rows=state.rows&&typeof state.rows==='object'?state.rows:{};
  state.pending=state.pending&&typeof state.pending==='object'?state.pending:{};
- state.settings=state.settings&&typeof state.settings==='object'?state.settings:{overrides:{},reduceMotion:false};
+ state.settings=state.settings&&typeof state.settings==='object'?state.settings:{overrides:{},reduceMotion:false,board:normalizeBoardPrefs({})};
  if(!state.settings.overrides||typeof state.settings.overrides!=='object')state.settings.overrides={};
+ state.settings.board=normalizeBoardPrefs(state.settings.board);
  return state;
 }
 function saveCloudCache(){if(cloudAccount&&cloudCache)saveJSON(cloudLocalKey(cloudAccount.id),cloudCache);}
@@ -581,8 +739,8 @@ function readAccountDay(){
 function applyAccountView(){
  if(!cloudAccount)return;
  readAccountDay();
- overrides={...cloudCache.settings.overrides};reduceMotion=!!cloudCache.settings.reduceMotion;
- applyMotion();render();
+ overrides={...cloudCache.settings.overrides};reduceMotion=!!cloudCache.settings.reduceMotion;boardPrefs=normalizeBoardPrefs(cloudCache.settings.board);
+ applyMotion();render();renderArranger();
 }
 function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=scores[gameId]??null){
  if(!cloudAccount||!cloudCache)return;
@@ -594,19 +752,21 @@ function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=score
 }
 function queueCloudSettings(){
  if(!cloudAccount||!cloudCache)return;
- cloudCache.settings={overrides:{...overrides},reduceMotion:!!reduceMotion};
+ cloudCache.settings={overrides:{...overrides},reduceMotion:!!reduceMotion,board:normalizeBoardPrefs(boardPrefs)};
  cloudCache.pendingSettings=new Date().toISOString();
  saveCloudCache();setCloudStatus('Settings saved · syncing…','warn');scheduleCloudSync();
 }
 function setCloudStatus(message,kind=''){
  const label=$('syncStatus');if(label)label.textContent=message;
  const dot=$('syncDot');if(dot)dot.className='sync-dot '+(kind||'');
+ const pill=$('syncPill');if(pill){pill.classList.toggle('hidden',!cloudAccount);pill.classList.toggle('pending',kind==='warn'&&navigator.onLine!==false);pill.classList.toggle('offline',navigator.onLine===false);pill.textContent=navigator.onLine===false?'● Offline':kind==='ok'?'✓ Synced':kind==='warn'?'● Saving…':'● Syncing…';pill.title=message;}
 }
 function accountMessage(message,error=false){$('accountMessage').textContent=message;$('accountMessage').classList.toggle('error',!!error);}
 function showAccountPanel(open){$('accountPanel').classList.toggle('hidden',!open);$('accountToggle').setAttribute('aria-expanded',String(open));}
 function guestHasHistory(){
  const old=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{});
- return !!((old.date===day&&old.completed?.length)||Object.values(archive||{}).some(v=>v&&Object.keys(v).length)||Object.keys(links||{}).length);
+ const guestBoard=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));
+ return !!((old.date===day&&old.completed?.length)||Object.values(archive||{}).some(v=>v&&Object.keys(v).length)||Object.keys(links||{}).length||JSON.stringify(guestBoard)!==JSON.stringify(normalizeBoardPrefs({})));
 }
 function updateImportPrompt(){
  $('importBox').classList.toggle('hidden',!cloudAccount||!guestHasHistory()||!!loadJSON('morning-circuit-imported-v1-'+cloudAccount?.id,false));
@@ -616,6 +776,7 @@ function refreshAccountUI(){
  $('accountSignedIn').classList.toggle('hidden',!cloudAccount);
  $('accountToggle').textContent=cloudAccount?'☁ '+(cloudAccount.email?.split('@')[0]||'Account'):'☁ Guest · Sign in';
  $('accountName').textContent=cloudAccount?.email||'';
+ $('syncPill').classList.toggle('hidden',!cloudAccount);
  $('accountHint').textContent=cloudAccount?'Your puzzle progress and scores belong to this account.':'Sign in to save games across your phone and computer. Guest mode always works.';
  updateImportPrompt();
 }
@@ -645,7 +806,7 @@ async function loadRemoteRows(){
 async function pullCloud(){
  if(!cloudAccount)return;
  const [remoteRows,settingsResponse]=await Promise.all([
-    loadRemoteRows(),cloudClient.from('morning_circuit_settings').select('link_overrides,reduce_motion,updated_at').eq('user_id',cloudAccount.id).maybeSingle()
+    loadRemoteRows(),cloudClient.from('morning_circuit_settings').select('link_overrides,reduce_motion,board_preferences,updated_at').eq('user_id',cloudAccount.id).maybeSingle()
  ]);
  if(settingsResponse.error)throw settingsResponse.error;
  let changed=false;
@@ -664,7 +825,7 @@ async function pullCloud(){
    const clean={};for(const [id,url] of Object.entries(remote.link_overrides||{})){
      if(DATA.games.some(g=>g.id===id)&&safeURL(url))clean[id]=url;
    }
-   cloudCache.settings={overrides:clean,reduceMotion:!!remote.reduce_motion};changed=true;
+   cloudCache.settings={overrides:clean,reduceMotion:!!remote.reduce_motion,board:normalizeBoardPrefs(remote.board_preferences)};changed=true;
  }
  if(changed){saveCloudCache();if(!document.activeElement?.matches('.score-form input, .score-form select'))applyAccountView();}
 }
@@ -685,7 +846,7 @@ async function pushCloud(){
  if(cloudCache.pendingSettings){
    const marker=cloudCache.pendingSettings;
    const {error}=await cloudClient.from('morning_circuit_settings').upsert({user_id:cloudAccount.id,
-     link_overrides:cloudCache.settings.overrides,reduce_motion:cloudCache.settings.reduceMotion},{onConflict:'user_id'});
+     link_overrides:cloudCache.settings.overrides,reduce_motion:cloudCache.settings.reduceMotion,board_preferences:cloudCache.settings.board},{onConflict:'user_id'});
    if(error)throw error;
    if(cloudCache.pendingSettings===marker)cloudCache.pendingSettings=null;
    saveCloudCache();
@@ -705,7 +866,7 @@ async function syncCloud(){
    setCloudStatus(queued?`${queued} changes still waiting to sync`:'All changes synced ✓',queued?'warn':'ok');
  }catch(e){
    const err=String(e.message||e);
-   setCloudStatus(/relation|not found|404|schema cache/i.test(err)?'Database not ready · run the supplied setup.sql':'Sync unavailable · your changes remain on this device','warn');
+   setCloudStatus(/board_preferences|schema cache|column .* does not exist/i.test(err)?'Run the v5.2–5.4 Supabase migration SQL':/relation|not found|404/i.test(err)?'Database not ready · check your Supabase setup':'Sync unavailable · your changes remain on this device','warn');
    accountMessage(err,true);
  }finally{cloudSyncBusy=false;}
 }
@@ -714,7 +875,7 @@ function restoreGuest(){
  completed=new Set(stored.date===day&&Array.isArray(stored.completed)?stored.completed:[]);
  migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});scoreArchive=loadJSON(SCORES_KEY,{});
  if(!scoreArchive||typeof scoreArchive!=='object')scoreArchive={};scores={...(scoreArchive[day]||{})};
- reduceMotion=loadJSON(MOTION_KEY,false);applyMotion();render();
+ reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
 }
 async function setCloudSession(session){
  const user=session?.user||null;
@@ -754,6 +915,12 @@ async function importGuestHistory(){
    mergedLinks[id]=url;mergedAny=true;
  }
  if(!cloudCache.remoteSettingsExists&&loadJSON(MOTION_KEY,false)===true){cloudCache.settings.reduceMotion=true;mergedAny=true;}
+ // Keep account layout if it is already customized; otherwise offer the guest layout.
+ const guestBoard=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));
+ if(JSON.stringify(guestBoard)!==JSON.stringify(normalizeBoardPrefs({}))&&
+    JSON.stringify(cloudCache.settings.board)===JSON.stringify(normalizeBoardPrefs({}))){
+    cloudCache.settings.board=guestBoard;mergedAny=true;
+ }
  if(mergedAny){cloudCache.settings.overrides=mergedLinks;cloudCache.pendingSettings=new Date().toISOString();}
  saveJSON('morning-circuit-imported-v1-'+cloudAccount.id,true);saveCloudCache();applyAccountView();updateImportPrompt();
  accountMessage(`Imported ${count} game results from this device. Guest data is still preserved.`);
@@ -852,7 +1019,7 @@ function parseMetric(gameId,raw){
  if(stars)return {group:'stars',value:Number(stars[1]),label:'Average stars · out of 5',unit:'stars',better:'high'};
  const ratio=value.match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
  if(ratio){const val=Number(ratio[1]),max=Number(ratio[2]);if(max<=0||val>max)return null;
-   if((gameId==='wordle'||gameId==='nerdle')&&max===6&&Number.isInteger(val)&&val>=1)return {group:'guesses',value:val,label:'Average guesses',unit:'guesses',better:'low'};
+   if((gameId==='wordle'||gameId==='worldle'||gameId==='nerdle')&&max===6&&Number.isInteger(val)&&val>=1)return {group:'guesses',value:val,label:'Average guesses',unit:'guesses',better:'low'};
    return {group:'out-of-'+max,value:val,label:'Average result · out of '+max,unit:'',better:null};}
  const clock=value.match(/^(\d{1,3}):(\d{2})$/);
  if(clock&&Number(clock[2])<60)return {group:'time',value:Number(clock[1])*60+Number(clock[2]),label:'Average time',unit:'',better:'low'};
@@ -879,6 +1046,18 @@ function streakFromDays(days){
  }
  return count;
 }
+
+function scoreOutcome(gameId,raw){
+ const s=String(raw||'').trim();
+ if(['wordle','worldle','nerdle'].includes(gameId)){
+   if(/^X\s*\/\s*6$/i.test(s))return false;
+   if(/^[1-6]\s*\/\s*6$/.test(s))return true;
+ }
+ if(gameId==='connections'){
+   const m=s.match(/^([0-4])\s*mistakes?$/i);if(m)return Number(m[1])<4;
+ }
+ return null;
+}
 function renderStats(){
  if(!notebookOpen)return;
  const rows=statisticsRows(),doneRows=rows.filter(r=>r.completed&&r.play_date<=dayKey()),scoredRows=rows.filter(r=>typeof r.score==='string'&&r.score.trim());
@@ -896,22 +1075,51 @@ function renderStats(){
  $('statsActivityNote').textContent=recently+' active day'+(recently===1?'':'s')+' of 28';
  const perGame=new Map(DATA.games.map(g=>[g.id,{game:g,done:0,scored:0,rows:[]} ]));
  for(const row of rows){const d=perGame.get(row.game_id);if(!d)continue;if(row.completed)d.done++;if(typeof row.score==='string'&&row.score.trim())d.scored++;d.rows.push(row);}
+
  const current=perGame.get(selectedStatsGame)||perGame.get('wordle');
  const gameScores=current.rows.filter(r=>typeof r.score==='string'&&r.score.trim()).sort((a,b)=>b.play_date.localeCompare(a.play_date));
- const parsed=gameScores.map(r=>({row:r,metric:parseMetric(current.game.id,r.score)})).filter(x=>x.metric);
+ const parsed=gameScores.map(r=>({row:r,metric:parseMetric(current.game.id,r.score)})).filter(x=>x.metric&&Number.isFinite(x.metric.value));
  const frequency={};for(const x of parsed)frequency[x.metric.group]=(frequency[x.metric.group]||0)+1;
  const primaryGroup=Object.keys(frequency).sort((a,b)=>frequency[b]-frequency[a])[0];
  const compatible=parsed.filter(x=>x.metric.group===primaryGroup),sample=compatible[0]?.metric;
- let averageMarkup='';
- if(sample){const average=compatible.reduce((sum,x)=>sum+x.metric.value,0)/compatible.length;
-   let best='';if(sample.better){const optimum=compatible.reduce((v,x)=>sample.better==='low'?Math.min(v,x.metric.value):Math.max(v,x.metric.value),compatible[0].metric.value);best=` · Personal best: <strong>${escapeHTML(formatMetric(sample,optimum))}</strong>`;}
-   averageMarkup=`<strong>${escapeHTML(sample.label)}: ${escapeHTML(formatMetric(sample,average))}</strong>${best}<small>Based on ${compatible.length} compatible ${compatible.length===1?'score':'scores'}${compatible.length<gameScores.length?` out of ${gameScores.length} saved` : ''}. Only scores in the same format are combined.</small>`;
- }else averageMarkup='<strong>No comparable numeric scores yet.</strong><small>Free-text scores are saved below. You can keep entering them just as you do now.</small>';
+ const avg=values=>values.length?values.reduce((a,b)=>a+b,0)/values.length:null;
+ let averageMarkup='',trendMarkup='';
+ if(sample){
+   const all=compatible.map(x=>x.metric.value),lifetime=avg(all);
+   const best=sample.better?(sample.better==='low'?Math.min(...all):Math.max(...all)):null;
+   const bestText=best===null?'':` · Personal best: <strong>${escapeHTML(formatMetric(sample,best))}</strong>`;
+   averageMarkup=`<strong>${escapeHTML(sample.label)}: ${escapeHTML(formatMetric(sample,lifetime))}</strong>${bestText}<small>Based on ${compatible.length} compatible ${compatible.length===1?'score':'scores'}${compatible.length<gameScores.length?` out of ${gameScores.length} saved`:''}. Only scores in the same format are combined.</small>`;
+   const windows=[7,30,90];
+   trendMarkup=`<div class="trend-panels">${windows.map(n=>{
+     const values=compatible.slice(0,n).map(x=>x.metric.value);
+     return `<div class="trend-panel"><span>Last ${n} ${n===1?'play':'plays'}</span><strong>${escapeHTML(formatMetric(sample,avg(values)))}</strong><small>${values.length} recorded</small></div>`;
+   }).join('')}</div>`;
+   const last30=compatible.slice(0,30).map(x=>x.metric.value);
+   if(best!==null)trendMarkup+=`<p class="trend-context">Best of your last 30 scored plays: <strong>${escapeHTML(formatMetric(sample,sample.better==='low'?Math.min(...last30):Math.max(...last30)))}</strong>.</p>`;
+   if(sample.better&&compatible.length>=4){
+     const recent=avg(compatible.slice(0,Math.min(7,compatible.length)).map(x=>x.metric.value));
+     const improvement=(sample.better==='low'?(lifetime-recent):(recent-lifetime));
+     const diff=Math.abs(recent-lifetime);
+     const status=diff<0.01?'In line with your lifetime average':improvement>0?'Recent results are better than your lifetime average':'Recent results are below your lifetime average';
+     trendMarkup+=`<p class="trend-context"><span class="trend-badge">${escapeHTML(status)}</span> · Last ${Math.min(7,compatible.length)} scored plays vs. lifetime.</p>`;
+   }
+   const plotted=compatible.slice(0,20).reverse();
+   if(plotted.length>=2){
+     const q=plotted.map(x=>sample.better==='low'?-x.metric.value:x.metric.value),min=Math.min(...q),max=Math.max(...q),span=max-min||1;
+     const coords=q.map((y,i)=>[(18+i*(324/(q.length-1))).toFixed(1),(73-(y-min)/span*51).toFixed(1)]);
+     const poly=coords.map(([x,y])=>`${x},${y}`).join(' '),[lastX,lastY]=coords[coords.length-1];
+     trendMarkup+=`<svg class="trend-line" viewBox="0 0 360 96" role="img" aria-label="${escapeHTML(sample.label)} trend over your latest ${plotted.length} comparable results"><path d="M18 73H342 M18 47H342 M18 22H342" stroke="#e7e4d5" stroke-dasharray="3 5" fill="none"/><polyline points="${poly}" fill="none" stroke="#4c8066" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${lastX}" cy="${lastY}" r="4" fill="#315f48"/></svg><p class="trend-caption">Oldest → newest · ${sample.better==='low'?'Higher on the chart means a lower (better) result':sample.better==='high'?'Higher on the chart means a higher (better) result':'Higher on the chart means a larger number'}.</p>`;
+   }
+ }else averageMarkup='<strong>No comparable numeric scores yet.</strong><small>Free-text scores remain saved below. Add guided results to see trends.</small>';
+ const outcomes=gameScores.map(r=>scoreOutcome(current.game.id,r.score)).filter(x=>x!==null);
+ if(outcomes.length){const wins=outcomes.filter(Boolean).length,rate=Math.round(100*wins/outcomes.length);
+   trendMarkup+=`<p class="trend-context"><span class="trend-badge">Solve rate: ${rate}%</span> · ${wins} solved out of ${outcomes.length} recorded outcomes. Games without a recognizable solve/fail result are excluded.</p>`;
+ }
  const latest=gameScores[0];
  const recentMarkup=gameScores.length?gameScores.slice(0,8).map(r=>`<div class="stats-entry"><span>${escapeHTML(displayDate(r.play_date))}</span><strong>${escapeHTML(r.score)}</strong></div>`).join(''):'<p class="stats-empty">No scores for this puzzle yet. Mark it Done on the corkboard and add an optional score whenever you like.</p>';
  $('statsGameDetail').innerHTML=`<h3 class="stats-game-name">${escapeHTML(current.game.name)}</h3><div class="stats-mini-grid">
    <div class="stats-mini"><strong>${current.done}</strong><span>Times completed</span></div><div class="stats-mini"><strong>${current.scored}</strong><span>Scores saved</span></div><div class="stats-mini"><strong>${latest?escapeHTML(displayDate(latest.play_date)):'—'}</strong><span>Latest score date</span></div></div>
-   <div class="stats-score-summary">${averageMarkup}</div><div class="stats-entries"><h4>Recent scores</h4>${recentMarkup}</div>`;
+   <div class="stats-score-summary">${averageMarkup}</div>${trendMarkup}<div class="stats-entries"><h4>Recent scores</h4>${recentMarkup}</div>`;
  const favorites=[...perGame.values()].filter(g=>g.done).sort((a,b)=>b.done-a.done||a.game.name.localeCompare(b.game.name)).slice(0,8);
  $('statsFavorites').innerHTML=favorites.length?favorites.map(item=>`<button type="button" class="stats-favorite" data-stats-game="${item.game.id}" aria-label="View ${escapeHTML(item.game.name)} statistics"><span>${escapeHTML(item.game.name)}</span><strong>${item.done} ${item.done===1?'play':'plays'}</strong></button>`).join(''):'<p class="stats-empty">Your most-played puzzles will appear here after you start completing games.</p>';
  $('statsCaveat').textContent=cloudAccount?'Averages use only compatible numeric formats within the same game. All results stay private to your signed-in account.':'Guest history only includes scores saved on earlier dates. Sign in to preserve a full completion history across devices.';
