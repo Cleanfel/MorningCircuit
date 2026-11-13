@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#f8efdc">
 <meta name="description" content="Your daily puzzle checklist: 54 games from gentle warm-ups to deep thinking, with scores and progress in one place.">
 <title>Morning Circuit — A little brain food</title>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest?v=541">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=541">
+<link rel="apple-touch-icon" href="assets/icon-192.png?v=541">
 <style>
 :root {
   color-scheme:light;
@@ -26,7 +26,7 @@ button,a{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 0 22px;border-bottom:1px solid #e6d8bf}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;text-transform:uppercase;letter-spacing:.13em;font-size:13px;font-weight:900;color:var(--ink-deep)}
 .brand-stamp{width:42px;height:42px;display:grid;place-items:center;background:#f3c762;border-radius:50%;border:2px dashed #b07839;box-shadow:0 2px 0 #d5a24d;transform:rotate(-13deg)}.brand-stamp .ico{width:27px;height:27px;color:#7d4922}
-.topright{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#857b65;font-weight:800;white-space:nowrap}.topright span{display:inline-block;margin-right:8px;width:7px;height:7px;border-radius:50%;background:#df9572}
+.topright{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#857b65;font-weight:800;white-space:nowrap}
 .hero{position:relative;min-height:294px;display:grid;grid-template-columns:1fr 358px;align-items:center;gap:18px;padding:34px 0 30px}
 .hero-copy{position:relative;z-index:2}.overline{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:900;color:#b27349;display:flex;align-items:center;gap:12px}.overline:before{content:"";width:23px;height:2px;background:currentColor}
 h1{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(49px,6.5vw,77px);line-height:1.035;letter-spacing:-.055em;color:var(--ink-deep);margin:16px 0 16px;max-width:650px}
@@ -277,6 +277,37 @@ html{scroll-padding-top:95px}
 @media(max-width:900px){.arrange-list{grid-template-columns:1fr}}
 @media(max-width:520px){.sync-pill{font-size:9px;padding:4px 6px;max-width:84px}.arrange-paper{margin-top:20px;padding:16px 12px}.arrange-heading{flex-direction:column}.arrange-heading h2{font-size:30px}.arrange-list{gap:12px}.arrange-row{gap:4px;padding:7px 5px}.arrange-name{font-size:11px;min-width:60px}.arrange-row select{max-width:90px;font-size:10px;padding:4px}.arrange-row button{font-size:10px;min-height:34px;padding:4px}.arrange-grip{display:none}.trend-panels{gap:5px}.trend-panel{padding:8px 6px}.trend-panel strong{font-size:18px}.trend-panel span{font-size:9px}}
 
+
+/* v5.4.1 — consistent logo + legible sync state (replaces old red header oval). */
+.brand-stamp,.brand:hover .brand-stamp{background:transparent;border:0;box-shadow:none;transform:none;padding:0}
+.brand-stamp img{display:block;width:100%;height:100%;object-fit:contain}
+.topright .sync-pill{
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  margin:0;width:auto;height:auto;min-height:32px;max-width:none;padding:6px 10px;
+  border:1px solid #b6ceb5;border-radius:100px;background:#e9f3e3;color:#355941;
+  white-space:nowrap;overflow:visible;text-overflow:clip;letter-spacing:0;font:800 11px/1.1 system-ui,sans-serif;
+  box-shadow:none;flex:0 0 auto;
+}
+.topright .sync-pill:hover{filter:brightness(.97)}
+.sync-pill-icon{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;flex:0 0 17px;border-radius:50%;background:#5c8865;color:#fff;font-size:12px;line-height:1;font-weight:900}
+.sync-pill.pending{background:#fff1d8;color:#795629;border-color:#dec398}
+.sync-pill.pending .sync-pill-icon{background:#a87731}
+.sync-pill.syncing{background:#e9eef5;color:#465f78;border-color:#c4d0df}
+.sync-pill.syncing .sync-pill-icon{background:#617e9b}
+.sync-pill.offline{background:#f3eade;color:#77583d;border-color:#dac7ac}
+.sync-pill.offline .sync-pill-icon{background:#917454}
+.sync-pill.error{background:#fff0eb;color:#904637;border-color:#e1b4ab}
+.sync-pill.error .sync-pill-icon{background:#b75e4b}
+@media(max-width:730px){
+  .topright .sync-pill{min-height:31px;font-size:10px;padding:5px 8px}
+}
+@media(max-width:520px){
+  .topright{flex-wrap:wrap;gap:5px 7px;align-items:center;justify-content:flex-end}
+  .topright time{flex:1 0 100%;margin:0}
+  .topright .sync-pill{max-width:none;margin-right:auto;flex:0 0 auto}
+  .topright .sync-pill-label{white-space:nowrap}
+}
+
 </style>
 </head>
 <body>
@@ -304,8 +335,8 @@ html{scroll-padding-top:95px}
 </defs></svg>
 <div class="shell">
   <header class="topbar" id="top">
-    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span><span>Morning Circuit</span></a>
-    <div class="topright"><time id="dateLabel">Today</time><span class="sync-pill hidden" id="syncPill" role="status" aria-label="Cloud sync status">● Synced</span><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
+    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img src="assets/logo.svg?v=541" width="42" height="42" alt="" aria-hidden="true"></span><span>Morning Circuit</span></a>
+    <div class="topright"><time id="dateLabel">Today</time><button class="sync-pill hidden" id="syncPill" type="button" aria-live="polite" aria-label="Cloud sync status: connecting. Open account details" title="Open sync details"><span class="sync-pill-icon" aria-hidden="true">↻</span><span class="sync-pill-label">Connecting…</span></button><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
   <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
     <div class="account-heading"><div><span class="account-kicker">Your puzzle passport</span><h2>Keep your morning in sync</h2><p id="accountHint">Sign in to save your games across your phone and computer. Guest mode always works.</p></div><button type="button" class="account-close" id="accountClose" aria-label="Close account panel">×</button></div>
@@ -759,7 +790,16 @@ function queueCloudSettings(){
 function setCloudStatus(message,kind=''){
  const label=$('syncStatus');if(label)label.textContent=message;
  const dot=$('syncDot');if(dot)dot.className='sync-dot '+(kind||'');
- const pill=$('syncPill');if(pill){pill.classList.toggle('hidden',!cloudAccount);pill.classList.toggle('pending',kind==='warn'&&navigator.onLine!==false);pill.classList.toggle('offline',navigator.onLine===false);pill.textContent=navigator.onLine===false?'● Offline':kind==='ok'?'✓ Synced':kind==='warn'?'● Saving…':'● Syncing…';pill.title=message;}
+ const pill=$('syncPill');if(pill){
+  const state=navigator.onLine===false?'offline':kind==='error'?'error':kind==='ok'?'ok':kind==='warn'?'pending':'syncing';
+  const labels={ok:['✓','Synced'],syncing:['↻','Syncing…'],pending:['◷','Saving…'],offline:['⌁','Offline'],error:['!','Sync issue']};
+  const [icon,text]=labels[state];
+  pill.className='sync-pill '+state+(cloudAccount?'':' hidden');
+  pill.querySelector('.sync-pill-icon').textContent=icon;
+  pill.querySelector('.sync-pill-label').textContent=text;
+  pill.setAttribute('aria-label',`Cloud sync: ${text}. ${message}. Open account details`);
+  pill.title=message+' · Open sync details';
+ }
 }
 function accountMessage(message,error=false){$('accountMessage').textContent=message;$('accountMessage').classList.toggle('error',!!error);}
 function showAccountPanel(open){$('accountPanel').classList.toggle('hidden',!open);$('accountToggle').setAttribute('aria-expanded',String(open));}
@@ -866,7 +906,7 @@ async function syncCloud(){
    setCloudStatus(queued?`${queued} changes still waiting to sync`:'All changes synced ✓',queued?'warn':'ok');
  }catch(e){
    const err=String(e.message||e);
-   setCloudStatus(/board_preferences|schema cache|column .* does not exist/i.test(err)?'Run the v5.2–5.4 Supabase migration SQL':/relation|not found|404/i.test(err)?'Database not ready · check your Supabase setup':'Sync unavailable · your changes remain on this device','warn');
+   setCloudStatus(/board_preferences|schema cache|column .* does not exist/i.test(err)?'Run the v5.2–5.4 Supabase migration SQL':/relation|not found|404/i.test(err)?'Database not ready · check your Supabase setup':'Sync unavailable · your changes remain on this device','error');
    accountMessage(err,true);
  }finally{cloudSyncBusy=false;}
 }
@@ -942,6 +982,7 @@ async function initializeCloud(){
  }catch(e){cloudReady=false;accountMessage('Cloud login is unavailable on this connection. Guest mode still works.',true);}
 }
 $('accountToggle').addEventListener('click',()=>showAccountPanel($('accountPanel').classList.contains('hidden')));
+$('syncPill').addEventListener('click',()=>showAccountPanel(true));
 $('accountClose').addEventListener('click',()=>showAccountPanel(false));
 $('authForm').addEventListener('submit',async e=>{
  e.preventDefault();if(!cloudReady){accountMessage('Cloud login is still loading or unavailable.',true);return;}
