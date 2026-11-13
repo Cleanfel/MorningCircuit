@@ -2,7 +2,7 @@
 
 A cozy, mobile-friendly corkboard for your daily puzzles, with 54 games, optional scores, a separate Scorebook, and private cross-device synchronization.
 
-**Current release:** `v2.2.8`  
+**Current release:** `v2.3.0`  
 **Website:** https://cleanfel.github.io/MorningCircuit/  
 **Version history:** [CHANGELOG.md](CHANGELOG.md)
 
@@ -33,3 +33,7 @@ The root `favicon.ico` and `assets/favicon-32.png` support browsers and bookmark
 The static website is hosted by GitHub Pages. Supabase handles account authentication and synced account data. Guest use is supported through local browser storage. Completed and skipped statuses begin fresh each day based on the device's local date.
 
 Never commit a Supabase database password, service role key, or secret API key. The site's publishable browser key is intentionally public; account data must remain protected by Supabase Row Level Security policies.
+
+## v2.3.0 scoring
+
+All 54 games now have a scoring definition: guided input, multi-part result, or completion-only. Score input is optional, and the Scorebook averages comparable results. Add further scoring formats or update maxima using the `SCORE_TYPES` registry in `index.html`. Existing scores are preserved as readable text and no Supabase migration is required.

@@ -2,7 +2,7 @@
 
 A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scorebook.
 
-**Current release:** `v2.2.8`  
+**Current release:** `v2.3.0`  
 **Versioning:** `MAJOR.MINOR.PATCH` — major releases mark a substantial change to the experience; minor releases add meaningful capabilities; patches refine, polish, or fix what's already there.
 
 > **Historical naming note:** Early development files used a different version sequence (including labels such as “v5.4.1”). The release numbers below are the agreed, retrospective canonical history. Some adjacent milestones were shipped together, rather than as separate deployments.
@@ -11,8 +11,20 @@ A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scoreboo
 
 ## v2 — Statistics, personalization & polish
 
+### [2.3.0] — Scoring Expansion
+**Minor · Current**
+- Added guided, optional scoring formats across all 54 puzzles, including fixed-cap points, guesses, time, hints, and special outcomes.
+- Added two-part scoring for Angle and Amountdle, with separate Scorebook averages for each part.
+- Added game-specific metrics for Fermi multipliers, Cutle's distance from 50, and Minute Cryptic's golf score.
+- Improved scoring comparisons, personal bests, and solve-rate recognition for supported games.
+- Reduced score-entry field width, especially for timed LinkedIn games like Queens.
+
+
+
 ### [2.2.8] — Morning Desk & Settings Polish
-**Patch · Current**
+**Patch**
+- **Maintenance hotfix (no version bump):** Fixed sudden scroll jumps after marking a game Done, skipping, undoing, or saving a score.
+- Removed unstable estimated heights for off-screen sections and kept the active sticky note in view as its layout changes.
 - Added a subtle, coffee-warmed light-wood desk texture, with faint wood grain and a delicate cup-ring detail; the lamplit dark-wood theme remains unchanged.
 - Moved Desk Settings from the footer into a compact, accessible modal opened by a gear in the sticky navigation, between Stats and the account controls.
 - Grouped Arrange Games at the bottom of Desk Settings; selecting it closes the modal, returns from Scorebook if necessary, and scrolls directly to the game organizer.
