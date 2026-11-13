@@ -72,6 +72,61 @@ background-size:8px 7px,13px 15px,100% 100%;border:3px solid #d7b18a;border-radi
 @media (max-width:980px){.hero{grid-template-columns:1fr 260px}.art-map{left:0;top:11px;transform:rotate(-11deg) scale(.84)}.art-game{left:104px;top:78px;transform:rotate(10deg) scale(.85)}.art-queen{right:-8px;transform:scale(.78) rotate(10deg)}.art-pencil{left:8px}.art-dart{right:0}.dashboard{grid-template-columns:1fr 1.3fr}.board{padding:23px 21px 31px}}
 @media (max-width:730px){.hero{display:block;min-height:0;padding:33px 0 29px}.hero-art{display:none}.hero-copy{max-width:610px}h1{font-size:clamp(47px,10vw,68px);max-width:600px}.dashboard{grid-template-columns:1fr}.dashboard-card{min-height:148px}.board-top{align-items:flex-start;flex-direction:column;gap:18px}.controls{justify-content:flex-start}.cards{grid-template-columns:1fr}.game-note{min-height:137px}.board{padding:22px 18px 26px}}
 @media (max-width:420px){.shell{width:min(100% - 30px,1140px)}.topbar{padding:16px 0}.brand{font-size:12px;letter-spacing:.095em}.topright{font-size:10px}.hero{padding:25px 0 26px}h1{font-size:47px}.lede{font-size:14px}.dashboard-card{padding:18px}.next-card{flex-wrap:wrap;gap:12px}.next-actions{flex-direction:row;width:100%;min-width:0;align-self:auto}.next-actions>a,.next-actions>button{flex:1}.board-wrap{margin:0 -7px;border-width:7px}.board{padding:17px 13px 24px}.board-title{font-size:31px}.board-title .ico{width:30px}.tool-btn{padding:9px 10px;font-size:11px}.section-header h3{font-size:23px}.section-header p{font-size:11px}.section-badge{height:39px;width:38px;font-size:17px}.cards{gap:16px}.game-note{padding:21px 13px 12px;min-height:139px}.note-upper{gap:10px}.note-icon{width:41px;height:41px;flex-basis:41px}.note-icon .ico{width:28px;height:28px}.note-name{font-size:19px}.note-play{padding:9px 11px}}
+
+/* Compact sticky notes on smaller screens: retain the cozy card feel while reducing scrolling. */
+@media (max-width:730px){
+ .cards{gap:12px}
+ .section{margin-bottom:23px}
+ .section-header{margin-bottom:12px}
+ .game-note{min-height:0;padding:13px 12px 9px 13px;gap:7px}
+ .game-note:before{width:10px;height:10px;top:-7px}
+ .note-upper{gap:9px;align-items:center}
+ .note-icon{width:33px;height:33px;flex-basis:33px;border-radius:8px}
+ .note-icon .ico{width:23px;height:23px}
+ .note-number{font-size:9px;margin-bottom:1px}
+ .note-name{font-size:18px;line-height:1.08}
+ .note-tag{font-size:10px;margin-top:2px}
+ .note-actions{gap:7px}
+ .note-play,.note-done{min-height:39px;padding:6px 10px}
+ .note-edit{min-height:39px;min-width:39px}
+}
+@media (max-width:420px){
+ .cards{gap:12px}
+ .game-note{min-height:0;padding:13px 11px 9px}
+ .note-icon{width:32px;height:32px;flex-basis:32px}
+ .note-icon .ico{width:22px;height:22px}
+ .note-name{font-size:17px}
+ .note-play{padding:6px 10px}
+}
+
+/* Optional, free-form scoring: appears inline only after completing a game. */
+.note-score{border-top:1px dashed rgba(79,83,64,.23);padding-top:8px;margin-top:0;min-width:0}
+.score-link{border:0;background:none;padding:2px 0;color:#446650;font-size:12px;font-weight:850;text-align:left;max-width:100%;overflow-wrap:anywhere}
+.score-link:hover{text-decoration:underline;text-underline-offset:3px}
+.score-form{display:flex;gap:7px;align-items:center;min-width:0;flex-wrap:wrap}
+.score-form label{font-size:11px;letter-spacing:.03em;font-weight:900;color:#546b54;white-space:nowrap}
+.score-form input{flex:1 1 125px;min-width:0;width:140px;max-width:100%;border:1px solid #b0b29b;border-radius:7px;background:#fffef5;color:#2f4636;font:inherit;font-size:13px;padding:8px 10px;min-height:36px}
+.score-form input:focus{outline:2px solid #477d62;outline-offset:1px}
+.score-save,.score-skip{border-radius:7px;min-height:36px;padding:7px 10px;font-size:12px;font-weight:850;border:1px solid #8b9b81}
+.score-save{background:#3c6b4e;color:#fffbec;border-color:#366143}.score-save:hover{background:#29553a}
+.score-skip{background:rgba(255,255,255,.36);color:#536b52}.score-skip:hover{background:#fff9ee}
+.recent-score{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:#fff5d9;border:1px solid #e6cc92;border-radius:10px;padding:10px 17px;box-shadow:2px 3px 0 #eadfc4}
+.recent-score strong{color:#49674a;font-size:13px}.recent-score .score-form{flex:1 1 320px}
+.settings-paper{display:flex;align-items:center;justify-content:space-between;gap:15px;text-align:left;background:#fff9eb;border:1px solid #e4d7bf;border-radius:12px;padding:15px 17px;margin-bottom:24px;box-shadow:2px 3px 0 #eee2cc}
+.settings-paper strong{font-size:14px;color:#465e49}.settings-paper p{font-size:12px;line-height:1.45;margin:4px 0 0;max-width:495px;color:#737461}
+.motion-control{display:inline-flex;align-items:center;gap:9px;flex-shrink:0;cursor:pointer;color:#385a45;font-size:12px;font-weight:850;user-select:none}
+.motion-control input{position:absolute;opacity:0;width:1px;height:1px}.switch-track{display:inline-block;background:#cec8b7;border:1px solid #afa895;border-radius:30px;width:40px;height:24px;position:relative;transition:background .15s ease}
+.switch-track:before{content:"";display:block;position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fffdf3;box-shadow:0 1px 3px rgba(0,0,0,.12);transition:transform .15s ease}
+.motion-control input:checked+.switch-track{background:#4a7759}.motion-control input:checked+.switch-track:before{transform:translateX(16px)}
+.motion-control input:focus-visible+.switch-track{outline:3px solid #3e7e72;outline-offset:3px}
+/* Minimal effects reduces compositing and paint work on dense desktop boards. */
+html.calm-view{scroll-behavior:auto}
+.calm-view .game-note,.calm-view .game-note:hover{transform:none!important;transition:none!important;filter:none!important;box-shadow:2px 3px 0 rgba(106,68,35,.18)!important}
+.calm-view .sketch{filter:none!important}
+.calm-view .progress-fill,.calm-view .toast,.calm-view .switch-track,.calm-view .switch-track:before{transition:none!important}
+.calm-view .board-wrap{box-shadow:0 5px 0 #795438,0 9px 16px rgba(70,45,25,.12)}
+@media(max-width:520px){.settings-paper{align-items:flex-start;flex-direction:column}.recent-score{align-items:stretch}.recent-score .score-form{flex-basis:100%}.score-form label{width:100%}.note-score{padding-top:6px}}
+
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.game-note,.progress-fill,.toast{transition:none}.game-note:hover{transform:none}}
 </style>
 </head>
@@ -111,23 +166,28 @@ background-size:8px 7px,13px 15px,100% 100%;border:3px solid #d7b18a;border-radi
     <div class="dashboard">
       <section class="dashboard-card progress-card" aria-label="Today's progress"><div class="card-kicker"><span>Your progress</span><span>✦ Daily reset</span></div><div class="progress-numbers"><span class="progress-label" id="progressLabel">0 <small>/ 54</small></span><span class="progress-note" id="progressMessage">The first game is ready.</span></div><div class="progress-track" id="progressTrack" role="progressbar" aria-label="Daily games complete" aria-valuemin="0" aria-valuemax="54" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div><div class="progress-foot"><span>One little win at a time</span><span id="progressPercent" class="progress-percent">0%</span></div></section>
       <section class="dashboard-card next-card" aria-label="Up next"><div class="next-content"><div class="card-kicker" id="nextEyebrow">✦ Up next · Game 01</div><div class="next-name" id="nextName">Costcodle</div><div class="next-sub" id="nextDescription">Start easy · quick guesses and intuition</div></div><div class="next-actions"><a class="action-primary" id="nextPlay" href="https://costcodle.com/?mode=classic" target="_blank" rel="noopener noreferrer">Play <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a><button class="action-done" id="nextDone">✓ Mark done</button></div></section>
+      <div class="recent-score hidden" id="recentScore" aria-live="polite"></div>
     </div>
     <div class="board-wrap" id="board"><div class="board">
       <div class="board-doodles" aria-hidden="true"><div class="doodle-left">A + B = C · 42° · 3.14 · ?</div><div class="doodle-right">LAT 34.1° · LONG 84.2°</div></div>
       <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Find next</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
       <div id="listRoot"></div>
     </div></div>
-    <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div><p><strong>How to play:</strong> Open a game, have some fun, then come back and tap <strong>Done</strong>. Your checklist starts fresh every midnight on this device.</p><p>Progress and edited links are saved only in this browser, not synced between devices. Use the pencil on any sticky note to change its game link. The games belong to their respective creators.</p></footer>
+    <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div>
+      <div class="settings-paper"><div><strong>Keep things cozy</strong><p>Desktop scrolling feel a little heavy? Switch on calmer visuals to turn off card movement and soften effects.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduce motion</span></label></div>
+      <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>Checkmarks, scores, display preferences and custom links are saved only in this browser, not synced between devices. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
   </main>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 'use strict';
-const DATA={"groups":[{"title":"The warm-up","subtitle":"Start easy · quick guesses and intuition","key":"warmup","start":0,"end":7},{"title":"Find your rhythm","subtitle":"Recall, estimates and familiar patterns","key":"building","start":7,"end":24},{"title":"Deep thinking","subtitle":"Wordplay and longer reasoning chains","key":"thinking","start":24,"end":32},{"title":"New York Times","subtitle":"A complete three-game word puzzle block","key":"nyt","start":32,"end":35},{"title":"LinkedIn","subtitle":"Eight games in one uninterrupted block","key":"linkedin","start":35,"end":43},{"title":"The peak","subtitle":"Your toughest mental challenges","key":"peak","start":43,"end":49},{"title":"The cooldown","subtitle":"Wind down with games you enjoy","key":"cooldown","start":49,"end":54}],"games":[{"id":"costcodle","name":"Costcodle","url":"https://costcodle.com/?mode=classic","phase":"warmup","review":false},{"id":"more-or-less","name":"More or Less","url":"https://lessgames.com/moreless","phase":"warmup","review":false},{"id":"size-it-up","name":"Magnitudle / Size It Up","url":"https://magnitudle.com/size-it-up","phase":"warmup","review":false},{"id":"angle","name":"Angle","url":"https://angle.wtf/","phase":"warmup","review":false},{"id":"foodguessr","name":"FoodGuessr","url":"https://www.foodguessr.com/game/daily","phase":"warmup","review":false},{"id":"noillirk","name":"Noillirk","url":"https://krillion.me/noillirk","phase":"warmup","review":false},{"id":"amountdle","name":"Amountdle","url":"https://amountle.dev/","phase":"warmup","review":true},{"id":"worldle","name":"Worldle","url":"https://worldle.teuteuf.fr/","phase":"building","review":false},{"id":"globle","name":"Globle","url":"https://globle-game.com/","phase":"building","review":false},{"id":"maptap","name":"MapTap","url":"https://maptap.gg/","phase":"building","review":false},{"id":"gamedle","name":"Gamedle","url":"https://www.gamedle.wtf/","phase":"building","review":false},{"id":"pokedoku","name":"Pokedoku","url":"https://pokedoku.com/","phase":"building","review":false},{"id":"daily-dozen-trivia","name":"Daily Dozen Trivia","url":"https://dailydozentrivia.com/","phase":"building","review":false},{"id":"thrice","name":"Thrice","url":"https://thrice.geekswhodrink.com/","phase":"building","review":false},{"id":"wranker","name":"Wranker","url":"https://wranker.app/daily","phase":"building","review":false},{"id":"box-office-game","name":"Box Office Game","url":"https://boxofficega.me/","phase":"building","review":false},{"id":"fridgedle","name":"Fridgedle","url":"https://fridgle.net/","phase":"building","review":false},{"id":"powerscadle","name":"Powerscadle","url":"https://www.powerscadle.com/","phase":"building","review":false},{"id":"dartle","name":"Dartle","url":"https://dartle.net/","phase":"building","review":false},{"id":"krillion","name":"Krillion","url":"https://krillion.io/","phase":"building","review":false},{"id":"juxtastat","name":"Juxtastat","url":"https://urbanstats.org/quiz.html","phase":"building","review":false},{"id":"disorderly","name":"Disorderly","url":"https://playdisorderly.com/","phase":"building","review":false},{"id":"jeopardium","name":"Jeopardium","url":"https://jeopardiem.com/","phase":"building","review":true},{"id":"timeguessr","name":"TimeGuessr","url":"https://timeguessr.com/play?mode=daily","phase":"building","review":false},{"id":"keiko-words","name":"Keiko Words","url":"https://keikowords.com/","phase":"thinking","review":false},{"id":"betweendle","name":"Betweendle","url":"https://betweenle.com/","phase":"thinking","review":true},{"id":"parseword","name":"Parseword","url":"https://www.parseword.com/daily","phase":"thinking","review":false},{"id":"catfishing","name":"Catfishing","url":"https://catfishing.net/","phase":"thinking","review":false},{"id":"plaingame","name":"Plain.game","url":"https://plaingame.app/?mode=daily","phase":"thinking","review":true},{"id":"waffle","name":"Waffle","url":"https://wafflegame.net/","phase":"thinking","review":false},{"id":"travle","name":"Travle","url":"https://travle.earth/","phase":"thinking","review":false},{"id":"contexto","name":"Contexto","url":"https://contexto.me/en/","phase":"thinking","review":false},{"id":"wordle","name":"Wordle","url":"https://www.nytimes.com/games/wordle/index.html","phase":"nyt","review":false},{"id":"strands","name":"Strands","url":"https://www.nytimes.com/games/strands","phase":"nyt","review":false},{"id":"connections","name":"Connections","url":"https://www.nytimes.com/games/connections","phase":"nyt","review":false},{"id":"pinpoint","name":"Pinpoint","url":"https://www.linkedin.com/games/pinpoint","phase":"linkedin","review":false},{"id":"crossclimb","name":"Crossclimb","url":"https://www.linkedin.com/games/crossclimb","phase":"linkedin","review":false},{"id":"wend","name":"Wend","url":"https://www.linkedin.com/games/wend","phase":"linkedin","review":false},{"id":"zip","name":"Zip","url":"https://www.linkedin.com/games/zip","phase":"linkedin","review":false},{"id":"mini-sudoku","name":"Mini Sudoku","url":"https://www.linkedin.com/games/mini-sudoku","phase":"linkedin","review":false},{"id":"tango","name":"Tango","url":"https://www.linkedin.com/games/tango","phase":"linkedin","review":false},{"id":"patches","name":"Patches","url":"https://www.linkedin.com/games/patches","phase":"linkedin","review":false},{"id":"queens","name":"Queens","url":"https://www.linkedin.com/games/queens","phase":"linkedin","review":false},{"id":"daily-orbs","name":"Daily Orbs","url":"https://dailyorbs.com/","phase":"peak","review":false},{"id":"cutle","name":"Cutle","url":"https://pfiffel.com/cutle/","phase":"peak","review":false},{"id":"nerdle","name":"Nerdle","url":"https://nerdlegame.com/","phase":"peak","review":false},{"id":"fermi","name":"Fermi","url":"https://fermi.gg/","phase":"peak","review":false},{"id":"clues-by-sam","name":"Clues by Sam","url":"https://cluesbysam.com/","phase":"peak","review":false},{"id":"minute-cryptic","name":"Minute Cryptic","url":"https://www.minutecryptic.com/","phase":"peak","review":false},{"id":"framed","name":"Framed","url":"https://framed.wtf/","phase":"cooldown","review":false},{"id":"guess-the-game","name":"Guess the Game","url":"https://guessthe.game/","phase":"cooldown","review":false},{"id":"scrandle","name":"Scrandle","url":"https://scrandle.com/","phase":"cooldown","review":false},{"id":"letterboxdle","name":"Letterboxdle","url":"https://letterboxdle.net/classic","phase":"cooldown","review":false},{"id":"kinda-hard-golf","name":"Kinda Hard Golf","url":"https://kindahardgolf.com/","phase":"cooldown","review":false}]};
+const DATA={"groups":[{"title":"The warm-up","subtitle":"Start easy · quick guesses and intuition","key":"warmup","start":0,"end":7},{"title":"Find your rhythm","subtitle":"Recall, estimates and familiar patterns","key":"building","start":7,"end":24},{"title":"Deep thinking","subtitle":"Wordplay and longer reasoning chains","key":"thinking","start":24,"end":32},{"title":"New York Times","subtitle":"A complete three-game word puzzle block","key":"nyt","start":32,"end":35},{"title":"LinkedIn","subtitle":"Eight games in one uninterrupted block","key":"linkedin","start":35,"end":43},{"title":"The peak","subtitle":"Your toughest mental challenges","key":"peak","start":43,"end":49},{"title":"The cooldown","subtitle":"Wind down with games you enjoy","key":"cooldown","start":49,"end":54}],"games":[{"id":"costcodle","name":"Costcodle","url":"https://costcodle.com/?mode=classic","phase":"warmup","review":false},{"id":"more-or-less","name":"More or Less","url":"https://lessgames.com/moreless","phase":"warmup","review":false},{"id":"size-it-up","name":"Magnitudle / Size It Up","url":"https://magnitudle.com/size-it-up","phase":"warmup","review":false},{"id":"angle","name":"Angle","url":"https://angle.wtf/","phase":"warmup","review":false},{"id":"foodguessr","name":"FoodGuessr","url":"https://www.foodguessr.com/game/daily","phase":"warmup","review":false},{"id":"noillirk","name":"Noillirk","url":"https://krillion.me/noillirk","phase":"warmup","review":false},{"id":"amountdle","name":"Amountdle","url":"https://amountle.dev/","phase":"warmup","review":false},{"id":"worldle","name":"Worldle","url":"https://worldle.teuteuf.fr/","phase":"building","review":false},{"id":"globle","name":"Globle","url":"https://globle-game.com/","phase":"building","review":false},{"id":"maptap","name":"MapTap","url":"https://maptap.gg/","phase":"building","review":false},{"id":"gamedle","name":"Gamedle","url":"https://www.gamedle.wtf/","phase":"building","review":false},{"id":"pokedoku","name":"Pokedoku","url":"https://pokedoku.com/","phase":"building","review":false},{"id":"daily-dozen-trivia","name":"Daily Dozen Trivia","url":"https://dailydozentrivia.com/","phase":"building","review":false},{"id":"thrice","name":"Thrice","url":"https://thrice.geekswhodrink.com/","phase":"building","review":false},{"id":"wranker","name":"Wranker","url":"https://wranker.app/daily","phase":"building","review":false},{"id":"box-office-game","name":"Box Office Game","url":"https://boxofficega.me/","phase":"building","review":false},{"id":"fridgedle","name":"Fridgedle","url":"https://fridgle.net/","phase":"building","review":false},{"id":"powerscadle","name":"Powerscadle","url":"https://www.powerscadle.com/","phase":"building","review":false},{"id":"dartle","name":"Dartle","url":"https://dartle.net/","phase":"building","review":false},{"id":"krillion","name":"Krillion","url":"https://krillion.io/","phase":"building","review":false},{"id":"juxtastat","name":"Juxtastat","url":"https://urbanstats.org/quiz.html","phase":"building","review":false},{"id":"disorderly","name":"Disorderly","url":"https://playdisorderly.com/","phase":"building","review":false},{"id":"jeopardium","name":"Jeopardium","url":"https://jeopardiem.com/","phase":"building","review":false},{"id":"timeguessr","name":"TimeGuessr","url":"https://timeguessr.com/play?mode=daily","phase":"building","review":false},{"id":"keiko-words","name":"Keiko Words","url":"https://keikowords.com/","phase":"thinking","review":false},{"id":"betweendle","name":"Betweendle","url":"https://betweenle.com/","phase":"thinking","review":false},{"id":"parseword","name":"Parseword","url":"https://www.parseword.com/daily","phase":"thinking","review":false},{"id":"catfishing","name":"Catfishing","url":"https://catfishing.net/","phase":"thinking","review":false},{"id":"plaingame","name":"Plain.game","url":"https://plaingame.app/?mode=daily","phase":"thinking","review":false},{"id":"waffle","name":"Waffle","url":"https://wafflegame.net/","phase":"thinking","review":false},{"id":"travle","name":"Travle","url":"https://travle.earth/","phase":"thinking","review":false},{"id":"contexto","name":"Contexto","url":"https://contexto.me/en/","phase":"thinking","review":false},{"id":"wordle","name":"Wordle","url":"https://www.nytimes.com/games/wordle/index.html","phase":"nyt","review":false},{"id":"strands","name":"Strands","url":"https://www.nytimes.com/games/strands","phase":"nyt","review":false},{"id":"connections","name":"Connections","url":"https://www.nytimes.com/games/connections","phase":"nyt","review":false},{"id":"pinpoint","name":"Pinpoint","url":"https://www.linkedin.com/games/pinpoint","phase":"linkedin","review":false},{"id":"crossclimb","name":"Crossclimb","url":"https://www.linkedin.com/games/crossclimb","phase":"linkedin","review":false},{"id":"wend","name":"Wend","url":"https://www.linkedin.com/games/wend","phase":"linkedin","review":false},{"id":"zip","name":"Zip","url":"https://www.linkedin.com/games/zip","phase":"linkedin","review":false},{"id":"mini-sudoku","name":"Mini Sudoku","url":"https://www.linkedin.com/games/mini-sudoku","phase":"linkedin","review":false},{"id":"tango","name":"Tango","url":"https://www.linkedin.com/games/tango","phase":"linkedin","review":false},{"id":"patches","name":"Patches","url":"https://www.linkedin.com/games/patches","phase":"linkedin","review":false},{"id":"queens","name":"Queens","url":"https://www.linkedin.com/games/queens","phase":"linkedin","review":false},{"id":"daily-orbs","name":"Daily Orbs","url":"https://dailyorbs.com/","phase":"peak","review":false},{"id":"cutle","name":"Cutle","url":"https://pfiffel.com/cutle/","phase":"peak","review":false},{"id":"nerdle","name":"Nerdle","url":"https://nerdlegame.com/","phase":"peak","review":false},{"id":"fermi","name":"Fermi","url":"https://fermi.gg/","phase":"peak","review":false},{"id":"clues-by-sam","name":"Clues by Sam","url":"https://cluesbysam.com/","phase":"peak","review":false},{"id":"minute-cryptic","name":"Minute Cryptic","url":"https://www.minutecryptic.com/","phase":"peak","review":false},{"id":"framed","name":"Framed","url":"https://framed.wtf/","phase":"cooldown","review":false},{"id":"guess-the-game","name":"Guess the Game","url":"https://guessthe.game/","phase":"cooldown","review":false},{"id":"scrandle","name":"Scrandle","url":"https://scrandle.com/","phase":"cooldown","review":false},{"id":"letterboxdle","name":"Letterboxdle","url":"https://letterboxdle.net/classic","phase":"cooldown","review":false},{"id":"kinda-hard-golf","name":"Kinda Hard Golf","url":"https://kindahardgolf.com/","phase":"cooldown","review":false}]};
 const TOTAL=DATA.games.length;
 // Keep storage keys compatible with the previous Morning Circuit release.
 const STORAGE_KEY='morning-circuit-daily-v1';
 const OVERRIDES_KEY='morning-circuit-links-v1';
+const SCORES_KEY='morning-circuit-scores-v1';
+const MOTION_KEY='morning-circuit-reduce-motion-v1';
 const $=id=>document.getElementById(id);
 const ICONS={
  'costcodle':'jar','more-or-less':'math','size-it-up':'jar','angle':'math','amountdle':'jar',
@@ -151,14 +211,36 @@ let completed=new Set(saved.date===day&&Array.isArray(saved.completed)?saved.com
 function migrateCompleted(){if(completed.has('magnitudle'))completed.add('size-it-up');completed.delete('magnitudle');const valid=new Set(DATA.games.map(g=>g.id));completed=new Set([...completed].filter(id=>valid.has(id)));}
 migrateCompleted();
 let overrides=loadJSON(OVERRIDES_KEY,{});
+let scoreArchive=loadJSON(SCORES_KEY,{});
+if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};
+let scores={...(scoreArchive[day]||{})};
+let reduceMotion=loadJSON(MOTION_KEY,false);
+let scoreEditorId=null,scoreEditorWhere=null;
 let unfinishedOnly=false;let toastTimer;
+function applyMotion(){document.documentElement.classList.toggle('calm-view',reduceMotion);$('calmToggle').checked=reduceMotion;}
+function persistScores(){scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
+function scoreFormHTML(gameId){
+  const value=escapeHTML(scores[gameId]||'');
+  return `<form class="score-form" data-score-form="${gameId}"><label for="score-${gameId}">Optional score</label><input type="text" id="score-${gameId}" name="score" maxlength="70" value="${value}" placeholder="3/6, 85 pts, 2:15…" autocomplete="off"><button class="score-save" type="submit">Save</button><button class="score-skip" type="button" data-score-skip="${gameId}">Skip</button></form>`;
+}
+function saveScore(gameId,value){
+  if(!DATA.games.some(g=>g.id===gameId))return;
+  const clean=value.trim().slice(0,70);
+  if(clean)scores[gameId]=clean;else delete scores[gameId];
+  persistScores();scoreEditorId=null;scoreEditorWhere=null;render();toast(clean?'Score saved to your board!':'No score saved.');
+}
+function closeScore(){scoreEditorId=null;scoreEditorWhere=null;render();}
+function handleScoreSubmit(e){
+  const form=e.target.closest('form[data-score-form]');if(!form)return;
+  e.preventDefault();saveScore(form.dataset.scoreForm,form.elements.score.value);
+}
 function urlFor(game){return safeURL(overrides[game.id])||game.url;}
 function iconHTML(name){return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"></use></svg>`;}
 function persist(){saveJSON(STORAGE_KEY,{date:day,completed:[...completed]});}
-function syncDay(){const current=dayKey();if(current===day)return;day=current;completed.clear();persist();render();toast('Fresh day, fresh board. Good morning!');}
+function syncDay(){const current=dayKey();if(current===day)return;day=current;completed.clear();scores={...(scoreArchive[day]||{})};scoreEditorId=null;scoreEditorWhere=null;persist();render();toast('Fresh day, fresh board. Good morning!');}
 function toast(s){const e=$('toast');e.textContent=s;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700);}
 function nextGame(){return DATA.games.find(g=>!completed.has(g.id));}
-function setComplete(id,done){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done)completed.add(id);else completed.delete(id);persist();render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
+function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;}}persist();render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
 function render(){
  const n=completed.size, pct=Math.round((n/TOTAL)*100);
  $('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
@@ -177,19 +259,29 @@ function render(){
   $('nextDescription').textContent='A full board of little wins. Come back tomorrow!';
   $('nextPlay').classList.add('hidden');$('nextDone').classList.add('hidden');
  }
+ const recent=$('recentScore');
+ if(scoreEditorId&&scoreEditorWhere==='dashboard'&&completed.has(scoreEditorId)){
+   const g=DATA.games.find(g=>g.id===scoreEditorId);
+   recent.innerHTML=`<strong>Finished ${escapeHTML(g.name)}! Add a score?</strong>${scoreFormHTML(g.id)}`;
+   recent.classList.remove('hidden');
+ }else{recent.classList.add('hidden');recent.innerHTML='';}
  $('toggleFilter').textContent=unfinishedOnly?'Show all notes':'Show unfinished';$('toggleFilter').setAttribute('aria-pressed',String(unfinishedOnly));
  const out=DATA.groups.map((group,gi)=>{
   const all=DATA.games.slice(group.start,group.end);
-  const visible=all.filter(g=>!(unfinishedOnly&&completed.has(g.id)));
+  const visible=all.filter(g=>!(unfinishedOnly&&completed.has(g.id))||(scoreEditorWhere==='card'&&scoreEditorId===g.id));
   if(!visible.length&&unfinishedOnly)return '';
   const done=all.filter(g=>completed.has(g.id)).length;
   const notes=visible.map((g,li)=>{
    const i=DATA.games.findIndex(x=>x.id===g.id);
    const finished=completed.has(g.id),color=(PALETTE[group.key]+li)%6;
-   const badge=overrides[g.id]?'Custom link':g.review?'Check link':'Daily puzzle';
+   const badge=overrides[g.id]?'Custom link':'Daily puzzle';
+   const scoreText=scores[g.id]||'';
+   const scoreRow=finished ? (scoreEditorId===g.id&&scoreEditorWhere==='card'
+     ? `<div class="note-score">${scoreFormHTML(g.id)}</div>`
+     : `<div class="note-score"><button class="score-link" data-score-open="${g.id}">${scoreText?`✎ Score: ${escapeHTML(scoreText)}`:'+ Add score (optional)'}</button></div>`):'';
    return `<article class="game-note note-color-${color}${finished?' completed':''}${next&&next.id===g.id?' is-next':''}" id="game-${g.id}" style="--tilt:${TILTS[i%TILTS.length]}" data-id="${g.id}">
      <div class="note-upper"><div class="note-icon">${iconHTML(ICONS[g.id]||'tiles')}</div><div class="note-copy"><div class="note-number">Puzzle ${String(i+1).padStart(2,'0')}</div><h4 class="note-name">${escapeHTML(g.name)}</h4><div class="note-tag">${escapeHTML(badge)}</div></div></div>
-     <div class="note-actions"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)} (opens in new tab)">Play ${iconHTML('arrow')}</a><button class="note-done" data-done="${g.id}" aria-pressed="${finished}" aria-label="${finished?'Mark '+escapeHTML(g.name)+' unfinished':'Mark '+escapeHTML(g.name)+' done'}">${iconHTML('check')} ${finished?'Done':'Mark done'}</button><button class="note-edit" data-edit="${g.id}" title="Edit game link" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
+     <div class="note-actions"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)} (opens in new tab)">Play ${iconHTML('arrow')}</a><button class="note-done" data-done="${g.id}" aria-pressed="${finished}" aria-label="${finished?'Mark '+escapeHTML(g.name)+' unfinished':'Mark '+escapeHTML(g.name)+' done'}">${iconHTML('check')} ${finished?'Done':'Mark done'}</button><button class="note-edit" data-edit="${g.id}" title="Edit game link" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>${scoreRow}
    </article>`;
   }).join('');
   return `<section class="section" aria-label="${escapeHTML(group.title)}"><div class="section-header"><div class="section-title-block"><div class="section-badge" aria-hidden="true">${String(gi+1).padStart(2,'0')}</div><div><h3>${escapeHTML(group.title)}</h3><p>${escapeHTML(group.subtitle)}</p></div></div><div class="section-count">${done} / ${all.length}</div></div><div class="cards">${notes}</div></section>`;
@@ -197,7 +289,9 @@ function render(){
  $('listRoot').innerHTML=out||(unfinishedOnly?'<div class="empty">Everything is checked off! Tap “Show all notes” to admire your board. ✨</div>':'');
 }
 $('listRoot').addEventListener('click',e=>{
- const done=e.target.closest('[data-done]');if(done){setComplete(done.dataset.done,!completed.has(done.dataset.done));return;}
+ const done=e.target.closest('[data-done]');if(done){setComplete(done.dataset.done,!completed.has(done.dataset.done),'card');return;}
+ const scoreOpen=e.target.closest('[data-score-open]');if(scoreOpen){scoreEditorId=scoreOpen.dataset.scoreOpen;scoreEditorWhere='card';render();return;}
+ if(e.target.closest('[data-score-skip]')){closeScore();return;}
  const edit=e.target.closest('[data-edit]');if(edit){
   const g=DATA.games.find(x=>x.id===edit.dataset.edit);if(!g)return;
   const input=window.prompt(`Link for ${g.name}\nPaste the full URL, or leave blank to use the default.`,urlFor(g));
@@ -207,13 +301,22 @@ $('listRoot').addEventListener('click',e=>{
   overrides[g.id]=u;saveJSON(OVERRIDES_KEY,overrides);render();toast('Link pinned to your board!');
  }
 });
-$('nextDone').addEventListener('click',()=>{const id=$('nextDone').dataset.done;if(id)setComplete(id,true);});
-$('jumpNext').addEventListener('click',()=>{syncDay();const g=nextGame();if(!g){window.scrollTo({top:0,behavior:'smooth'});return;}render();$('game-'+g.id)?.scrollIntoView({behavior:'smooth',block:'center'});});
+$('nextDone').addEventListener('click',()=>{const id=$('nextDone').dataset.done;if(id)setComplete(id,true,'dashboard');});
+$('jumpNext').addEventListener('click',()=>{syncDay();const g=nextGame();if(!g){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});return;}render();$('game-'+g.id)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});});
 $('toggleFilter').addEventListener('click',()=>{unfinishedOnly=!unfinishedOnly;render();});
-$('resetToday').addEventListener('click',()=>{if(!completed.size){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games?`)){completed.clear();persist();render();toast('Fresh board, ready to go!');}});
-window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY||e.key===OVERRIDES_KEY){const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});render();}});
+$('resetToday').addEventListener('click',()=>{if(!completed.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games and saved scores?`)){completed.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;persist();persistScores();render();toast('Fresh board, ready to go!');}});
+$('listRoot').addEventListener('submit',handleScoreSubmit);
+$('recentScore').addEventListener('submit',handleScoreSubmit);
+$('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]'))closeScore();});
+$('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
+window.addEventListener('storage',e=>{if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY].includes(e.key)){
+ const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
+ scoreArchive=loadJSON(SCORES_KEY,{});if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};scores={...(scoreArchive[day]||{})};
+ reduceMotion=loadJSON(MOTION_KEY,false);applyMotion();render();
+}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncDay();});
 setInterval(syncDay,30000);
+applyMotion();
 render();
 </script>
 </body>
