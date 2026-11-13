@@ -128,6 +128,28 @@ html.calm-view{scroll-behavior:auto}
 @media(max-width:520px){.settings-paper{align-items:flex-start;flex-direction:column}.recent-score{align-items:stretch}.recent-score .score-form{flex-basis:100%}.score-form label{width:100%}.note-score{padding-top:6px}}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.game-note,.progress-fill,.toast{transition:none}.game-note:hover{transform:none}}
+
+/* Cloud passport — restrained CSS, no animations or image downloads */
+.topright{display:flex;align-items:center;gap:12px;letter-spacing:0;text-transform:none}.topright time{letter-spacing:.08em;text-transform:uppercase}
+.account-toggle{border:1.5px solid #c5ae87;border-radius:10px;background:#fffaee;color:#365843;min-height:37px;padding:7px 12px;font-size:12px;font-weight:850;white-space:normal}
+.account-toggle:hover{background:#f5ead1}
+.account-panel{background:#fff9eb;border:2px solid #d6bf94;border-radius:14px;box-shadow:4px 5px 0 #e9d9bc;padding:20px 23px;margin:15px 0 8px;max-width:720px}
+.account-panel.hidden,.account-panel .hidden{display:none!important}
+.account-heading{display:flex;justify-content:space-between;gap:16px}.account-heading h2{font-family:Georgia,serif;font-size:24px;letter-spacing:-.025em;margin:3px 0 5px;color:#304b37}.account-heading p{margin:0 0 13px;color:#737765;font-size:13px;max-width:520px}
+.account-kicker{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:#a0774e}.account-close{font-size:26px;line-height:1;background:transparent;border:0;color:#74745d;align-self:flex-start}
+.account-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.account-form label{display:flex;flex-direction:column;gap:5px;color:#4a614d;font-weight:800;font-size:12px}
+.account-form input{min-width:0;width:100%;padding:10px 11px;min-height:42px;border:1px solid #cabd9e;border-radius:8px;color:#304b37;background:white;font-size:14px}
+.account-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.account-form .account-actions{grid-column:1/-1}
+.account-primary,.account-secondary,.account-text{border-radius:8px;padding:9px 12px;font-size:12px;font-weight:850;min-height:39px}
+.account-primary{background:#385f49;color:#fff9e9;border:1px solid #385f49}.account-primary:hover{background:#2b4d37}
+.account-secondary{background:#faf0d7;border:1px solid #c5ae88;color:#34553e}.account-secondary:hover{background:#f4e3bf}
+.account-text{border:0;background:transparent;color:#506f5c;text-decoration:underline;text-underline-offset:3px}
+.account-fine{font-size:11px;color:#80816e;margin:11px 0 0}
+.account-identity{display:flex;align-items:center;justify-content:space-between;gap:12px}.account-identity strong{display:block;font-size:15px;overflow-wrap:anywhere;color:#2a4e37}
+.sync-dot{width:10px;height:10px;border-radius:50%;background:#b7aa8b;flex:0 0 10px}.sync-dot.ok{background:#5e9c71}.sync-dot.warn{background:#c88957}
+.sync-status{font-size:13px;color:#69745f;margin:8px 0 12px}.account-message{min-height:16px;margin:10px 0 0;font-size:12px;color:#486d51}.account-message.error{color:#a24a40}
+.import-box{border:1px dashed #c7b280;background:#fff4d5;padding:12px 13px;border-radius:9px;margin:12px 0}.import-box strong{font-size:13px}.import-box p{font-size:12px;margin:4px 0 9px;color:#6a6b59}
+@media(max-width:560px){.topbar{gap:8px}.topright{flex-direction:column;align-items:flex-end;gap:4px}.topright time{font-size:10px}.account-toggle{padding:6px 9px;min-height:32px;font-size:11px}.account-panel{padding:16px 14px}.account-form{grid-template-columns:1fr}.account-form .account-actions{grid-column:1}}
 </style>
 </head>
 <body>
@@ -150,8 +172,21 @@ html.calm-view{scroll-behavior:auto}
 <div class="shell">
   <header class="topbar">
     <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><svg class="ico" aria-hidden="true"><use href="#i-sun"></use></svg></span><span>Morning Circuit</span></a>
-    <div class="topright"><span aria-hidden="true"></span><time id="dateLabel">Today</time></div>
+    <div class="topright"><time id="dateLabel">Today</time><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
+  <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
+    <div class="account-heading"><div><span class="account-kicker">Your puzzle passport</span><h2>Keep your morning in sync</h2><p id="accountHint">Sign in to save your games across your phone and computer. Guest mode always works.</p></div><button type="button" class="account-close" id="accountClose" aria-label="Close account panel">×</button></div>
+    <div id="accountGuest">
+      <form id="authForm" class="account-form"><label>Email<input id="accountEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>Password<input id="accountPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="Your password"></label>
+        <div class="account-actions"><button class="account-primary" type="submit" id="signInBtn">Sign in</button><button class="account-secondary" type="button" id="signUpBtn">Create account</button><button class="account-text" type="button" id="resetPasswordBtn">Forgot password?</button></div></form>
+      <p class="account-fine">Account creation may require email confirmation. Your games remain available while signed out.</p>
+    </div>
+    <div id="accountSignedIn" class="hidden"><div class="account-identity"><div><span class="account-kicker">Signed in as</span><strong id="accountName"></strong></div><span class="sync-dot" id="syncDot" aria-hidden="true"></span></div><p class="sync-status" id="syncStatus" role="status">Connecting…</p>
+      <div id="importBox" class="import-box hidden"><strong>Bring your old progress along?</strong><p>This device has guest checkmarks or scores. Import them into this account without deleting the originals. Existing cloud results are kept where they already have a score.</p><button type="button" class="account-secondary" id="importGuestBtn">Import this device’s history</button><button type="button" class="account-text" id="skipGuestBtn">Not now</button></div>
+      <div class="account-actions"><button class="account-secondary" type="button" id="syncNowBtn">↻ Sync now</button><button class="account-text" type="button" id="signOutBtn">Sign out</button></div>
+    </div>
+    <p class="account-message" id="accountMessage" aria-live="polite"></p>
+  </aside>
   <main id="top">
     <section class="hero" aria-label="Welcome to Morning Circuit">
       <div class="hero-copy"><div class="overline">Your daily dose of brain food</div><h1>Rise, shine<br>&amp; <span class="highlight">get curious.</span></h1><p class="lede">A cozy little corner for your daily games. One puzzle at a time, from sleepy guesses to the big-brain stuff.</p></div>
@@ -175,7 +210,7 @@ html.calm-view{scroll-behavior:auto}
     </div></div>
     <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div>
       <div class="settings-paper"><div><strong>Keep things cozy</strong><p>Desktop scrolling feel a little heavy? Switch on calmer visuals to turn off card movement and soften effects.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduce motion</span></label></div>
-      <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>Checkmarks, scores, display preferences and custom links are saved only in this browser, not synced between devices. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
+      <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>In guest mode, everything stays on this device. When signed in, results and preferences sync privately across devices; offline changes are kept on your device until sync succeeds. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
   </main>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -217,8 +252,13 @@ let scores={...(scoreArchive[day]||{})};
 let reduceMotion=loadJSON(MOTION_KEY,false);
 let scoreEditorId=null,scoreEditorWhere=null;
 let unfinishedOnly=false;let toastTimer;
+let cloudClient=null,cloudAccount=null,cloudCache=null,cloudSyncBusy=false,cloudSyncTimer=null,cloudReady=false;
+const CLOUD_URL='https://yazjrurzrageyfunsskk.supabase.co';
+const CLOUD_PUBLIC_KEY='sb_publishable_Kp9iCIz8WxkMi6NACi0LlA_T_ZN8wpE';
+const CLOUD_CACHE_PREFIX='morning-circuit-cloud-v1-';
+
 function applyMotion(){document.documentElement.classList.toggle('calm-view',reduceMotion);$('calmToggle').checked=reduceMotion;}
-function persistScores(){scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
+function persistScores(){if(cloudAccount){saveCloudCache();return;}scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
 function scoreFormHTML(gameId){
   const value=escapeHTML(scores[gameId]||'');
   return `<form class="score-form" data-score-form="${gameId}"><label for="score-${gameId}">Optional score</label><input type="text" id="score-${gameId}" name="score" maxlength="70" value="${value}" placeholder="3/6, 85 pts, 2:15…" autocomplete="off"><button class="score-save" type="submit">Save</button><button class="score-skip" type="button" data-score-skip="${gameId}">Skip</button></form>`;
@@ -227,7 +267,7 @@ function saveScore(gameId,value){
   if(!DATA.games.some(g=>g.id===gameId))return;
   const clean=value.trim().slice(0,70);
   if(clean)scores[gameId]=clean;else delete scores[gameId];
-  persistScores();scoreEditorId=null;scoreEditorWhere=null;render();toast(clean?'Score saved to your board!':'No score saved.');
+  persistScores();queueCloudGame(gameId);scoreEditorId=null;scoreEditorWhere=null;render();toast(clean?'Score saved to your board!':'No score saved.');
 }
 function closeScore(){scoreEditorId=null;scoreEditorWhere=null;render();}
 function handleScoreSubmit(e){
@@ -236,11 +276,11 @@ function handleScoreSubmit(e){
 }
 function urlFor(game){return safeURL(overrides[game.id])||game.url;}
 function iconHTML(name){return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"></use></svg>`;}
-function persist(){saveJSON(STORAGE_KEY,{date:day,completed:[...completed]});}
-function syncDay(){const current=dayKey();if(current===day)return;day=current;completed.clear();scores={...(scoreArchive[day]||{})};scoreEditorId=null;scoreEditorWhere=null;persist();render();toast('Fresh day, fresh board. Good morning!');}
+function persist(){if(cloudAccount){saveCloudCache();return;}saveJSON(STORAGE_KEY,{date:day,completed:[...completed]});}
+function syncDay(){const current=dayKey();if(current===day)return;day=current;if(cloudAccount){readAccountDay();}else{completed.clear();scores={...(scoreArchive[day]||{})};}scoreEditorId=null;scoreEditorWhere=null;persist();render();if(cloudAccount)scheduleCloudSync();toast('Fresh day, fresh board. Good morning!');}
 function toast(s){const e=$('toast');e.textContent=s;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700);}
 function nextGame(){return DATA.games.find(g=>!completed.has(g.id));}
-function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;}}persist();render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
+function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
 function render(){
  const n=completed.size, pct=Math.round((n/TOTAL)*100);
  $('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
@@ -296,28 +336,297 @@ $('listRoot').addEventListener('click',e=>{
   const g=DATA.games.find(x=>x.id===edit.dataset.edit);if(!g)return;
   const input=window.prompt(`Link for ${g.name}\nPaste the full URL, or leave blank to use the default.`,urlFor(g));
   if(input===null)return;
-  if(!input.trim()){delete overrides[g.id];saveJSON(OVERRIDES_KEY,overrides);render();toast('Default link restored.');return;}
+  if(!input.trim()){delete overrides[g.id];if(cloudAccount)queueCloudSettings();else saveJSON(OVERRIDES_KEY,overrides);render();toast('Default link restored.');return;}
   const u=safeURL(input.trim());if(!u){toast('That link needs to start with http:// or https://');return;}
-  overrides[g.id]=u;saveJSON(OVERRIDES_KEY,overrides);render();toast('Link pinned to your board!');
+  overrides[g.id]=u;if(cloudAccount)queueCloudSettings();else saveJSON(OVERRIDES_KEY,overrides);render();toast('Link pinned to your board!');
  }
 });
 $('nextDone').addEventListener('click',()=>{const id=$('nextDone').dataset.done;if(id)setComplete(id,true,'dashboard');});
 $('jumpNext').addEventListener('click',()=>{syncDay();const g=nextGame();if(!g){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});return;}render();$('game-'+g.id)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});});
 $('toggleFilter').addEventListener('click',()=>{unfinishedOnly=!unfinishedOnly;render();});
-$('resetToday').addEventListener('click',()=>{if(!completed.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games and saved scores?`)){completed.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;persist();persistScores();render();toast('Fresh board, ready to go!');}});
+$('resetToday').addEventListener('click',()=>{if(!completed.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games and saved scores?`)){completed.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;persist();persistScores();if(cloudAccount){for(const g of DATA.games)queueCloudGame(g.id);}render();toast('Fresh board, ready to go!');}});
 $('listRoot').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]'))closeScore();});
-$('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
-window.addEventListener('storage',e=>{if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY].includes(e.key)){
+$('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;if(cloudAccount)queueCloudSettings();else saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
+window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY].includes(e.key)){
  const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
  scoreArchive=loadJSON(SCORES_KEY,{});if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};scores={...(scoreArchive[day]||{})};
  reduceMotion=loadJSON(MOTION_KEY,false);applyMotion();render();
 }});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncDay();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){syncDay();if(cloudAccount)scheduleCloudSync(150);}});
+window.addEventListener('online',()=>{if(cloudAccount)scheduleCloudSync(250);});
 setInterval(syncDay,30000);
+// v4: accounts and cloud sync. The existing guest storage stays untouched.
+function cloudLocalKey(userId){return CLOUD_CACHE_PREFIX+userId;}
+function newCloudCache(){return {rows:{},pending:{},settings:{overrides:{},reduceMotion:false},pendingSettings:null};}
+function loadCloudCache(userId){
+ const state=loadJSON(cloudLocalKey(userId),newCloudCache());
+ if(!state||typeof state!=='object')return newCloudCache();
+ state.rows=state.rows&&typeof state.rows==='object'?state.rows:{};
+ state.pending=state.pending&&typeof state.pending==='object'?state.pending:{};
+ state.settings=state.settings&&typeof state.settings==='object'?state.settings:{overrides:{},reduceMotion:false};
+ if(!state.settings.overrides||typeof state.settings.overrides!=='object')state.settings.overrides={};
+ return state;
+}
+function saveCloudCache(){if(cloudAccount&&cloudCache)saveJSON(cloudLocalKey(cloudAccount.id),cloudCache);}
+function readAccountDay(){
+ if(!cloudAccount||!cloudCache)return;
+ const valid=new Set(DATA.games.map(g=>g.id));
+ completed=new Set();scores={};
+ for(const row of Object.values(cloudCache.rows)){
+   if(row.play_date!==day||!valid.has(row.game_id))continue;
+   if(row.completed)completed.add(row.game_id);
+   if(typeof row.score==='string'&&row.score)scores[row.game_id]=row.score;
+ }
+}
+function applyAccountView(){
+ if(!cloudAccount)return;
+ readAccountDay();
+ overrides={...cloudCache.settings.overrides};reduceMotion=!!cloudCache.settings.reduceMotion;
+ applyMotion();render();
+}
+function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=scores[gameId]??null){
+ if(!cloudAccount||!cloudCache)return;
+ const id=DATA.games.find(g=>g.id===gameId)?.id;if(!id)return;
+ const key=atDate+'|'+id,editedAt=new Date().toISOString();
+ cloudCache.rows[key]={play_date:atDate,game_id:id,completed:!!done,score:typeof score==='string'?score.slice(0,70):null,updated_at:editedAt};
+ cloudCache.pending[key]=editedAt;
+ saveCloudCache();setCloudStatus('Saved on this device · syncing…','warn');scheduleCloudSync();
+}
+function queueCloudSettings(){
+ if(!cloudAccount||!cloudCache)return;
+ cloudCache.settings={overrides:{...overrides},reduceMotion:!!reduceMotion};
+ cloudCache.pendingSettings=new Date().toISOString();
+ saveCloudCache();setCloudStatus('Settings saved · syncing…','warn');scheduleCloudSync();
+}
+function setCloudStatus(message,kind=''){
+ const label=$('syncStatus');if(label)label.textContent=message;
+ const dot=$('syncDot');if(dot)dot.className='sync-dot '+(kind||'');
+}
+function accountMessage(message,error=false){$('accountMessage').textContent=message;$('accountMessage').classList.toggle('error',!!error);}
+function showAccountPanel(open){$('accountPanel').classList.toggle('hidden',!open);$('accountToggle').setAttribute('aria-expanded',String(open));}
+function guestHasHistory(){
+ const old=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{});
+ return !!((old.date===day&&old.completed?.length)||Object.values(archive||{}).some(v=>v&&Object.keys(v).length)||Object.keys(links||{}).length);
+}
+function updateImportPrompt(){
+ $('importBox').classList.toggle('hidden',!cloudAccount||!guestHasHistory()||!!loadJSON('morning-circuit-imported-v1-'+cloudAccount?.id,false));
+}
+function refreshAccountUI(){
+ $('accountGuest').classList.toggle('hidden',!!cloudAccount);
+ $('accountSignedIn').classList.toggle('hidden',!cloudAccount);
+ $('accountToggle').textContent=cloudAccount?'☁ '+(cloudAccount.email?.split('@')[0]||'Account'):'☁ Guest · Sign in';
+ $('accountName').textContent=cloudAccount?.email||'';
+ $('accountHint').textContent=cloudAccount?'Your puzzle progress and scores belong to this account.':'Sign in to save games across your phone and computer. Guest mode always works.';
+ updateImportPrompt();
+}
+function scheduleCloudSync(delay=900){
+ if(!cloudAccount||!cloudClient)return;
+ clearTimeout(cloudSyncTimer);cloudSyncTimer=setTimeout(()=>{void syncCloud();},delay);
+}
+async function loadRemoteRows(){
+ let incoming={},index=0;
+ const cutoff=cloudCache.lastRemoteUpdate?new Date(Date.parse(cloudCache.lastRemoteUpdate)-1500).toISOString():null;
+ let newest=cloudCache.lastRemoteUpdate||null;
+ while(true){
+   const q=cloudClient.from('morning_circuit_results').select('play_date,game_id,completed,score,updated_at');
+   // First sign-in reads history. Later polls request only changes since the last server update.
+   if(cutoff)q.gte('updated_at',cutoff);
+   const {data,error}=await q.order('updated_at',{ascending:true}).order('game_id',{ascending:true}).order('play_date',{ascending:true}).range(index,index+499);
+   if(error)throw error;
+   for(const row of data||[]){
+     incoming[row.play_date+'|'+row.game_id]=row;
+     if(!newest||row.updated_at>newest)newest=row.updated_at;
+   }
+   if(!data||data.length<500)break;
+   index+=500;
+ }
+ cloudCache.lastRemoteUpdate=newest;saveCloudCache();return incoming;
+}
+async function pullCloud(){
+ if(!cloudAccount)return;
+ const [remoteRows,settingsResponse]=await Promise.all([
+    loadRemoteRows(),cloudClient.from('morning_circuit_settings').select('link_overrides,reduce_motion,updated_at').eq('user_id',cloudAccount.id).maybeSingle()
+ ]);
+ if(settingsResponse.error)throw settingsResponse.error;
+ let changed=false;
+ for(const [key,row] of Object.entries(remoteRows)){
+   const pending=cloudCache.pending[key];
+   if(pending){
+     // In the unusual case both devices changed the same game, newer edit wins.
+     if(Date.parse(row.updated_at)>Date.parse(pending)){
+       delete cloudCache.pending[key];cloudCache.rows[key]=row;changed=true;
+     }
+   }else{cloudCache.rows[key]=row;changed=true;}
+ }
+ cloudCache.remoteSettingsExists=!!settingsResponse.data;
+ if(settingsResponse.data&&!cloudCache.pendingSettings){
+   const remote=settingsResponse.data;
+   const clean={};for(const [id,url] of Object.entries(remote.link_overrides||{})){
+     if(DATA.games.some(g=>g.id===id)&&safeURL(url))clean[id]=url;
+   }
+   cloudCache.settings={overrides:clean,reduceMotion:!!remote.reduce_motion};changed=true;
+ }
+ if(changed){saveCloudCache();if(!document.activeElement?.matches('.score-form input'))applyAccountView();}
+}
+async function pushCloud(){
+ if(!cloudAccount)return;
+ const keys=Object.keys(cloudCache.pending);
+ for(let i=0;i<keys.length;i+=60){
+   const batch=keys.slice(i,i+60).filter(k=>cloudCache.rows[k]);
+   if(!batch.length)continue;
+   const token=Object.fromEntries(batch.map(k=>[k,cloudCache.pending[k]]));
+   const values=batch.map(key=>({user_id:cloudAccount.id,play_date:cloudCache.rows[key].play_date,
+     game_id:cloudCache.rows[key].game_id,completed:cloudCache.rows[key].completed,score:cloudCache.rows[key].score}));
+   const {error}=await cloudClient.from('morning_circuit_results').upsert(values,{onConflict:'user_id,play_date,game_id'});
+   if(error)throw error;
+   for(const key of batch)if(cloudCache.pending[key]===token[key])delete cloudCache.pending[key];
+   saveCloudCache();
+ }
+ if(cloudCache.pendingSettings){
+   const marker=cloudCache.pendingSettings;
+   const {error}=await cloudClient.from('morning_circuit_settings').upsert({user_id:cloudAccount.id,
+     link_overrides:cloudCache.settings.overrides,reduce_motion:cloudCache.settings.reduceMotion},{onConflict:'user_id'});
+   if(error)throw error;
+   if(cloudCache.pendingSettings===marker)cloudCache.pendingSettings=null;
+   saveCloudCache();
+ }
+}
+async function syncCloud(){
+ if(!cloudClient||!cloudAccount||cloudSyncBusy)return;
+ if(navigator.onLine===false){setCloudStatus('Offline · changes are saved on this device','warn');return;}
+ cloudSyncBusy=true;const id=cloudAccount.id;setCloudStatus('Syncing with your account…');
+ try{
+   await pullCloud();
+   if(!cloudAccount||cloudAccount.id!==id)return;
+   await pushCloud();
+   if(!cloudAccount||cloudAccount.id!==id)return;
+   await pullCloud();
+   const queued=Object.keys(cloudCache.pending).length+(cloudCache.pendingSettings?1:0);
+   setCloudStatus(queued?`${queued} changes still waiting to sync`:'All changes synced ✓',queued?'warn':'ok');
+ }catch(e){
+   const err=String(e.message||e);
+   setCloudStatus(/relation|not found|404|schema cache/i.test(err)?'Database not ready · run the supplied setup.sql':'Sync unavailable · your changes remain on this device','warn');
+   accountMessage(err,true);
+ }finally{cloudSyncBusy=false;}
+}
+function restoreGuest(){
+ day=dayKey();const stored=loadJSON(STORAGE_KEY,{});
+ completed=new Set(stored.date===day&&Array.isArray(stored.completed)?stored.completed:[]);
+ migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});scoreArchive=loadJSON(SCORES_KEY,{});
+ if(!scoreArchive||typeof scoreArchive!=='object')scoreArchive={};scores={...(scoreArchive[day]||{})};
+ reduceMotion=loadJSON(MOTION_KEY,false);applyMotion();render();
+}
+async function setCloudSession(session){
+ const user=session?.user||null;
+ if(user?.id===cloudAccount?.id)return;
+ if(!user){cloudAccount=null;cloudCache=null;restoreGuest();refreshAccountUI();setCloudStatus('Signed out');return;}
+ cloudAccount=user;cloudCache=loadCloudCache(user.id);day=dayKey();applyAccountView();refreshAccountUI();
+ accountMessage('Signed in. Your existing guest data will stay on this device until you choose to import it.');
+ scheduleCloudSync(100);
+}
+async function importGuestHistory(){
+ if(!cloudAccount)return;
+ // Pull first, so we do not overwrite a result that already has an account score.
+ try{await pullCloud();}catch(e){accountMessage('Can’t import until the database is ready: '+(e.message||e),true);return;}
+ const stored=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{});
+ const allDates=new Set(Object.keys(archive&&typeof archive==='object'?archive:{}));
+ if(stored.date&&Array.isArray(stored.completed))allDates.add(stored.date);
+ let count=0;
+ for(const date of allDates){
+   if(!/^\d{4}-\d{2}-\d{2}$/.test(date))continue;
+   const guestScores=archive?.[date]||{},done=new Set(date===stored.date?stored.completed:[]);
+   for(const id of new Set([...done,...Object.keys(guestScores)])){
+      const migratedId=id==='magnitudle'?'size-it-up':id;
+      if(!DATA.games.some(g=>g.id===migratedId))continue;
+      const key=date+'|'+migratedId,old=cloudCache.rows[key];
+      const incomingScore=typeof guestScores[id]==='string'?guestScores[id].slice(0,70):null;
+      const mergedDone=!!(old?.completed||done.has(id));
+      const mergedScore=old?.score||incomingScore||null;
+      if(old&&old.completed===mergedDone&&(old.score||null)===mergedScore)continue;
+      const timestamp=new Date().toISOString();
+      cloudCache.rows[key]={play_date:date,game_id:migratedId,completed:mergedDone,score:mergedScore,updated_at:timestamp};
+      cloudCache.pending[key]=timestamp;count++;
+   }
+ }
+ // Merge custom links only when account doesn't already have that game customized.
+ const mergedLinks={...cloudCache.settings.overrides};let mergedAny=false;
+ for(const [id,url] of Object.entries(links||{}))if(!mergedLinks[id]&&DATA.games.some(g=>g.id===id)&&safeURL(url)){
+   mergedLinks[id]=url;mergedAny=true;
+ }
+ if(!cloudCache.remoteSettingsExists&&loadJSON(MOTION_KEY,false)===true){cloudCache.settings.reduceMotion=true;mergedAny=true;}
+ if(mergedAny){cloudCache.settings.overrides=mergedLinks;cloudCache.pendingSettings=new Date().toISOString();}
+ saveJSON('morning-circuit-imported-v1-'+cloudAccount.id,true);saveCloudCache();applyAccountView();updateImportPrompt();
+ accountMessage(`Imported ${count} game results from this device. Guest data is still preserved.`);
+ scheduleCloudSync(100);
+}
+async function initializeCloud(){
+ try{
+   // The site stays fully usable offline or when this optional library cannot load.
+   const {createClient}=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+   cloudClient=createClient(CLOUD_URL,CLOUD_PUBLIC_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'morning-circuit-auth-v1'}});
+   cloudReady=true;
+   const {data:{session},error}=await cloudClient.auth.getSession();
+   if(error)throw error;
+   await setCloudSession(session);
+   cloudClient.auth.onAuthStateChange((event,next)=>{
+     if(event==='SIGNED_IN'||event==='SIGNED_OUT'||event==='INITIAL_SESSION')setTimeout(()=>void setCloudSession(next),0);
+     if(event==='PASSWORD_RECOVERY')setTimeout(()=>{showAccountPanel(true);accountMessage('Password recovery link verified. Enter a new password below and choose Update password.');$('signInBtn').textContent='Update password';$('authForm').dataset.recovery='true';$('accountGuest').classList.remove('hidden');},0);
+   });
+ }catch(e){cloudReady=false;accountMessage('Cloud login is unavailable on this connection. Guest mode still works.',true);}
+}
+$('accountToggle').addEventListener('click',()=>showAccountPanel($('accountPanel').classList.contains('hidden')));
+$('accountClose').addEventListener('click',()=>showAccountPanel(false));
+$('authForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!cloudReady){accountMessage('Cloud login is still loading or unavailable.',true);return;}
+ const email=$('accountEmail').value.trim(),password=$('accountPassword').value;
+ try{
+   if($('authForm').dataset.recovery==='true'){
+     const {error}=await cloudClient.auth.updateUser({password});if(error)throw error;
+     $('authForm').dataset.recovery='false';$('signInBtn').textContent='Sign in';refreshAccountUI();accountMessage('Password changed. You can continue using your account.');return;
+   }
+   accountMessage('Signing in…');const {error}=await cloudClient.auth.signInWithPassword({email,password});
+   if(error)throw error;accountMessage('Signed in! Your progress is loading.');
+ }catch(err){accountMessage(err.message||String(err),true);}
+});
+$('signUpBtn').addEventListener('click',async()=>{
+ if(!cloudReady){accountMessage('Cloud login is not available yet.',true);return;}
+ const email=$('accountEmail').value.trim(),password=$('accountPassword').value;
+ if(!email||password.length<6){accountMessage('Enter your email and a password of at least 6 characters.',true);return;}
+ try{
+   accountMessage('Creating your account…');
+   const {data,error}=await cloudClient.auth.signUp({email,password,options:{emailRedirectTo:'https://cleanfel.github.io/MorningCircuit/'}});
+   if(error)throw error;
+   accountMessage(data.session?'Account created and signed in!':'Check your email to confirm your account, then sign in here.');
+ }catch(err){accountMessage(err.message||String(err),true);}
+});
+$('resetPasswordBtn').addEventListener('click',async()=>{
+ if(!cloudReady){accountMessage('Cloud login is unavailable.',true);return;}
+ const email=$('accountEmail').value.trim();if(!email){accountMessage('Enter your email address first.',true);return;}
+ try{const {error}=await cloudClient.auth.resetPasswordForEmail(email,{redirectTo:'https://cleanfel.github.io/MorningCircuit/'});
+   if(error)throw error;accountMessage('If that address is registered, a password-reset email is on its way.');}
+ catch(err){accountMessage(err.message||String(err),true);}
+});
+$('signOutBtn').addEventListener('click',async()=>{
+ if(!cloudClient||!cloudAccount)return;
+ if(Object.keys(cloudCache.pending).length||cloudCache.pendingSettings){
+   await syncCloud();
+   if(Object.keys(cloudCache.pending).length||cloudCache.pendingSettings){
+     accountMessage('Some changes are not synced yet. Reconnect before signing out so no results are stranded on this device.',true);return;
+   }
+ }
+ try{const {error}=await cloudClient.auth.signOut();if(error)throw error;await setCloudSession(null);accountMessage('Signed out. You are back in guest mode.');}
+ catch(err){accountMessage(err.message||String(err),true);}
+});
+$('syncNowBtn').addEventListener('click',()=>void syncCloud());
+$('importGuestBtn').addEventListener('click',()=>void importGuestHistory());
+$('skipGuestBtn').addEventListener('click',()=>{$('importBox').classList.add('hidden');accountMessage('You can import your device’s guest history later by reopening this panel.');});
+setInterval(()=>{if(!document.hidden&&cloudAccount)void syncCloud();},60000);
+
 applyMotion();
 render();
+void initializeCloud();
 </script>
 </body>
 </html>
