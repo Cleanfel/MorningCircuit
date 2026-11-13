@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#f8efdc">
 <meta name="description" content="Your daily puzzle checklist: 54 games from gentle warm-ups to deep thinking, with scores and progress in one place.">
 <title>Morning Circuit — A little brain food</title>
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%23f8efdc%22/%3E%0A%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2227%22%20fill%3D%22%23f2c766%22%20stroke%3D%22%23af8243%22%20stroke-width%3D%222.6%22%20stroke-dasharray%3D%222.4%203.5%22/%3E%0A%20%3Cg%20stroke%3D%22%23805029%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M32%2010v5M17%2017l4%204M47%2017l-4%204%22%20stroke-width%3D%222.8%22/%3E%3Cpath%20d%3D%22M21%2030a11%2011%200%200%201%2022%200%22%20stroke-width%3D%223.4%22/%3E%3C/g%3E%0A%20%3Crect%20x%3D%2218%22%20y%3D%2228%22%20width%3D%2228%22%20height%3D%2225%22%20rx%3D%224%22%20fill%3D%22%23fff2cf%22%20stroke%3D%22%23805029%22%20stroke-width%3D%222.5%22/%3E%0A%20%3Cpath%20d%3D%22m24%2041%206%205%2010-11%22%20fill%3D%22none%22%20stroke%3D%22%233f7353%22%20stroke-width%3D%224.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E">
-
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
 <style>
 :root {
   color-scheme:light;
@@ -225,6 +225,22 @@ html{scroll-padding-top:95px}
 .calm-view .board-doodles,.calm-view .hero-art{display:none!important}
 .calm-view *, .calm-view *::before, .calm-view *::after{animation:none!important;transition:none!important}
 @media(prefers-reduced-motion:reduce){.game-note,.game-note:hover{transform:none!important;transition:none!important}}
+
+/* v5.1: a small guided score input, still tucked inside the completed note. */
+.score-form{align-items:flex-end}
+.score-guided{display:flex;align-items:flex-end;gap:7px;flex:1 1 140px;min-width:0;flex-wrap:wrap}
+.score-guided-field{display:flex;flex-direction:column;gap:3px;min-width:115px;flex:1 1 120px}
+.score-guided-field>span{font-size:11px;font-weight:800;color:#546b54}
+.score-guided select,.score-guided input{width:100%;min-width:0;max-width:none;height:36px;padding:6px 9px;border:1px solid #b0b29b;border-radius:7px;background:#fffef5;color:#2f4636;font:inherit;font-size:13px}
+.score-guided select:focus-visible,.score-guided input:focus-visible{outline:2px solid #477d62;outline-offset:1px}
+.score-guided .score-unit{font-size:11px;color:#64705d;padding-bottom:8px;font-weight:750;flex:0 1 auto}
+.score-form .score-mode-toggle{padding:5px 0;min-height:32px;border:0;background:transparent;color:#466a56;font-size:11px;font-weight:850;text-decoration:underline;text-underline-offset:2px}
+.score-form .score-hint{flex-basis:100%;font-size:11px;color:#6e7667;line-height:1.4;margin:0}
+.score-form .score-clear{background:transparent;border:0;padding:6px;color:#926154;font-size:11px;font-weight:800;text-decoration:underline;text-underline-offset:2px;min-height:32px}
+.score-form .score-guided input[type=number]{appearance:textfield;-moz-appearance:textfield}
+.score-form .score-guided input[type=number]::-webkit-outer-spin-button,.score-form .score-guided input[type=number]::-webkit-inner-spin-button{appearance:none;margin:0}
+@media(max-width:520px){.score-guided{flex-basis:100%}.score-guided-field{flex-basis:100%}.score-form .score-hint{flex-basis:100%}}
+
 </style>
 </head>
 <body>
@@ -366,20 +382,88 @@ const CLOUD_CACHE_PREFIX='morning-circuit-cloud-v1-';
 
 function applyMotion(){document.documentElement.classList.toggle('calm-view',reduceMotion);$('calmToggle').checked=reduceMotion;}
 function persistScores(){if(cloudAccount){saveCloudCache();return;}scoreArchive[day]={...scores};saveJSON(SCORES_KEY,scoreArchive);}
+// Scores remain strings in the existing local/cloud schema; no migration is necessary.
+// Guided inputs are a convenience layer, not a new required step.
+const SCORE_TYPES={
+ 'wordle':{kind:'guesses',label:'Guesses',max:6,help:'Choose 1–6 guesses, or X if unsolved.'},
+ 'worldle':{kind:'guesses',label:'Guesses',max:6,help:'Choose 1–6 guesses, or X if unsolved.'},
+ 'nerdle':{kind:'guesses',label:'Guesses',max:6,help:'Choose 1–6 guesses, or X if unsolved.'},
+ 'connections':{kind:'mistakes',label:'Mistakes',max:4,help:'0 is a perfect solve; 4 means the puzzle was lost.'},
+ 'minute-cryptic':{kind:'time',label:'Solve time',help:'Enter your personal solve time as minutes:seconds.'},
+ 'queens':{kind:'time',label:'Solve time',help:'Enter your LinkedIn Queens completion time.'},
+ 'more-or-less':{kind:'points',label:'Points',help:'Enter the number of points you earned.'},
+ 'timeguessr':{kind:'points',label:'Points',help:'Enter the number of points you earned.'},
+ 'travle':{kind:'extra',label:'Extra guesses',help:'Enter how many guesses above the shortest route you used.'},
+ 'waffle':{kind:'stars',label:'Stars',max:5,help:'Choose how many of the 5 possible stars you earned.'}
+};
+let scoreEditorMode='guided';
+function scoreGuidedValue(gameId,raw){
+ const cfg=SCORE_TYPES[gameId];if(!cfg)return null;
+ const s=String(raw||'').trim();if(!s)return '';
+ let m;
+ if(cfg.kind==='guesses'){m=s.match(/^([1-6X])\s*\/\s*6$/i);return m?m[1].toUpperCase():null;}
+ if(cfg.kind==='mistakes'){m=s.match(/^([0-4])\s*mistakes?$/i);return m?m[1]:null;}
+ if(cfg.kind==='time')return /^\d{1,3}:[0-5]\d$/.test(s)?s:null;
+ if(cfg.kind==='points'){m=s.match(/^([\d,]+(?:\.\d+)?)\s*(?:points?|pts?)$/i);return m?m[1].replace(/,/g,''):null;}
+ if(cfg.kind==='extra'){m=s.match(/^(\d{1,3})\s*extra\s*guesses?$/i);return m?m[1]:null;}
+ if(cfg.kind==='stars'){m=s.match(/^([0-5])\s*\/\s*5(?:\s*stars?)?$/i);return m?m[1]:null;}
+ return null;
+}
 function scoreFormHTML(gameId){
-  const value=escapeHTML(scores[gameId]||'');
-  return `<form class="score-form" data-score-form="${gameId}"><label for="score-${gameId}">Optional score</label><input type="text" id="score-${gameId}" name="score" maxlength="70" value="${value}" placeholder="3/6, 85 pts, 2:15…" autocomplete="off"><button class="score-save" type="submit">Save</button><button class="score-skip" type="button" data-score-skip="${gameId}">Skip</button></form>`;
+ const raw=scores[gameId]||'',cfg=SCORE_TYPES[gameId],old=scoreGuidedValue(gameId,raw);
+ // Do not rewrite older or unconventional scores: offer a plain text field instead.
+ const guided=!!cfg&&scoreEditorMode!=='free';
+ const value=escapeHTML(raw),opt=(v,label)=>`<option value="${v}"${String(old)===String(v)?' selected':''}>${label}</option>`;
+ let field='';
+ if(guided){
+  if(cfg.kind==='guesses')field=`<select id="score-${gameId}" name="score" required aria-label="${cfg.label}">${opt('','Choose result')}${Array.from({length:cfg.max},(_,i)=>opt(i+1,`${i+1} / ${cfg.max}`)).join('')}${opt('X',`X / ${cfg.max} (unsolved)`)}</select>`;
+  else if(cfg.kind==='mistakes')field=`<select id="score-${gameId}" name="score" required aria-label="Mistakes">${opt('','Choose result')}${Array.from({length:5},(_,i)=>opt(i,i===4?'4 · Not solved':i===0?'0 · Perfect':`${i} mistake${i===1?'':'s'}`)).join('')}</select>`;
+  else if(cfg.kind==='stars')field=`<select id="score-${gameId}" name="score" required aria-label="Stars">${opt('','Choose result')}${Array.from({length:6},(_,i)=>opt(i,`${i} / 5 stars`)).join('')}</select>`;
+  else if(cfg.kind==='time')field=`<input id="score-${gameId}" name="score" type="text" inputmode="numeric" value="${escapeHTML(old)}" required maxlength="7" pattern="[0-9]{1,3}:[0-5][0-9]" placeholder="2:34" title="Minutes:seconds, for example 2:34" autocomplete="off">`;
+  else if(cfg.kind==='points')field=`<input id="score-${gameId}" name="score" type="number" min="0" step="any" inputmode="decimal" value="${escapeHTML(old)}" required placeholder="850" autocomplete="off">`;
+  else if(cfg.kind==='extra')field=`<input id="score-${gameId}" name="score" type="number" min="0" max="999" step="1" inputmode="numeric" value="${escapeHTML(old)}" required placeholder="0" autocomplete="off">`;
+ }
+ return `<form class="score-form${guided?' is-guided':''}" data-score-form="${gameId}" data-score-kind="${guided?cfg.kind:'free'}">
+   ${guided?`<div class="score-guided"><label class="score-guided-field" for="score-${gameId}"><span>${escapeHTML(cfg.label)}</span>${field}</label>${cfg.kind==='time'?'<span class="score-unit">min:sec</span>':''}</div>`:`<label for="score-${gameId}">Optional score</label><input type="text" id="score-${gameId}" name="score" maxlength="70" value="${value}" placeholder="3/6, 850 points, 2:15…" autocomplete="off">`}
+   <button class="score-save" type="submit">Save</button><button class="score-skip" type="button" data-score-skip="${gameId}">Skip</button>
+   ${cfg?`<button class="score-mode-toggle" type="button" data-score-mode="${gameId}" aria-label="${guided?'Use free-text score entry':'Use guided score entry'} for ${gameId}">${guided?'Use custom text':'Use guided input'}</button>`:''}
+   ${raw?`<button class="score-clear" type="button" data-score-clear="${gameId}">Clear score</button>`:''}
+   ${guided?`<p class="score-hint">${escapeHTML(cfg.help)} · Recording is always optional.</p>`:''}
+ </form>`;
+}
+function scoreFromForm(form){
+ const gameId=form.dataset.scoreForm,cfg=SCORE_TYPES[gameId],kind=form.dataset.scoreKind;
+ const text=String(form.elements.score.value||'').trim();
+ if(kind==='free'||!cfg)return text;
+ if(!text)return null;
+ if(kind==='guesses')return text.toUpperCase()+'/'+cfg.max;
+ if(kind==='mistakes')return text+' mistake'+(text==='1'?'':'s');
+ if(kind==='time')return /^\d{1,3}:[0-5]\d$/.test(text)?text:null;
+ if(kind==='points'){const n=Number(text);return Number.isFinite(n)&&n>=0?n+' points':null;}
+ if(kind==='extra'){const n=Number(text);return Number.isInteger(n)&&n>=0&&n<=999?n+' extra guess'+(n===1?'':'es'):null;}
+ if(kind==='stars')return text+'/5 stars';
+ return text;
 }
 function saveScore(gameId,value){
   if(!DATA.games.some(g=>g.id===gameId))return;
   const clean=value.trim().slice(0,70);
   if(clean)scores[gameId]=clean;else delete scores[gameId];
-  persistScores();queueCloudGame(gameId);scoreEditorId=null;scoreEditorWhere=null;render();toast(clean?'Score saved to your board!':'No score saved.');
+  persistScores();queueCloudGame(gameId);scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';render();toast(clean?'Score saved to your board!':'No score saved.');
 }
-function closeScore(){scoreEditorId=null;scoreEditorWhere=null;render();}
+function closeScore(){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';render();}
 function handleScoreSubmit(e){
   const form=e.target.closest('form[data-score-form]');if(!form)return;
-  e.preventDefault();saveScore(form.dataset.scoreForm,form.elements.score.value);
+  e.preventDefault();const parsed=scoreFromForm(form);if(parsed===null){toast('Enter a valid score, or use custom text.');return;}saveScore(form.dataset.scoreForm,parsed);
+}
+function handleScoreAction(e){
+ const mode=e.target.closest('[data-score-mode]');if(mode){
+  const id=mode.dataset.scoreMode;
+  scoreEditorMode=scoreEditorMode==='free'?'guided':'free';
+  // If old score is incompatible, guided starts with a blank, without erasing the saved text.
+  render();const form=document.querySelector(`form[data-score-form="${id}"]`);form?.elements?.score?.focus();return true;
+ }
+ const clear=e.target.closest('[data-score-clear]');if(clear){saveScore(clear.dataset.scoreClear,'');return true;}
+ return false;
 }
 function urlFor(game){return safeURL(overrides[game.id])||game.url;}
 function iconHTML(name){return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"></use></svg>`;}
@@ -387,7 +471,7 @@ function persist(){if(cloudAccount){saveCloudCache();return;}saveJSON(STORAGE_KE
 function syncDay(){const current=dayKey();if(current===day)return;day=current;if(cloudAccount){readAccountDay();}else{completed.clear();scores={...(scoreArchive[day]||{})};}scoreEditorId=null;scoreEditorWhere=null;persist();render();if(cloudAccount)scheduleCloudSync();toast('Fresh day, fresh board. Good morning!');}
 function toast(s){const e=$('toast');e.textContent=s;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700);}
 function nextGame(){return DATA.games.find(g=>!completed.has(g.id));}
-function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
+function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;scoreEditorMode=scoreGuidedValue(id,scores[id]||'')===null?'free':'guided';}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every sticky note finished. See you tomorrow!');}
 function render(){
  const n=completed.size, pct=Math.round((n/TOTAL)*100);
  $('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
@@ -443,8 +527,9 @@ function render(){
 }
 $('listRoot').addEventListener('click',e=>{
  const done=e.target.closest('[data-done]');if(done){setComplete(done.dataset.done,!completed.has(done.dataset.done),'card');return;}
- const scoreOpen=e.target.closest('[data-score-open]');if(scoreOpen){scoreEditorId=scoreOpen.dataset.scoreOpen;scoreEditorWhere='card';render();return;}
+ const scoreOpen=e.target.closest('[data-score-open]');if(scoreOpen){scoreEditorId=scoreOpen.dataset.scoreOpen;scoreEditorWhere='card';scoreEditorMode=scoreGuidedValue(scoreEditorId,scores[scoreEditorId]||'')===null?'free':'guided';render();return;}
  if(e.target.closest('[data-score-skip]')){closeScore();return;}
+ if(handleScoreAction(e))return;
  const edit=e.target.closest('[data-edit]');if(edit){
   const g=DATA.games.find(x=>x.id===edit.dataset.edit);if(!g)return;
   const input=window.prompt(`Link for ${g.name}\nPaste the full URL, or leave blank to use the default.`,urlFor(g));
@@ -460,7 +545,7 @@ $('toggleFilter').addEventListener('click',()=>{unfinishedOnly=!unfinishedOnly;r
 $('resetToday').addEventListener('click',()=>{if(!completed.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games and saved scores?`)){completed.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;persist();persistScores();if(cloudAccount){for(const g of DATA.games)queueCloudGame(g.id);}render();toast('Fresh board, ready to go!');}});
 $('listRoot').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('submit',handleScoreSubmit);
-$('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]'))closeScore();});
+$('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]')){closeScore();return;}handleScoreAction(e);});
 $('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;if(cloudAccount)queueCloudSettings();else saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
 window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY].includes(e.key)){
  const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
@@ -581,7 +666,7 @@ async function pullCloud(){
    }
    cloudCache.settings={overrides:clean,reduceMotion:!!remote.reduce_motion};changed=true;
  }
- if(changed){saveCloudCache();if(!document.activeElement?.matches('.score-form input'))applyAccountView();}
+ if(changed){saveCloudCache();if(!document.activeElement?.matches('.score-form input, .score-form select'))applyAccountView();}
 }
 async function pushCloud(){
  if(!cloudAccount)return;
@@ -759,11 +844,17 @@ function statisticsRows(){
 }
 function parseMetric(gameId,raw){
  const value=String(raw||'').trim();if(!value)return null;
+ const mistake=value.match(/^([0-4])\s*mistakes?$/i);
+ if(mistake)return {group:'mistakes',value:Number(mistake[1]),label:'Average mistakes',unit:'mistakes',better:'low'};
+ const extra=value.match(/^(\d{1,3})\s*extra\s*guesses?$/i);
+ if(extra)return {group:'extra',value:Number(extra[1]),label:'Average extra guesses',unit:'extra guesses',better:'low'};
+ const stars=value.match(/^([0-5])\s*\/\s*5\s*stars?$/i);
+ if(stars)return {group:'stars',value:Number(stars[1]),label:'Average stars · out of 5',unit:'stars',better:'high'};
  const ratio=value.match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
  if(ratio){const val=Number(ratio[1]),max=Number(ratio[2]);if(max<=0||val>max)return null;
    if((gameId==='wordle'||gameId==='nerdle')&&max===6&&Number.isInteger(val)&&val>=1)return {group:'guesses',value:val,label:'Average guesses',unit:'guesses',better:'low'};
    return {group:'out-of-'+max,value:val,label:'Average result · out of '+max,unit:'',better:null};}
- const clock=value.match(/^(\d{1,2}):(\d{2})$/);
+ const clock=value.match(/^(\d{1,3}):(\d{2})$/);
  if(clock&&Number(clock[2])<60)return {group:'time',value:Number(clock[1])*60+Number(clock[2]),label:'Average time',unit:'',better:'low'};
  const points=value.match(/^([\d,]+(?:\.\d+)?)\s*(?:points?|pts?)$/i);
  if(points)return {group:'points',value:Number(points[1].replace(/,/g,'')),label:'Average points',unit:'points',better:'high'};
