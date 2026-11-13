@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#f8efdc">
 <meta name="description" content="Your daily puzzle checklist: 54 games from gentle warm-ups to deep thinking, with scores and progress in one place.">
 <title>Morning Circuit — A little brain food</title>
-<link rel="manifest" href="manifest.webmanifest?v=541">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=541">
-<link rel="apple-touch-icon" href="assets/icon-192.png?v=541">
+<link rel="manifest" href="manifest.webmanifest?v=226">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=226">
+<link rel="apple-touch-icon" href="assets/icon-192.png?v=226">
 <style>
 :root {
   color-scheme:light;
@@ -308,6 +308,39 @@ html{scroll-padding-top:95px}
   .topright .sync-pill-label{white-space:nowrap}
 }
 
+
+/* v2.2.3–2.2.6: fast rendering, useful focus treatment, and a quiet utility bar. */
+.brand-copy{display:flex;flex-direction:column;gap:2px;align-items:flex-start;line-height:1.12}
+.brand-version{font:600 9px/1.2 system-ui,sans-serif;letter-spacing:.05em;text-transform:none;color:#9a8871}
+.section{content-visibility:auto;contain-intrinsic-size:auto 450px}
+@media (hover:hover) and (pointer:fine){.game-note:hover{transform:rotate(0deg);box-shadow:3px 6px 0 rgba(106,68,35,.19),3px 10px 9px rgba(65,39,23,.09)}}
+@media (hover:none){.game-note:hover{transform:rotate(var(--tilt,0deg));box-shadow:3px 5px 0 rgba(106,68,35,.24),3px 10px 9px rgba(65,39,23,.09)}}
+:focus-visible{outline:3px solid #317a67!important;outline-offset:3px}
+.find-paper{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:13px 16px;margin:0 0 19px;background:#fff9ea;border:1px solid #e1cfac;border-radius:12px;box-shadow:2px 3px 0 #eadeca}
+.find-label{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:850;color:#42624e;white-space:nowrap}.find-label>span{font:700 24px/1 Georgia,serif;color:#987a55}.find-label small{font-size:10px;font-weight:600;color:#91856f;margin-left:2px}
+.find-field{display:flex;align-items:center;flex:1 1 220px;min-width:0;background:#fffdf6;border:1px solid #c9b99a;border-radius:8px;overflow:hidden}.find-field:focus-within{outline:2px solid #5a9a7d;outline-offset:2px}
+.find-field input{height:40px;min-width:0;flex:1;padding:8px 12px;border:0;outline:none!important;background:transparent;color:#344b39;font:inherit;font-size:14px;box-shadow:none}
+.search-clear{background:transparent;border:0;border-left:1px solid #e2d7c0;color:#60755e;padding:8px 13px;font-size:11px;font-weight:850;min-height:40px}
+.search-summary{font-size:11px;font-weight:750;color:#7d7565;flex:0 1 auto}
+.game-note.skipped{min-height:51px;background:#f1e4cc;border-color:#d7bda2;transform:none;flex-direction:row;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 11px;box-shadow:2px 3px 0 rgba(106,68,35,.16)}
+.game-note.skipped:hover{transform:none}.skipped .compact-name{font-size:15px;color:#836f59;text-decoration:none}.skipped .compact-tools{gap:7px}.skipped-label{border:1px solid #c9b391;background:#fff8e7;color:#8b6847;font:800 10px/1.2 system-ui,sans-serif;border-radius:6px;padding:6px 7px}
+.note-skip{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:38px;border:1px solid rgba(100,79,58,.21);border-radius:7px;background:rgba(255,255,255,.22);color:#8b705c;font-size:11px;font-weight:800;padding:5px 7px;white-space:nowrap}
+.note-skip:hover{background:rgba(255,255,255,.7)}
+.compact-pending .note-skip{min-height:35px;min-width:35px;padding:4px 7px}
+.toast{display:flex;align-items:center;justify-content:center;gap:14px;min-width:min(320px,90vw);pointer-events:none}.toast.show{pointer-events:auto}
+.toast-undo{background:#f9e9ba;color:#294932;border:1px solid #ebd9a4;border-radius:7px;font-size:12px;font-weight:900;min-height:34px;padding:6px 11px}
+.toast-undo:hover{background:#fff6db}
+@media(max-width:730px){.find-paper{gap:8px;padding:11px 12px}.find-label small{display:none}.search-summary{flex:1 1 100%;text-align:right}.note-skip{min-height:38px}.brand-version{font-size:9px}}
+@media(max-width:420px){.find-paper{margin-bottom:14px}.find-field{flex-basis:100%}.game-note:not(.completed) .note-actions{gap:5px}.note-skip{font-size:10px;min-width:32px;padding:5px}.note-edit{min-width:36px}.game-note.compact-pending .compact-tools{gap:3px}}
+.calm-view .find-paper{box-shadow:none}
+@media(max-width:420px){
+ .game-note:not(.completed):not(.skipped):not(.compact-pending) .note-play{padding:5px 8px;min-height:39px}
+ .game-note:not(.completed):not(.skipped):not(.compact-pending) .note-done{padding:5px 6px;font-size:11px;min-height:39px}
+ .game-note:not(.completed):not(.skipped):not(.compact-pending) .note-edit{min-width:31px;width:31px}
+ .game-note:not(.completed):not(.skipped):not(.compact-pending) .note-skip{min-width:29px;padding:4px}
+}
+
+
 </style>
 </head>
 <body>
@@ -335,7 +368,7 @@ html{scroll-padding-top:95px}
 </defs></svg>
 <div class="shell">
   <header class="topbar" id="top">
-    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img src="assets/logo.svg?v=541" width="42" height="42" alt="" aria-hidden="true"></span><span>Morning Circuit</span></a>
+    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img src="assets/logo.svg?v=226" width="42" height="42" alt="" aria-hidden="true"></span><span class="brand-copy"><span>Morning Circuit</span><small class="brand-version" title="Current release · v2.2.6">v2.2.6</small></span></a>
     <div class="topright"><time id="dateLabel">Today</time><button class="sync-pill hidden" id="syncPill" type="button" aria-live="polite" aria-label="Cloud sync status: connecting. Open account details" title="Open sync details"><span class="sync-pill-icon" aria-hidden="true">↻</span><span class="sync-pill-label">Connecting…</span></button><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
   <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
@@ -367,6 +400,11 @@ html{scroll-padding-top:95px}
       <section class="dashboard-card next-card" aria-label="Up next"><div class="next-content"><div class="card-kicker" id="nextEyebrow">✦ Up next · Game 01</div><div class="next-name" id="nextName">Costcodle</div><div class="next-sub" id="nextDescription">Start easy · quick guesses and intuition</div></div><div class="next-actions"><a class="action-primary" id="nextPlay" href="https://costcodle.com/?mode=classic" target="_blank" rel="noopener noreferrer">Play <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a><button class="action-done" id="nextDone">✓ Mark done</button></div></section>
       <div class="recent-score hidden" id="recentScore" aria-live="polite"></div>
     </div>
+    <section class="find-paper" aria-label="Find a daily game">
+      <div class="find-label"><span aria-hidden="true">⌕</span><label for="gameSearch">Find a game</label><small>Press / to search</small></div>
+      <div class="find-field"><input id="gameSearch" type="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search the 54 puzzle notes…" aria-describedby="searchSummary" aria-keyshortcuts="/"><button type="button" id="clearSearch" class="search-clear hidden" aria-label="Clear game search">Clear</button></div>
+      <span id="searchSummary" class="search-summary" role="status" aria-live="polite"></span>
+    </section>
     <div class="board-wrap" id="board"><div class="board">
       <div class="board-doodles" aria-hidden="true"><div class="doodle-left">A + B = C · 42° · 3.14 · ?</div><div class="doodle-right">LAT 34.1° · LONG 84.2°</div></div>
       <div class="board-top"><div><h2 class="board-title"><svg class="ico" aria-hidden="true"><use href="#i-tiles"></use></svg> The puzzle board</h2><p class="board-sub">Pinned in the order your brain wakes up.</p></div><div class="controls"><button class="tool-btn" id="jumpNext">↳ Continue</button><button class="tool-btn" id="compactToggle" aria-pressed="false">Compact view</button><button class="tool-btn" id="toggleFilter" aria-pressed="false">Show unfinished</button><button class="tool-btn" id="resetToday">↺ Reset today</button></div></div>
@@ -379,6 +417,7 @@ html{scroll-padding-top:95px}
     </section>
     <footer class="footer"><div class="footer-mark">a little curiosity goes a long way ✿</div>
       <div class="settings-paper"><div><strong>Your puzzle lineup</strong><p>Move games between stages, change their order, or hide ones you don't play. Your scores stay saved, and the layout syncs to your account.</p></div><button type="button" class="account-secondary" id="arrangeToggle" aria-expanded="false" aria-controls="arrangePanel">✎ Arrange games</button></div>
+      <div class="settings-paper"><div><strong>Little desk sounds</strong><p>Gentle stamp on Done and a pencil scratch when you save a score. No audio files or keyboard clicks. Turn this off anytime.</p></div><label class="motion-control"><input type="checkbox" id="soundToggle" aria-label="Enable subtle game completion and score sounds"><span class="switch-track" aria-hidden="true"></span><span>Sounds</span></label></div>
       <div class="settings-paper"><div><strong>Lighten the effects</strong><p>Reduce hover motion, heavy shadows, and decorative textures for smoother scrolling, especially on desktop.</p></div><label class="motion-control"><input type="checkbox" id="calmToggle" aria-label="Reduce animations and visual effects"><span class="switch-track" aria-hidden="true"></span><span>Reduce motion</span></label></div>
       <p><strong>How to play:</strong> Open a game, have some fun, then tap <strong>Done</strong>. Want to remember how you did? Add an optional score on its sticky note. Your checklist starts fresh every midnight.</p><p>In guest mode, everything stays on this device. When signed in, results and preferences sync privately across devices; offline changes are kept on your device until sync succeeds. Use the pencil on a sticky note to change its link. The games belong to their respective creators.</p></footer>
   </main>
@@ -409,7 +448,7 @@ html{scroll-padding-top:95px}
     </div>
   </section>
 </div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastText"></span><button type="button" id="quickUndo" class="toast-undo hidden" aria-label="Undo last change">Undo</button></div>
 <script>
 'use strict';
 const DATA={"groups":[{"title":"The warm-up","subtitle":"Start easy · quick guesses and intuition","key":"warmup","start":0,"end":7},{"title":"Find your rhythm","subtitle":"Recall, estimates and familiar patterns","key":"building","start":7,"end":24},{"title":"Deep thinking","subtitle":"Wordplay and longer reasoning chains","key":"thinking","start":24,"end":32},{"title":"New York Times","subtitle":"A complete three-game word puzzle block","key":"nyt","start":32,"end":35},{"title":"LinkedIn","subtitle":"Eight games in one uninterrupted block","key":"linkedin","start":35,"end":43},{"title":"The peak","subtitle":"Your toughest mental challenges","key":"peak","start":43,"end":49},{"title":"The cooldown","subtitle":"Wind down with games you enjoy","key":"cooldown","start":49,"end":54}],"games":[{"id":"costcodle","name":"Costcodle","url":"https://costcodle.com/?mode=classic","phase":"warmup","review":false},{"id":"more-or-less","name":"More or Less","url":"https://lessgames.com/moreless","phase":"warmup","review":false},{"id":"size-it-up","name":"Magnitudle / Size It Up","url":"https://magnitudle.com/size-it-up","phase":"warmup","review":false},{"id":"angle","name":"Angle","url":"https://angle.wtf/","phase":"warmup","review":false},{"id":"foodguessr","name":"FoodGuessr","url":"https://www.foodguessr.com/game/daily","phase":"warmup","review":false},{"id":"noillirk","name":"Noillirk","url":"https://krillion.me/noillirk","phase":"warmup","review":false},{"id":"amountdle","name":"Amountdle","url":"https://amountle.dev/","phase":"warmup","review":false},{"id":"worldle","name":"Worldle","url":"https://worldle.teuteuf.fr/","phase":"building","review":false},{"id":"globle","name":"Globle","url":"https://globle-game.com/","phase":"building","review":false},{"id":"maptap","name":"MapTap","url":"https://maptap.gg/","phase":"building","review":false},{"id":"gamedle","name":"Gamedle","url":"https://www.gamedle.wtf/","phase":"building","review":false},{"id":"pokedoku","name":"Pokedoku","url":"https://pokedoku.com/","phase":"building","review":false},{"id":"daily-dozen-trivia","name":"Daily Dozen Trivia","url":"https://dailydozentrivia.com/","phase":"building","review":false},{"id":"thrice","name":"Thrice","url":"https://thrice.geekswhodrink.com/","phase":"building","review":false},{"id":"wranker","name":"Wranker","url":"https://wranker.app/daily","phase":"building","review":false},{"id":"box-office-game","name":"Box Office Game","url":"https://boxofficega.me/","phase":"building","review":false},{"id":"fridgedle","name":"Fridgedle","url":"https://fridgle.net/","phase":"building","review":false},{"id":"powerscadle","name":"Powerscadle","url":"https://www.powerscadle.com/","phase":"building","review":false},{"id":"dartle","name":"Dartle","url":"https://dartle.net/","phase":"building","review":false},{"id":"krillion","name":"Krillion","url":"https://krillion.io/","phase":"building","review":false},{"id":"juxtastat","name":"Juxtastat","url":"https://urbanstats.org/quiz.html","phase":"building","review":false},{"id":"disorderly","name":"Disorderly","url":"https://playdisorderly.com/","phase":"building","review":false},{"id":"jeopardium","name":"Jeopardium","url":"https://jeopardiem.com/","phase":"building","review":false},{"id":"timeguessr","name":"TimeGuessr","url":"https://timeguessr.com/play?mode=daily","phase":"building","review":false},{"id":"keiko-words","name":"Keiko Words","url":"https://keikowords.com/","phase":"thinking","review":false},{"id":"betweendle","name":"Betweendle","url":"https://betweenle.com/","phase":"thinking","review":false},{"id":"parseword","name":"Parseword","url":"https://www.parseword.com/daily","phase":"thinking","review":false},{"id":"catfishing","name":"Catfishing","url":"https://catfishing.net/","phase":"thinking","review":false},{"id":"plaingame","name":"Plain.game","url":"https://plaingame.app/?mode=daily","phase":"thinking","review":false},{"id":"waffle","name":"Waffle","url":"https://wafflegame.net/","phase":"thinking","review":false},{"id":"travle","name":"Travle","url":"https://travle.earth/","phase":"thinking","review":false},{"id":"contexto","name":"Contexto","url":"https://contexto.me/en/","phase":"thinking","review":false},{"id":"wordle","name":"Wordle","url":"https://www.nytimes.com/games/wordle/index.html","phase":"nyt","review":false},{"id":"strands","name":"Strands","url":"https://www.nytimes.com/games/strands","phase":"nyt","review":false},{"id":"connections","name":"Connections","url":"https://www.nytimes.com/games/connections","phase":"nyt","review":false},{"id":"pinpoint","name":"Pinpoint","url":"https://www.linkedin.com/games/pinpoint","phase":"linkedin","review":false},{"id":"crossclimb","name":"Crossclimb","url":"https://www.linkedin.com/games/crossclimb","phase":"linkedin","review":false},{"id":"wend","name":"Wend","url":"https://www.linkedin.com/games/wend","phase":"linkedin","review":false},{"id":"zip","name":"Zip","url":"https://www.linkedin.com/games/zip","phase":"linkedin","review":false},{"id":"mini-sudoku","name":"Mini Sudoku","url":"https://www.linkedin.com/games/mini-sudoku","phase":"linkedin","review":false},{"id":"tango","name":"Tango","url":"https://www.linkedin.com/games/tango","phase":"linkedin","review":false},{"id":"patches","name":"Patches","url":"https://www.linkedin.com/games/patches","phase":"linkedin","review":false},{"id":"queens","name":"Queens","url":"https://www.linkedin.com/games/queens","phase":"linkedin","review":false},{"id":"daily-orbs","name":"Daily Orbs","url":"https://dailyorbs.com/","phase":"peak","review":false},{"id":"cutle","name":"Cutle","url":"https://pfiffel.com/cutle/","phase":"peak","review":false},{"id":"nerdle","name":"Nerdle","url":"https://nerdlegame.com/","phase":"peak","review":false},{"id":"fermi","name":"Fermi","url":"https://fermi.gg/","phase":"peak","review":false},{"id":"clues-by-sam","name":"Clues by Sam","url":"https://cluesbysam.com/","phase":"peak","review":false},{"id":"minute-cryptic","name":"Minute Cryptic","url":"https://www.minutecryptic.com/","phase":"peak","review":false},{"id":"framed","name":"Framed","url":"https://framed.wtf/","phase":"cooldown","review":false},{"id":"guess-the-game","name":"Guess the Game","url":"https://guessthe.game/","phase":"cooldown","review":false},{"id":"scrandle","name":"Scrandle","url":"https://scrandle.com/","phase":"cooldown","review":false},{"id":"letterboxdle","name":"Letterboxdle","url":"https://letterboxdle.net/classic","phase":"cooldown","review":false},{"id":"kinda-hard-golf","name":"Kinda Hard Golf","url":"https://kindahardgolf.com/","phase":"cooldown","review":false}]};
@@ -420,6 +459,8 @@ const OVERRIDES_KEY='morning-circuit-links-v1';
 const SCORES_KEY='morning-circuit-scores-v1';
 const MOTION_KEY='morning-circuit-reduce-motion-v1';
 const BOARD_PREFS_KEY='morning-circuit-board-prefs-v1';
+const SKIPS_KEY='morning-circuit-skipped-v1';
+const SOUND_KEY='morning-circuit-sounds-v1';
 const $=id=>document.getElementById(id);
 const ICONS={
  'costcodle':'jar','more-or-less':'math','size-it-up':'jar','angle':'math','amountdle':'jar',
@@ -446,12 +487,41 @@ let overrides=loadJSON(OVERRIDES_KEY,{});
 let scoreArchive=loadJSON(SCORES_KEY,{});
 if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};
 let scores={...(scoreArchive[day]||{})};
+const savedSkipped=loadJSON(SKIPS_KEY,{});
+let skipped=new Set(savedSkipped.date===day&&Array.isArray(savedSkipped.ids)?savedSkipped.ids.filter(id=>DATA.games.some(g=>g.id===id)):[]);
+let soundEnabled=loadJSON(SOUND_KEY,true);
 let reduceMotion=loadJSON(MOTION_KEY,false);
 const FIXED_PHASES=new Set(['nyt','linkedin']);
 const GAME_BY_ID=new Map(DATA.games.map(g=>[g.id,g]));
 let boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));
 let scoreEditorId=null,scoreEditorWhere=null;
-let unfinishedOnly=false;let toastTimer;
+let unfinishedOnly=false;let toastTimer;let undoRecord=null;let searchQuery='';let searchTimer=null;
+let soundContext=null;
+function playDeskSound(kind){
+ if(!soundEnabled)return;
+ try{
+  const Ctx=window.AudioContext||window.webkitAudioContext;
+  if(!Ctx)return;
+  soundContext=soundContext||new Ctx();
+  if(soundContext.state==='suspended')void soundContext.resume();
+  const ctx=soundContext,t=ctx.currentTime,buf=ctx.createBuffer(1,Math.round(ctx.sampleRate*.10),ctx.sampleRate),data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++){const k=i/data.length;data[i]=(Math.random()*2-1)*(kind==='stamp'?(1-k):(Math.sin(k*60)*.3+.7)*(1-k));}
+  const src=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),vol=ctx.createGain();src.buffer=buf;
+  filter.type=kind==='stamp'?'lowpass':'bandpass';filter.frequency.value=kind==='stamp'?410:1550;
+  vol.gain.setValueAtTime(kind==='stamp'?.11:.045,t);vol.gain.exponentialRampToValueAtTime(.001,t+.095);
+  src.connect(filter);filter.connect(vol);vol.connect(ctx.destination);src.start(t);src.stop(t+.102);
+ }catch{/* Audio is decorative, never a blocker. */}
+}
+function saveSkipped(){if(!cloudAccount)saveJSON(SKIPS_KEY,{date:day,ids:[...skipped]});}
+function snapshotForUndo(id){return {id,day,done:completed.has(id),skip:skipped.has(id),score:scores[id]??null};}
+function restoreUndo(){
+ const state=undoRecord;undoRecord=null;if(!state||state.day!==day)return;
+ if(state.done)completed.add(state.id);else completed.delete(state.id);
+ if(state.skip)skipped.add(state.id);else skipped.delete(state.id);
+ if(state.score===null)delete scores[state.id];else scores[state.id]=state.score;
+ scoreEditorId=null;scoreEditorWhere=null;persist();saveSkipped();persistScores();queueCloudGame(state.id);render();toast('Last change undone.');
+}
+
 let cloudClient=null,cloudAccount=null,cloudCache=null,cloudSyncBusy=false,cloudSyncTimer=null,cloudReady=false;
 const CLOUD_URL='https://yazjrurzrageyfunsskk.supabase.co';
 const CLOUD_PUBLIC_KEY='sb_publishable_Kp9iCIz8WxkMi6NACi0LlA_T_ZN8wpE';
@@ -628,7 +698,7 @@ function saveScore(gameId,value){
   if(!DATA.games.some(g=>g.id===gameId))return;
   const clean=value.trim().slice(0,70);
   if(clean)scores[gameId]=clean;else delete scores[gameId];
-  persistScores();queueCloudGame(gameId);scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';render();toast(clean?'Score saved to your board!':'No score saved.');
+  persistScores();queueCloudGame(gameId);scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';render();if(clean)playDeskSound('pencil');toast(clean?'Score saved to your board!':'No score saved.');
 }
 function closeScore(){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';render();}
 function handleScoreSubmit(e){
@@ -648,18 +718,40 @@ function handleScoreAction(e){
 function urlFor(game){return safeURL(overrides[game.id])||game.url;}
 function iconHTML(name){return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"></use></svg>`;}
 function persist(){if(cloudAccount){saveCloudCache();return;}saveJSON(STORAGE_KEY,{date:day,completed:[...completed]});}
-function syncDay(){const current=dayKey();if(current===day)return;day=current;if(cloudAccount){readAccountDay();}else{completed.clear();scores={...(scoreArchive[day]||{})};}scoreEditorId=null;scoreEditorWhere=null;persist();render();if(cloudAccount)scheduleCloudSync();toast('Fresh day, fresh board. Good morning!');}
-function toast(s){const e=$('toast');e.textContent=s;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700);}
-function nextGame(){return activeGames().find(g=>!completed.has(g.id));}
-function setComplete(id,done,where='card'){syncDay();if(!DATA.games.some(g=>g.id===id))return;if(done){completed.add(id);scoreEditorId=id;scoreEditorWhere=where;scoreEditorMode=scoreGuidedValue(id,scores[id]||'')===null?'free':'guided';}else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';}}persist();queueCloudGame(id);render();const next=nextGame();toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'Every visible sticky note finished. See you tomorrow!');}
+function syncDay(){const current=dayKey();if(current===day)return;day=current;if(cloudAccount){readAccountDay();}else{completed.clear();skipped.clear();saveSkipped();scores={...(scoreArchive[day]||{})};}scoreEditorId=null;scoreEditorWhere=null;undoRecord=null;persist();render();if(cloudAccount)scheduleCloudSync();toast('Fresh day, fresh board. Good morning!');}
+function toast(s,canUndo=false){
+ const e=$('toast');$('toastText').textContent=s;$('quickUndo').classList.toggle('hidden',!canUndo);
+ e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>{e.classList.remove('show');undoRecord=null;},canUndo?7500:2700);
+}
+$('quickUndo').addEventListener('click',restoreUndo);
+function nextGame(){return activeGames().find(g=>!completed.has(g.id)&&!skipped.has(g.id));}
+function setComplete(id,done,where='card'){
+ syncDay();if(!GAME_BY_ID.has(id))return;
+ undoRecord=snapshotForUndo(id);
+ if(done){completed.add(id);skipped.delete(id);scoreEditorId=id;scoreEditorWhere=where;scoreEditorMode=scoreGuidedValue(id,scores[id]||'')===null?'free':'guided';playDeskSound('stamp');}
+ else{completed.delete(id);if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;scoreEditorMode='guided';}}
+ persist();saveSkipped();queueCloudGame(id);render();const next=nextGame();
+ toast(!done?'Back on the board.':next?`Nice! Next up: ${next.name}`:'You’ve reached the end of today’s circuit.',true);
+}
+function setSkipped(id,skip=true){
+ syncDay();if(!GAME_BY_ID.has(id))return;
+ undoRecord=snapshotForUndo(id);
+ if(skip){skipped.add(id);completed.delete(id);delete scores[id];if(scoreEditorId===id){scoreEditorId=null;scoreEditorWhere=null;}}
+ else skipped.delete(id);
+ persist();saveSkipped();persistScores();queueCloudGame(id);render();
+ toast(skip?`${GAME_BY_ID.get(id).name} skipped for today.`:'Back in your lineup.',true);
+}
 function render(){
- const total=activeTotal(), n=activeDoneCount(), pct=total?Math.round((n/total)*100):0;
+ const orderedActive=activeGames(), total=orderedActive.length, n=orderedActive.filter(g=>completed.has(g.id)).length,skipCount=orderedActive.filter(g=>skipped.has(g.id)).length, pct=total?Math.round((n/total)*100):0;
+ const orderIndex=new Map(orderedActive.map((g,i)=>[g.id,i]));
  $('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
  $('progressLabel').innerHTML=`${n} <small>/ ${total}</small>`;
  $('progressFill').style.width=pct+'%';$('progressTrack').setAttribute('aria-valuenow',String(n));$('progressTrack').setAttribute('aria-valuemax',String(total));$('progressPercent').textContent=pct+'%';
- $('progressMessage').textContent=total===0?'No games shown yet.':n===total?'Board cleared!':n===0?'Ready when you are.':`${total-n} to go. You’ve got this!`;
- $('finishBanner').classList.toggle('hidden',total===0||n!==total);
- const next=nextGame(),idx=next?activeGames().findIndex(g=>g.id===next.id):-1;
+ $('progressMessage').textContent=total===0?'No games shown yet.':n===total?'Board cleared!':n+skipCount===total?`${skipCount} skipped today · circuit wrapped up.`:n===0?(skipCount?`${skipCount} skipped · ready when you are.`:'Ready when you are.'):`${total-n-skipCount} to play${skipCount?` · ${skipCount} skipped`:''}.`;
+ $('finishBanner').classList.toggle('hidden',total===0||n+skipCount!==total);
+ $('finishBanner').querySelector('strong').textContent=skipCount?'Your circuit is wrapped up!':'Every note checked off!';
+ $('finishBanner').querySelector('p').textContent=skipCount?`${n} finished and ${skipCount} skipped for today. Fresh board tomorrow.`:'Your circuit is complete for today. Enjoy the rest of your day.';
+ const next=orderedActive.find(g=>!completed.has(g.id)&&!skipped.has(g.id)),idx=next?orderIndex.get(next.id):-1;
  if(next){
   const section=DATA.groups.find(g=>g.key===phaseFor(next.id));
   $('nextEyebrow').textContent=`✦ Up next · ${String(idx+1).padStart(2,'0')} of ${total}`;
@@ -667,8 +759,8 @@ function render(){
   $('nextPlay').href=urlFor(next);$('nextPlay').classList.remove('hidden');$('nextDone').classList.remove('hidden');
   $('nextDone').dataset.done=next.id;
  }else{
-  $('nextEyebrow').textContent='✦ All finished';$('nextName').textContent=total?'You did it!':'Your board is empty';
-  $('nextDescription').textContent=total?'A full board of little wins. Come back tomorrow!':'Open Arrange games below to show some notes.';
+  $('nextEyebrow').textContent='✦ All handled';$('nextName').textContent=total?(skipCount?'All set for today!':'You did it!'):'Your board is empty';
+  $('nextDescription').textContent=total?(skipCount?`${n} done · ${skipCount} skipped. Come back tomorrow!`:'A full board of little wins. Come back tomorrow!'):'Open Arrange games below to show some notes.';
   $('nextPlay').classList.add('hidden');$('nextDone').classList.add('hidden');
  }
  const recent=$('recentScore');
@@ -681,14 +773,20 @@ function render(){
  $('compactToggle').textContent=boardPrefs.compact?'Comfortable view':'Compact view';$('compactToggle').setAttribute('aria-pressed',String(boardPrefs.compact));
  const out=DATA.groups.map((group,gi)=>{
   const all=groupGames(group.key);
-  const visible=all.filter(g=>!(unfinishedOnly&&completed.has(g.id))||(scoreEditorWhere==='card'&&scoreEditorId===g.id));
-  if(!visible.length&&unfinishedOnly)return '';
+  const visible=all.filter(g=>((!unfinishedOnly||(!completed.has(g.id)&&!skipped.has(g.id)))||(scoreEditorWhere==='card'&&scoreEditorId===g.id))&&(!searchQuery||g.name.toLocaleLowerCase().includes(searchQuery)));
+  if(!visible.length)return '';
   const done=all.filter(g=>completed.has(g.id)).length;
   const notes=visible.map((g,li)=>{
-   const i=activeGames().findIndex(x=>x.id===g.id);
+   const i=orderIndex.get(g.id);
    const finished=completed.has(g.id),color=(PALETTE[group.key]+li)%6;
    const badge=overrides[g.id]?'Custom link':'Daily puzzle';
    const scoreText=scores[g.id]||'';
+   if(skipped.has(g.id)){
+     return `<article class="game-note skipped note-color-${color}" id="game-${g.id}" data-id="${g.id}" aria-label="${escapeHTML(g.name)}: skipped today">
+       <div class="compact-left"><span class="compact-icon">${iconHTML(ICONS[g.id]||'tiles')}</span><h4 class="compact-name">${escapeHTML(g.name)}</h4></div>
+       <div class="compact-tools"><span class="skipped-label">Skipped today</span><button class="note-skip" type="button" data-unskip="${g.id}" aria-label="Unskip ${escapeHTML(g.name)}">↶ Undo</button><button class="compact-edit note-edit" type="button" data-edit="${g.id}" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
+     </article>`;
+   }
    if(finished){
      const editing=scoreEditorId===g.id&&scoreEditorWhere==='card';
      return `<article class="game-note completed${editing?' editing-score':''} note-color-${color}" id="game-${g.id}" data-id="${g.id}">
@@ -700,21 +798,26 @@ function render(){
    if(boardPrefs.compact){
      return `<article class="game-note compact-pending note-color-${color}${next&&next.id===g.id?' is-next':''}" id="game-${g.id}" data-id="${g.id}">
        <div class="compact-left"><span class="compact-icon">${iconHTML(ICONS[g.id]||'tiles')}</span><h4 class="compact-name">${escapeHTML(g.name)}</h4></div>
-       <div class="compact-tools"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)}">Play ${iconHTML('arrow')}</a><button class="compact-undo note-done" type="button" data-done="${g.id}" aria-label="Mark ${escapeHTML(g.name)} done">${iconHTML('check')}</button><button class="compact-edit note-edit" type="button" data-edit="${g.id}" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
+       <div class="compact-tools"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)}">Play ${iconHTML('arrow')}</a><button class="compact-undo note-done" type="button" data-done="${g.id}" aria-label="Mark ${escapeHTML(g.name)} done">${iconHTML('check')}</button><button class="note-skip" type="button" data-skip="${g.id}" aria-label="Skip ${escapeHTML(g.name)} for today" title="Skip for today">Skip</button><button class="compact-edit note-edit" type="button" data-edit="${g.id}" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
      </article>`;
    }
    return `<article class="game-note note-color-${color}${next&&next.id===g.id?' is-next':''}" id="game-${g.id}" style="--tilt:${TILTS[i%TILTS.length]}" data-id="${g.id}">
      <div class="note-upper"><div class="note-icon">${iconHTML(ICONS[g.id]||'tiles')}</div><div class="note-copy"><div class="note-number">Puzzle ${String(i+1).padStart(2,'0')}</div><h4 class="note-name">${escapeHTML(g.name)}</h4><div class="note-tag">${escapeHTML(badge)}</div></div></div>
-     <div class="note-actions"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)} (opens in new tab)">Play ${iconHTML('arrow')}</a><button class="note-done" data-done="${g.id}" aria-pressed="false" aria-label="Mark ${escapeHTML(g.name)} done">${iconHTML('check')} Mark done</button><button class="note-edit" data-edit="${g.id}" title="Edit game link" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
+     <div class="note-actions"><a class="note-play" href="${escapeHTML(urlFor(g))}" target="_blank" rel="noopener noreferrer" aria-label="Play ${escapeHTML(g.name)} (opens in new tab)">Play ${iconHTML('arrow')}</a><button class="note-done" data-done="${g.id}" aria-pressed="false" aria-label="Mark ${escapeHTML(g.name)} done">${iconHTML('check')} Mark done</button><button class="note-skip" type="button" data-skip="${g.id}" aria-label="Skip ${escapeHTML(g.name)} for today" title="Skip for today">Skip</button><button class="note-edit" type="button" data-edit="${g.id}" title="Edit game link" aria-label="Edit link for ${escapeHTML(g.name)}">${iconHTML('pencil')}</button></div>
    </article>`;
   }).join('');
   return `<section class="section" aria-label="${escapeHTML(group.title)}"><div class="section-header"><div class="section-title-block"><div class="section-badge" aria-hidden="true">${String(gi+1).padStart(2,'0')}</div><div><h3>${escapeHTML(group.title)}</h3><p>${escapeHTML(group.subtitle)}</p></div></div><div class="section-count">${done} / ${all.length}</div></div><div class="cards">${notes}</div></section>`;
  }).join('');
- $('listRoot').innerHTML=out||(unfinishedOnly?'<div class="empty">Everything is checked off! Tap “Show all notes” to admire your board. ✨</div>':'');
+ $('listRoot').innerHTML=out||(searchQuery?'<div class="empty">No matching games. Try a different search.</div>':unfinishedOnly?'<div class="empty">No games left to play today. Tap “Show all notes” to see completed and skipped notes. ✨</div>':'');
+ const matchCount=orderedActive.filter(g=>(!searchQuery||g.name.toLocaleLowerCase().includes(searchQuery))&&(!unfinishedOnly||(!completed.has(g.id)&&!skipped.has(g.id)))).length;
+ $('searchSummary').textContent=searchQuery?`${matchCount} matching ${matchCount===1?'game':'games'}`:'';
+ $('clearSearch').classList.toggle('hidden',!searchQuery);
  if(notebookOpen)renderStats();
 }
 $('listRoot').addEventListener('click',e=>{
  const done=e.target.closest('[data-done]');if(done){setComplete(done.dataset.done,!completed.has(done.dataset.done),'card');return;}
+ const skip=e.target.closest('[data-skip]');if(skip){setSkipped(skip.dataset.skip);return;}
+ const unskip=e.target.closest('[data-unskip]');if(unskip){setSkipped(unskip.dataset.unskip,false);return;}
  const scoreOpen=e.target.closest('[data-score-open]');if(scoreOpen){scoreEditorId=scoreOpen.dataset.scoreOpen;scoreEditorWhere='card';scoreEditorMode=scoreGuidedValue(scoreEditorId,scores[scoreEditorId]||'')===null?'free':'guided';render();return;}
  if(e.target.closest('[data-score-skip]')){closeScore();return;}
  if(handleScoreAction(e))return;
@@ -730,15 +833,21 @@ $('listRoot').addEventListener('click',e=>{
 $('nextDone').addEventListener('click',()=>{const id=$('nextDone').dataset.done;if(id)setComplete(id,true,'dashboard');});
 $('jumpNext').addEventListener('click',()=>{syncDay();const g=nextGame();if(!g){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});return;}render();$('game-'+g.id)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});});
 $('toggleFilter').addEventListener('click',()=>{unfinishedOnly=!unfinishedOnly;render();});
-$('resetToday').addEventListener('click',()=>{if(!completed.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} checked-off games and saved scores?`)){completed.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;persist();persistScores();if(cloudAccount){for(const g of DATA.games)queueCloudGame(g.id);}render();toast('Fresh board, ready to go!');}});
+$('resetToday').addEventListener('click',()=>{if(!completed.size&&!skipped.size&&!Object.keys(scores).length){toast('Your board is already fresh.');return;}if(window.confirm(`Clear today's ${completed.size} completed, ${skipped.size} skipped games and saved scores?`)){completed.clear();skipped.clear();scores={};scoreEditorId=null;scoreEditorWhere=null;undoRecord=null;persist();saveSkipped();persistScores();if(cloudAccount){for(const g of DATA.games)queueCloudGame(g.id);}render();toast('Fresh board, ready to go!');}});
 $('listRoot').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('submit',handleScoreSubmit);
 $('recentScore').addEventListener('click',e=>{if(e.target.closest('[data-score-skip]')){closeScore();return;}handleScoreAction(e);});
+$('soundToggle').checked=soundEnabled;
+$('soundToggle').addEventListener('change',e=>{soundEnabled=e.target.checked;saveJSON(SOUND_KEY,soundEnabled);toast(soundEnabled?'Desk sounds on.':'Desk sounds off.');});
+$('gameSearch').addEventListener('input',e=>{clearTimeout(searchTimer);const value=e.target.value.toLocaleLowerCase().trim();searchTimer=setTimeout(()=>{searchQuery=value;render();},90);});
+$('clearSearch').addEventListener('click',()=>{clearTimeout(searchTimer);$('gameSearch').value='';searchQuery='';render();$('gameSearch').focus();});
+document.addEventListener('keydown',e=>{const target=e.target,editing=target?.matches('input,textarea,select,[contenteditable]');if(e.key==='/'&&!editing&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!notebookOpen){e.preventDefault();$('gameSearch').focus();}else if(e.key==='Escape'&&target===$('gameSearch')&&$('gameSearch').value){clearTimeout(searchTimer);$('gameSearch').value='';searchQuery='';render();}});
 $('calmToggle').addEventListener('change',e=>{reduceMotion=e.target.checked;if(cloudAccount)queueCloudSettings();else saveJSON(MOTION_KEY,reduceMotion);applyMotion();});
-window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY,BOARD_PREFS_KEY].includes(e.key)){
+window.addEventListener('storage',e=>{if(cloudAccount)return;if([STORAGE_KEY,OVERRIDES_KEY,SCORES_KEY,MOTION_KEY,BOARD_PREFS_KEY,SKIPS_KEY,SOUND_KEY].includes(e.key)){
  const v=loadJSON(STORAGE_KEY,{});day=dayKey();completed=new Set(v.date===day&&Array.isArray(v.completed)?v.completed:[]);migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});
  scoreArchive=loadJSON(SCORES_KEY,{});if(!scoreArchive||typeof scoreArchive!=='object'||Array.isArray(scoreArchive))scoreArchive={};scores={...(scoreArchive[day]||{})};
- reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
+  const guestSkipped=loadJSON(SKIPS_KEY,{});skipped=new Set(guestSkipped.date===day&&Array.isArray(guestSkipped.ids)?guestSkipped.ids:[]);soundEnabled=loadJSON(SOUND_KEY,true);$('soundToggle').checked=soundEnabled;
+  reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
 }});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){syncDay();if(cloudAccount)scheduleCloudSync(150);}});
 window.addEventListener('online',()=>{if(cloudAccount)scheduleCloudSync(250);});
@@ -760,10 +869,10 @@ function saveCloudCache(){if(cloudAccount&&cloudCache)saveJSON(cloudLocalKey(clo
 function readAccountDay(){
  if(!cloudAccount||!cloudCache)return;
  const valid=new Set(DATA.games.map(g=>g.id));
- completed=new Set();scores={};
+ completed=new Set();skipped=new Set();scores={};
  for(const row of Object.values(cloudCache.rows)){
    if(row.play_date!==day||!valid.has(row.game_id))continue;
-   if(row.completed)completed.add(row.game_id);
+   if(row.completed)completed.add(row.game_id);else if(row.skipped)skipped.add(row.game_id);
    if(typeof row.score==='string'&&row.score)scores[row.game_id]=row.score;
  }
 }
@@ -773,11 +882,11 @@ function applyAccountView(){
  overrides={...cloudCache.settings.overrides};reduceMotion=!!cloudCache.settings.reduceMotion;boardPrefs=normalizeBoardPrefs(cloudCache.settings.board);
  applyMotion();render();renderArranger();
 }
-function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=scores[gameId]??null){
+function queueCloudGame(gameId,atDate=day,done=completed.has(gameId),score=scores[gameId]??null,skip=skipped.has(gameId)){
  if(!cloudAccount||!cloudCache)return;
  const id=DATA.games.find(g=>g.id===gameId)?.id;if(!id)return;
  const key=atDate+'|'+id,editedAt=new Date().toISOString();
- cloudCache.rows[key]={play_date:atDate,game_id:id,completed:!!done,score:typeof score==='string'?score.slice(0,70):null,updated_at:editedAt};
+ cloudCache.rows[key]={play_date:atDate,game_id:id,completed:!!done,skipped:!!skip&&!done,score:typeof score==='string'?score.slice(0,70):null,updated_at:editedAt};
  cloudCache.pending[key]=editedAt;
  saveCloudCache();setCloudStatus('Saved on this device · syncing…','warn');scheduleCloudSync();
 }
@@ -804,9 +913,9 @@ function setCloudStatus(message,kind=''){
 function accountMessage(message,error=false){$('accountMessage').textContent=message;$('accountMessage').classList.toggle('error',!!error);}
 function showAccountPanel(open){$('accountPanel').classList.toggle('hidden',!open);$('accountToggle').setAttribute('aria-expanded',String(open));}
 function guestHasHistory(){
- const old=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{});
+ const old=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{}),savedSkips=loadJSON(SKIPS_KEY,{});
  const guestBoard=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));
- return !!((old.date===day&&old.completed?.length)||Object.values(archive||{}).some(v=>v&&Object.keys(v).length)||Object.keys(links||{}).length||JSON.stringify(guestBoard)!==JSON.stringify(normalizeBoardPrefs({})));
+ return !!((savedSkips.date===day&&savedSkips.ids?.length)||(old.date===day&&old.completed?.length)||Object.values(archive||{}).some(v=>v&&Object.keys(v).length)||Object.keys(links||{}).length||JSON.stringify(guestBoard)!==JSON.stringify(normalizeBoardPrefs({})));
 }
 function updateImportPrompt(){
  $('importBox').classList.toggle('hidden',!cloudAccount||!guestHasHistory()||!!loadJSON('morning-circuit-imported-v1-'+cloudAccount?.id,false));
@@ -829,7 +938,7 @@ async function loadRemoteRows(){
  const cutoff=cloudCache.lastRemoteUpdate?new Date(Date.parse(cloudCache.lastRemoteUpdate)-1500).toISOString():null;
  let newest=cloudCache.lastRemoteUpdate||null;
  while(true){
-   const q=cloudClient.from('morning_circuit_results').select('play_date,game_id,completed,score,updated_at');
+   const q=cloudClient.from('morning_circuit_results').select('play_date,game_id,completed,skipped,score,updated_at');
    // First sign-in reads history. Later polls request only changes since the last server update.
    if(cutoff)q.gte('updated_at',cutoff);
    const {data,error}=await q.order('updated_at',{ascending:true}).order('game_id',{ascending:true}).order('play_date',{ascending:true}).range(index,index+499);
@@ -857,7 +966,7 @@ async function pullCloud(){
      if(Date.parse(row.updated_at)>Date.parse(pending)){
        delete cloudCache.pending[key];cloudCache.rows[key]=row;changed=true;
      }
-   }else{cloudCache.rows[key]=row;changed=true;}
+   }else if(JSON.stringify(cloudCache.rows[key]||{})!==JSON.stringify(row)){cloudCache.rows[key]=row;changed=true;}
  }
  cloudCache.remoteSettingsExists=!!settingsResponse.data;
  if(settingsResponse.data&&!cloudCache.pendingSettings){
@@ -865,7 +974,8 @@ async function pullCloud(){
    const clean={};for(const [id,url] of Object.entries(remote.link_overrides||{})){
      if(DATA.games.some(g=>g.id===id)&&safeURL(url))clean[id]=url;
    }
-   cloudCache.settings={overrides:clean,reduceMotion:!!remote.reduce_motion,board:normalizeBoardPrefs(remote.board_preferences)};changed=true;
+   const settings={overrides:clean,reduceMotion:!!remote.reduce_motion,board:normalizeBoardPrefs(remote.board_preferences)};
+   if(JSON.stringify(cloudCache.settings)!==JSON.stringify(settings)){cloudCache.settings=settings;changed=true;}
  }
  if(changed){saveCloudCache();if(!document.activeElement?.matches('.score-form input, .score-form select'))applyAccountView();}
 }
@@ -877,7 +987,7 @@ async function pushCloud(){
    if(!batch.length)continue;
    const token=Object.fromEntries(batch.map(k=>[k,cloudCache.pending[k]]));
    const values=batch.map(key=>({user_id:cloudAccount.id,play_date:cloudCache.rows[key].play_date,
-     game_id:cloudCache.rows[key].game_id,completed:cloudCache.rows[key].completed,score:cloudCache.rows[key].score}));
+     game_id:cloudCache.rows[key].game_id,completed:cloudCache.rows[key].completed,skipped:!!cloudCache.rows[key].skipped,score:cloudCache.rows[key].score}));
    const {error}=await cloudClient.from('morning_circuit_results').upsert(values,{onConflict:'user_id,play_date,game_id'});
    if(error)throw error;
    for(const key of batch)if(cloudCache.pending[key]===token[key])delete cloudCache.pending[key];
@@ -906,7 +1016,7 @@ async function syncCloud(){
    setCloudStatus(queued?`${queued} changes still waiting to sync`:'All changes synced ✓',queued?'warn':'ok');
  }catch(e){
    const err=String(e.message||e);
-   setCloudStatus(/board_preferences|schema cache|column .* does not exist/i.test(err)?'Run the v5.2–5.4 Supabase migration SQL':/relation|not found|404/i.test(err)?'Database not ready · check your Supabase setup':'Sync unavailable · your changes remain on this device','error');
+   setCloudStatus(/skipped|schema cache|column .* does not exist/i.test(err)?'Run the v2.2.6 Supabase migration SQL':/relation|not found|404/i.test(err)?'Database not ready · check your Supabase setup':'Sync unavailable · your changes remain on this device','error');
    accountMessage(err,true);
  }finally{cloudSyncBusy=false;}
 }
@@ -915,6 +1025,7 @@ function restoreGuest(){
  completed=new Set(stored.date===day&&Array.isArray(stored.completed)?stored.completed:[]);
  migrateCompleted();overrides=loadJSON(OVERRIDES_KEY,{});scoreArchive=loadJSON(SCORES_KEY,{});
  if(!scoreArchive||typeof scoreArchive!=='object')scoreArchive={};scores={...(scoreArchive[day]||{})};
+ const guestSkipped=loadJSON(SKIPS_KEY,{});skipped=new Set(guestSkipped.date===day&&Array.isArray(guestSkipped.ids)?guestSkipped.ids:[]);
  reduceMotion=loadJSON(MOTION_KEY,false);boardPrefs=normalizeBoardPrefs(loadJSON(BOARD_PREFS_KEY,{}));applyMotion();render();renderArranger();
 }
 async function setCloudSession(session){
@@ -929,23 +1040,25 @@ async function importGuestHistory(){
  if(!cloudAccount)return;
  // Pull first, so we do not overwrite a result that already has an account score.
  try{await pullCloud();}catch(e){accountMessage('Can’t import until the database is ready: '+(e.message||e),true);return;}
- const stored=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{});
+ const stored=loadJSON(STORAGE_KEY,{}),archive=loadJSON(SCORES_KEY,{}),links=loadJSON(OVERRIDES_KEY,{}),guestSkipped=loadJSON(SKIPS_KEY,{});
  const allDates=new Set(Object.keys(archive&&typeof archive==='object'?archive:{}));
- if(stored.date&&Array.isArray(stored.completed))allDates.add(stored.date);
+  if(stored.date&&Array.isArray(stored.completed))allDates.add(stored.date);
+  if(guestSkipped.date&&guestSkipped.ids?.length)allDates.add(guestSkipped.date);
  let count=0;
  for(const date of allDates){
    if(!/^\d{4}-\d{2}-\d{2}$/.test(date))continue;
-   const guestScores=archive?.[date]||{},done=new Set(date===stored.date?stored.completed:[]);
-   for(const id of new Set([...done,...Object.keys(guestScores)])){
+   const guestScores=archive?.[date]||{},done=new Set(date===stored.date?stored.completed:[]),skips=new Set(date===guestSkipped.date?guestSkipped.ids:[]);
+   for(const id of new Set([...done,...skips,...Object.keys(guestScores)])){
       const migratedId=id==='magnitudle'?'size-it-up':id;
       if(!DATA.games.some(g=>g.id===migratedId))continue;
       const key=date+'|'+migratedId,old=cloudCache.rows[key];
       const incomingScore=typeof guestScores[id]==='string'?guestScores[id].slice(0,70):null;
       const mergedDone=!!(old?.completed||done.has(id));
+       const mergedSkipped=!mergedDone&&!!(old?.skipped||skips.has(id));
       const mergedScore=old?.score||incomingScore||null;
-      if(old&&old.completed===mergedDone&&(old.score||null)===mergedScore)continue;
+      if(old&&old.completed===mergedDone&&!!old.skipped===mergedSkipped&&(old.score||null)===mergedScore)continue;
       const timestamp=new Date().toISOString();
-      cloudCache.rows[key]={play_date:date,game_id:migratedId,completed:mergedDone,score:mergedScore,updated_at:timestamp};
+      cloudCache.rows[key]={play_date:date,game_id:migratedId,completed:mergedDone,skipped:mergedSkipped,score:mergedScore,updated_at:timestamp};
       cloudCache.pending[key]=timestamp;count++;
    }
  }
