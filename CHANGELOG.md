@@ -2,7 +2,7 @@
 
 A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scorebook.
 
-**Current release:** `v2.3.0`  
+**Current release:** `v2.3.1`  
 **Versioning:** `MAJOR.MINOR.PATCH` — major releases mark a substantial change to the experience; minor releases add meaningful capabilities; patches refine, polish, or fix what's already there.
 
 > **Historical naming note:** Early development files used a different version sequence (including labels such as “v5.4.1”). The release numbers below are the agreed, retrospective canonical history. Some adjacent milestones were shipped together, rather than as separate deployments.
@@ -11,8 +11,15 @@ A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scoreboo
 
 ## v2 — Statistics, personalization & polish
 
+### [2.3.1] — Score & Link Corrections
+**Patch · Current**
+- Added optional assists/hints alongside Parseword solve time, with separate Scorebook averages.
+- Corrected Letterboxdle guided scoring to five guesses.
+- Corrected Plain.game to 10,000 maximum points and updated its game link.
+- Corrected the Noillirk game link.
+
 ### [2.3.0] — Scoring Expansion
-**Minor · Current**
+**Minor**
 - Added guided, optional scoring formats across all 54 puzzles, including fixed-cap points, guesses, time, hints, and special outcomes.
 - Added two-part scoring for Angle and Amountdle, with separate Scorebook averages for each part.
 - Added game-specific metrics for Fermi multipliers, Cutle's distance from 50, and Minute Cryptic's golf score.

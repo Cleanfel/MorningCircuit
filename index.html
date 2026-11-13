@@ -615,7 +615,7 @@ html[data-theme="dark"] .desk-arrange-button:hover{background:#4c6952}
 </div>
 <div class="shell">
   <header class="topbar" id="top">
-    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img id="brandLogo" src="assets/logo.svg?v=230" width="42" height="42" alt="" aria-hidden="true"></span><span class="brand-copy"><span>Morning Circuit</span><small class="brand-version" title="Current release · v2.3.0">v2.3.0</small></span></a>
+    <a class="brand" href="#top" aria-label="Morning Circuit, back to top"><span class="brand-stamp"><img id="brandLogo" src="assets/logo.svg?v=230" width="42" height="42" alt="" aria-hidden="true"></span><span class="brand-copy"><span>Morning Circuit</span><small class="brand-version" title="Current release · v2.3.1">v2.3.1</small></span></a>
     <div class="topright"><time id="dateLabel">Today</time><button class="sync-pill hidden" id="syncPill" type="button" aria-live="polite" aria-label="Cloud sync status: connecting. Open account details" title="Open sync details"><span class="sync-pill-icon" aria-hidden="true">↻</span><span class="sync-pill-label">Connecting…</span></button><button class="notebook-toggle" id="statsToggle" type="button" aria-controls="statsView" aria-pressed="false">▤ Stats</button><button class="settings-trigger" id="settingsToggle" type="button" aria-label="Open desk settings" aria-controls="deskSettingsOverlay" aria-haspopup="dialog" aria-expanded="false" title="Desk settings"><svg class="ico" aria-hidden="true"><use href="#i-gear"></use></svg></button><button class="account-toggle" id="accountToggle" type="button" aria-expanded="false" aria-controls="accountPanel">☁ Guest · Sign in</button></div>
   </header>
   <aside class="account-panel hidden" id="accountPanel" aria-label="Cloud sync account">
@@ -695,7 +695,7 @@ html[data-theme="dark"] .desk-arrange-button:hover{background:#4c6952}
 <div class="toast" id="toast" role="status" aria-live="polite"><span id="toastText"></span><button type="button" id="quickUndo" class="toast-undo hidden" aria-label="Undo last change">Undo</button></div>
 <script>
 'use strict';
-const DATA={"groups":[{"title":"The warm-up","subtitle":"Start easy · quick guesses and intuition","key":"warmup","start":0,"end":7},{"title":"Find your rhythm","subtitle":"Recall, estimates and familiar patterns","key":"building","start":7,"end":24},{"title":"Deep thinking","subtitle":"Wordplay and longer reasoning chains","key":"thinking","start":24,"end":32},{"title":"New York Times","subtitle":"A complete three-game word puzzle block","key":"nyt","start":32,"end":35},{"title":"LinkedIn","subtitle":"Eight games in one uninterrupted block","key":"linkedin","start":35,"end":43},{"title":"The peak","subtitle":"Your toughest mental challenges","key":"peak","start":43,"end":49},{"title":"The cooldown","subtitle":"Wind down with games you enjoy","key":"cooldown","start":49,"end":54}],"games":[{"id":"costcodle","name":"Costcodle","url":"https://costcodle.com/?mode=classic","phase":"warmup","review":false},{"id":"more-or-less","name":"More or Less","url":"https://lessgames.com/moreless","phase":"warmup","review":false},{"id":"size-it-up","name":"Magnitudle / Size It Up","url":"https://magnitudle.com/size-it-up","phase":"warmup","review":false},{"id":"angle","name":"Angle","url":"https://angle.wtf/","phase":"warmup","review":false},{"id":"foodguessr","name":"FoodGuessr","url":"https://www.foodguessr.com/game/daily","phase":"warmup","review":false},{"id":"noillirk","name":"Noillirk","url":"https://krillion.me/noillirk","phase":"warmup","review":false},{"id":"amountdle","name":"Amountdle","url":"https://amountle.dev/","phase":"warmup","review":false},{"id":"worldle","name":"Worldle","url":"https://worldle.teuteuf.fr/","phase":"building","review":false},{"id":"globle","name":"Globle","url":"https://globle-game.com/","phase":"building","review":false},{"id":"maptap","name":"MapTap","url":"https://maptap.gg/","phase":"building","review":false},{"id":"gamedle","name":"Gamedle","url":"https://www.gamedle.wtf/","phase":"building","review":false},{"id":"pokedoku","name":"Pokedoku","url":"https://pokedoku.com/","phase":"building","review":false},{"id":"daily-dozen-trivia","name":"Daily Dozen Trivia","url":"https://dailydozentrivia.com/","phase":"building","review":false},{"id":"thrice","name":"Thrice","url":"https://thrice.geekswhodrink.com/","phase":"building","review":false},{"id":"wranker","name":"Wranker","url":"https://wranker.app/daily","phase":"building","review":false},{"id":"box-office-game","name":"Box Office Game","url":"https://boxofficega.me/","phase":"building","review":false},{"id":"fridgedle","name":"Fridgedle","url":"https://fridgle.net/","phase":"building","review":false},{"id":"powerscadle","name":"Powerscadle","url":"https://www.powerscadle.com/","phase":"building","review":false},{"id":"dartle","name":"Dartle","url":"https://dartle.net/","phase":"building","review":false},{"id":"krillion","name":"Krillion","url":"https://krillion.io/","phase":"building","review":false},{"id":"juxtastat","name":"Juxtastat","url":"https://urbanstats.org/quiz.html","phase":"building","review":false},{"id":"disorderly","name":"Disorderly","url":"https://playdisorderly.com/","phase":"building","review":false},{"id":"jeopardium","name":"Jeopardium","url":"https://jeopardiem.com/","phase":"building","review":false},{"id":"timeguessr","name":"TimeGuessr","url":"https://timeguessr.com/play?mode=daily","phase":"building","review":false},{"id":"keiko-words","name":"Keiko Words","url":"https://keikowords.com/","phase":"thinking","review":false},{"id":"betweendle","name":"Betweendle","url":"https://betweenle.com/","phase":"thinking","review":false},{"id":"parseword","name":"Parseword","url":"https://www.parseword.com/daily","phase":"thinking","review":false},{"id":"catfishing","name":"Catfishing","url":"https://catfishing.net/","phase":"thinking","review":false},{"id":"plaingame","name":"Plain.game","url":"https://plaingame.app/?mode=daily","phase":"thinking","review":false},{"id":"waffle","name":"Waffle","url":"https://wafflegame.net/","phase":"thinking","review":false},{"id":"travle","name":"Travle","url":"https://travle.earth/","phase":"thinking","review":false},{"id":"contexto","name":"Contexto","url":"https://contexto.me/en/","phase":"thinking","review":false},{"id":"wordle","name":"Wordle","url":"https://www.nytimes.com/games/wordle/index.html","phase":"nyt","review":false},{"id":"strands","name":"Strands","url":"https://www.nytimes.com/games/strands","phase":"nyt","review":false},{"id":"connections","name":"Connections","url":"https://www.nytimes.com/games/connections","phase":"nyt","review":false},{"id":"pinpoint","name":"Pinpoint","url":"https://www.linkedin.com/games/pinpoint","phase":"linkedin","review":false},{"id":"crossclimb","name":"Crossclimb","url":"https://www.linkedin.com/games/crossclimb","phase":"linkedin","review":false},{"id":"wend","name":"Wend","url":"https://www.linkedin.com/games/wend","phase":"linkedin","review":false},{"id":"zip","name":"Zip","url":"https://www.linkedin.com/games/zip","phase":"linkedin","review":false},{"id":"mini-sudoku","name":"Mini Sudoku","url":"https://www.linkedin.com/games/mini-sudoku","phase":"linkedin","review":false},{"id":"tango","name":"Tango","url":"https://www.linkedin.com/games/tango","phase":"linkedin","review":false},{"id":"patches","name":"Patches","url":"https://www.linkedin.com/games/patches","phase":"linkedin","review":false},{"id":"queens","name":"Queens","url":"https://www.linkedin.com/games/queens","phase":"linkedin","review":false},{"id":"daily-orbs","name":"Daily Orbs","url":"https://dailyorbs.com/","phase":"peak","review":false},{"id":"cutle","name":"Cutle","url":"https://pfiffel.com/cutle/","phase":"peak","review":false},{"id":"nerdle","name":"Nerdle","url":"https://nerdlegame.com/","phase":"peak","review":false},{"id":"fermi","name":"Fermi","url":"https://fermi.gg/","phase":"peak","review":false},{"id":"clues-by-sam","name":"Clues by Sam","url":"https://cluesbysam.com/","phase":"peak","review":false},{"id":"minute-cryptic","name":"Minute Cryptic","url":"https://www.minutecryptic.com/","phase":"peak","review":false},{"id":"framed","name":"Framed","url":"https://framed.wtf/","phase":"cooldown","review":false},{"id":"guess-the-game","name":"Guess the Game","url":"https://guessthe.game/","phase":"cooldown","review":false},{"id":"scrandle","name":"Scrandle","url":"https://scrandle.com/","phase":"cooldown","review":false},{"id":"letterboxdle","name":"Letterboxdle","url":"https://letterboxdle.net/classic","phase":"cooldown","review":false},{"id":"kinda-hard-golf","name":"Kinda Hard Golf","url":"https://kindahardgolf.com/","phase":"cooldown","review":false}]};
+const DATA={"groups":[{"title":"The warm-up","subtitle":"Start easy · quick guesses and intuition","key":"warmup","start":0,"end":7},{"title":"Find your rhythm","subtitle":"Recall, estimates and familiar patterns","key":"building","start":7,"end":24},{"title":"Deep thinking","subtitle":"Wordplay and longer reasoning chains","key":"thinking","start":24,"end":32},{"title":"New York Times","subtitle":"A complete three-game word puzzle block","key":"nyt","start":32,"end":35},{"title":"LinkedIn","subtitle":"Eight games in one uninterrupted block","key":"linkedin","start":35,"end":43},{"title":"The peak","subtitle":"Your toughest mental challenges","key":"peak","start":43,"end":49},{"title":"The cooldown","subtitle":"Wind down with games you enjoy","key":"cooldown","start":49,"end":54}],"games":[{"id":"costcodle","name":"Costcodle","url":"https://costcodle.com/?mode=classic","phase":"warmup","review":false},{"id":"more-or-less","name":"More or Less","url":"https://lessgames.com/moreless","phase":"warmup","review":false},{"id":"size-it-up","name":"Magnitudle / Size It Up","url":"https://magnitudle.com/size-it-up","phase":"warmup","review":false},{"id":"angle","name":"Angle","url":"https://angle.wtf/","phase":"warmup","review":false},{"id":"foodguessr","name":"FoodGuessr","url":"https://www.foodguessr.com/game/daily","phase":"warmup","review":false},{"id":"noillirk","name":"Noillirk","url":"https://playdaily.org/noillirk","phase":"warmup","review":false},{"id":"amountdle","name":"Amountdle","url":"https://amountle.dev/","phase":"warmup","review":false},{"id":"worldle","name":"Worldle","url":"https://worldle.teuteuf.fr/","phase":"building","review":false},{"id":"globle","name":"Globle","url":"https://globle-game.com/","phase":"building","review":false},{"id":"maptap","name":"MapTap","url":"https://maptap.gg/","phase":"building","review":false},{"id":"gamedle","name":"Gamedle","url":"https://www.gamedle.wtf/","phase":"building","review":false},{"id":"pokedoku","name":"Pokedoku","url":"https://pokedoku.com/","phase":"building","review":false},{"id":"daily-dozen-trivia","name":"Daily Dozen Trivia","url":"https://dailydozentrivia.com/","phase":"building","review":false},{"id":"thrice","name":"Thrice","url":"https://thrice.geekswhodrink.com/","phase":"building","review":false},{"id":"wranker","name":"Wranker","url":"https://wranker.app/daily","phase":"building","review":false},{"id":"box-office-game","name":"Box Office Game","url":"https://boxofficega.me/","phase":"building","review":false},{"id":"fridgedle","name":"Fridgedle","url":"https://fridgle.net/","phase":"building","review":false},{"id":"powerscadle","name":"Powerscadle","url":"https://www.powerscadle.com/","phase":"building","review":false},{"id":"dartle","name":"Dartle","url":"https://dartle.net/","phase":"building","review":false},{"id":"krillion","name":"Krillion","url":"https://krillion.io/","phase":"building","review":false},{"id":"juxtastat","name":"Juxtastat","url":"https://urbanstats.org/quiz.html","phase":"building","review":false},{"id":"disorderly","name":"Disorderly","url":"https://playdisorderly.com/","phase":"building","review":false},{"id":"jeopardium","name":"Jeopardium","url":"https://jeopardiem.com/","phase":"building","review":false},{"id":"timeguessr","name":"TimeGuessr","url":"https://timeguessr.com/play?mode=daily","phase":"building","review":false},{"id":"keiko-words","name":"Keiko Words","url":"https://keikowords.com/","phase":"thinking","review":false},{"id":"betweendle","name":"Betweendle","url":"https://betweenle.com/","phase":"thinking","review":false},{"id":"parseword","name":"Parseword","url":"https://www.parseword.com/daily","phase":"thinking","review":false},{"id":"catfishing","name":"Catfishing","url":"https://catfishing.net/","phase":"thinking","review":false},{"id":"plaingame","name":"Plain.game","url":"https://playplain.app/","phase":"thinking","review":false},{"id":"waffle","name":"Waffle","url":"https://wafflegame.net/","phase":"thinking","review":false},{"id":"travle","name":"Travle","url":"https://travle.earth/","phase":"thinking","review":false},{"id":"contexto","name":"Contexto","url":"https://contexto.me/en/","phase":"thinking","review":false},{"id":"wordle","name":"Wordle","url":"https://www.nytimes.com/games/wordle/index.html","phase":"nyt","review":false},{"id":"strands","name":"Strands","url":"https://www.nytimes.com/games/strands","phase":"nyt","review":false},{"id":"connections","name":"Connections","url":"https://www.nytimes.com/games/connections","phase":"nyt","review":false},{"id":"pinpoint","name":"Pinpoint","url":"https://www.linkedin.com/games/pinpoint","phase":"linkedin","review":false},{"id":"crossclimb","name":"Crossclimb","url":"https://www.linkedin.com/games/crossclimb","phase":"linkedin","review":false},{"id":"wend","name":"Wend","url":"https://www.linkedin.com/games/wend","phase":"linkedin","review":false},{"id":"zip","name":"Zip","url":"https://www.linkedin.com/games/zip","phase":"linkedin","review":false},{"id":"mini-sudoku","name":"Mini Sudoku","url":"https://www.linkedin.com/games/mini-sudoku","phase":"linkedin","review":false},{"id":"tango","name":"Tango","url":"https://www.linkedin.com/games/tango","phase":"linkedin","review":false},{"id":"patches","name":"Patches","url":"https://www.linkedin.com/games/patches","phase":"linkedin","review":false},{"id":"queens","name":"Queens","url":"https://www.linkedin.com/games/queens","phase":"linkedin","review":false},{"id":"daily-orbs","name":"Daily Orbs","url":"https://dailyorbs.com/","phase":"peak","review":false},{"id":"cutle","name":"Cutle","url":"https://pfiffel.com/cutle/","phase":"peak","review":false},{"id":"nerdle","name":"Nerdle","url":"https://nerdlegame.com/","phase":"peak","review":false},{"id":"fermi","name":"Fermi","url":"https://fermi.gg/","phase":"peak","review":false},{"id":"clues-by-sam","name":"Clues by Sam","url":"https://cluesbysam.com/","phase":"peak","review":false},{"id":"minute-cryptic","name":"Minute Cryptic","url":"https://www.minutecryptic.com/","phase":"peak","review":false},{"id":"framed","name":"Framed","url":"https://framed.wtf/","phase":"cooldown","review":false},{"id":"guess-the-game","name":"Guess the Game","url":"https://guessthe.game/","phase":"cooldown","review":false},{"id":"scrandle","name":"Scrandle","url":"https://scrandle.com/","phase":"cooldown","review":false},{"id":"letterboxdle","name":"Letterboxdle","url":"https://letterboxdle.net/classic","phase":"cooldown","review":false},{"id":"kinda-hard-golf","name":"Kinda Hard Golf","url":"https://kindahardgolf.com/","phase":"cooldown","review":false}]};
 const TOTAL=DATA.games.length;
 // Keep storage keys compatible with the previous Morning Circuit release.
 const STORAGE_KEY='morning-circuit-daily-v1';
@@ -976,9 +976,9 @@ const SCORE_TYPES={
  'timeguessr':{kind:'points',max:50000},
  'keiko-words':{kind:'guesses',max:15},
  'betweendle':{kind:'points',max:5,min:1,special:'Missed'},
- 'parseword':{kind:'time'},
+ 'parseword':{kind:'timeHints'},
  'catfishing':{kind:'points',max:10},
- 'plaingame':{kind:'points',max:1000},
+ 'plaingame':{kind:'points',max:10000},
  'waffle':{kind:'stars',max:5},
  'travle':{kind:'extra'},
  'contexto':{kind:'guesses'},
@@ -1002,7 +1002,7 @@ const SCORE_TYPES={
  'framed':{kind:'guesses',max:6},
  'guess-the-game':{kind:'guesses',max:6},
  'scrandle':{kind:'points',max:10},
- 'letterboxdle':{kind:'guesses',max:6},
+ 'letterboxdle':{kind:'guesses',max:5},
  'kinda-hard-golf':{kind:'shots'}
 };
 if(DATA.games.some(g=>!SCORE_TYPES[g.id]))throw new Error('A game is missing its score configuration');
@@ -1019,7 +1019,8 @@ const SIMPLE_SCORE_HELP={
  stars:'More stars is better.',
  mistakes:'Enter the number of mistakes. Four means unsolved.',
  twoGuesses:'Record the guesses for both parts separately. X means unsolved.',
- twoPoints:'Enter the points for both games separately.'
+ twoPoints:'Enter the points for both games separately.',
+ timeHints:'Enter your solve time and, optionally, how many assists or hints you used.'
 };
 let scoreEditorMode='guided';
 const scoreNumber=(v,allowNegative=false)=>{
@@ -1077,6 +1078,13 @@ function scoreGuidedValue(gameId,raw){
      if(!ma||Number(ma[2])!==cfg.parts[i])return null;
      return validScoreValue({kind:cfg.kind==='twoGuesses'?'guesses':'points',max:cfg.parts[i]},ma[1]);
    });return values.every(x=>x!==null)?values:null;
+ }
+ if(cfg.kind==='timeHints'){
+   const composite=s.match(/^(.+?)\s*\|\s*(\d+)\s*(?:assists?|hints?)$/i);
+   const time=composite?composite[1].trim():s;
+   const assists=composite?validScoreValue({kind:'hints'},composite[2]):null;
+   if(clockSeconds(time)===null||(composite&&assists===null))return null;
+   return {time,assists}; // Existing time-only results remain valid.
  }
  if(cfg.kind==='guesses'){
    m=cfg.max?s.match(/^([\d]+|X)\s*\/\s*(\d+)$/i):s.match(/^(\d+)\s*guesses?$/i);
@@ -1141,7 +1149,14 @@ function scoreFormHTML(gameId){
  const saved=old===null?'':old;
  let body='';
  if(guided){
-   if(dual){
+   if(cfg.kind==='timeHints'){
+     const currentTime=typeof saved==='object'&&saved!==null?saved.time:'';
+     const currentAssists=typeof saved==='object'&&saved!==null?(saved.assists??''):'';
+     body=`<div class="score-guided is-dual">
+       <label class="score-guided-field" for="score-${gameId}"><span>Solve time</span>${scoreInputHTML(gameId,{kind:'time'},currentTime)}</label>
+       <label class="score-guided-field" for="score-${gameId}-assists"><span>Assists / hints · optional</span><input type="number" id="score-${gameId}-assists" name="assists" inputmode="numeric" min="0" step="1" value="${escapeHTML(String(currentAssists))}" placeholder="0" autocomplete="off"></label>
+     </div>`;
+   }else if(dual){
      const fields=cfg.parts.map((max,i)=>{
        const partKind=cfg.kind==='twoGuesses'?'guesses':'points';
        const partCfg={kind:partKind,max};
@@ -1167,6 +1182,13 @@ function scoreFormHTML(gameId){
 function scoreFromForm(form){
  const id=form.dataset.scoreForm,cfg=SCORE_TYPES[id],kind=form.dataset.scoreKind;
  if(kind==='free'||!cfg)return String(form.elements.score?.value||'').trim();
+ if(kind==='timeHints'){
+   const time=validScoreValue({kind:'time'},form.elements.score?.value);
+   const optional=String(form.elements.assists?.value??'').trim();
+   const assists=optional===''?null:validScoreValue({kind:'hints'},optional);
+   if(time===null||(optional!==''&&assists===null))return null;
+   return assists===null?time:`${time} | ${assists} assist${assists==='1'?'':'s'}`;
+ }
  if(kind==='twoGuesses'||kind==='twoPoints'){
    const sub=kind==='twoGuesses'?'guesses':'points';
    const values=cfg.parts.map((max,i)=>validScoreValue({kind:sub,max},form.elements['part'+(i+1)]?.value));
@@ -1703,6 +1725,8 @@ function parseScoreMetrics(gameId,raw){
      case 'twoGuesses':case 'twoPoints':return r.flatMap((v,i)=>v==='X'?[]:[m('part'+(i+1),Number(v),`Average ${cfg.labels[i].toLowerCase()} ${cfg.kind==='twoGuesses'?'guesses':'points'}`,cfg.kind==='twoGuesses'?'low':'high',cfg.kind==='twoGuesses'?'guesses':` / ${cfg.parts[i]}`)]);
      case 'guesses':return r==='X'?[]:[m('guesses'+(cfg.max||'unlimited'),Number(r),'Average guesses','low','guesses')];
      case 'points':return r===cfg.special?[]:[m(`points-${cfg.max??'unlimited'}`,Number(r),cfg.max!==undefined?`Average points · out of ${cfg.max.toLocaleString()}`:'Average points','high',cfg.max!==undefined?` / ${cfg.max}`:'points')];
+     case 'timeHints':return [m('time',clockSeconds(r.time),'Average time','low',''),
+       ...(r.assists===null?[]:[m('hints',Number(r.assists),'Average assists / hints','low','assists')])];
      case 'time':return [m('time',clockSeconds(r),'Average time','low','')];
      case 'mistakes':return [m('mistakes',Number(r),'Average mistakes','low','mistakes')];
      case 'stars':return [m('stars',Number(r),'Average stars','high',` / ${cfg.max}`)];
@@ -1789,7 +1813,16 @@ function renderStats(){
    const best=sample.better?(sample.better==='low'?Math.min(...all):Math.max(...all)):null;
    const bestText=best===null?'':` · Personal best: <strong>${escapeHTML(formatMetric(sample,best))}</strong>`;
    averageMarkup=`<strong>${escapeHTML(sample.label)}: ${escapeHTML(formatMetric(sample,lifetime))}</strong>${bestText}<small>Based on ${compatible.length} compatible ${compatible.length===1?'score':'scores'}${compatible.length<gameScores.length?` out of ${gameScores.length} saved`:''}. Only scores in the same format are combined.</small>`;
-   if(['twoGuesses','twoPoints'].includes(SCORE_TYPES[current.game.id]?.kind)) {const second=parsed.filter(x=>x.metric.group==='part2'),part=second[0]?.metric; if(part){const vals=second.map(x=>x.metric.value);const best2=part.better==='low'?Math.min(...vals):Math.max(...vals);secondaryMarkup=`<div class="stats-second-part"><strong>${escapeHTML(part.label)}: ${escapeHTML(formatMetric(part,avg(vals)))}</strong> · Personal best: <strong>${escapeHTML(formatMetric(part,best2))}</strong><small>${vals.length} comparable results. The trend below represents Part 1.</small></div>`;}}
+   const kind=SCORE_TYPES[current.game.id]?.kind;
+   if(['twoGuesses','twoPoints','timeHints'].includes(kind)){
+     const isTimed=kind==='timeHints',secondaryGroup=isTimed?'hints':'part2';
+     const second=parsed.filter(x=>x.metric.group===secondaryGroup),part=second[0]?.metric;
+     if(part){
+       const vals=second.map(x=>x.metric.value),best2=part.better==='low'?Math.min(...vals):Math.max(...vals);
+       const trendNote=isTimed?'The trend below represents solve time. Scores without an assists count are excluded from this secondary average.':'The trend below represents Part 1.';
+       secondaryMarkup=`<div class="stats-second-part"><strong>${escapeHTML(part.label)}: ${escapeHTML(formatMetric(part,avg(vals)))}</strong> · Personal best: <strong>${escapeHTML(formatMetric(part,best2))}</strong><small>${vals.length} comparable results. ${escapeHTML(trendNote)}</small></div>`;
+     }
+   }
    const windows=[7,30,90];
    trendMarkup=`<div class="trend-panels">${windows.map(n=>{
      const values=compatible.slice(0,n).map(x=>x.metric.value);
