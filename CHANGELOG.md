@@ -2,7 +2,7 @@
 
 A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scorebook.
 
-**Current release:** `v2.2.7`  
+**Current release:** `v2.2.8`  
 **Versioning:** `MAJOR.MINOR.PATCH` — major releases mark a substantial change to the experience; minor releases add meaningful capabilities; patches refine, polish, or fix what's already there.
 
 > **Historical naming note:** Early development files used a different version sequence (including labels such as “v5.4.1”). The release numbers below are the agreed, retrospective canonical history. Some adjacent milestones were shipped together, rather than as separate deployments.
@@ -11,8 +11,17 @@ A running history of Morning Circuit, a cozy daily-puzzle corkboard and Scoreboo
 
 ## v2 — Statistics, personalization & polish
 
-### [2.2.7] — Dark Mode & Desk Settings
+### [2.2.8] — Morning Desk & Settings Polish
 **Patch · Current**
+- Added a subtle, coffee-warmed light-wood desk texture, with faint wood grain and a delicate cup-ring detail; the lamplit dark-wood theme remains unchanged.
+- Moved Desk Settings from the footer into a compact, accessible modal opened by a gear in the sticky navigation, between Stats and the account controls.
+- Grouped Arrange Games at the bottom of Desk Settings; selecting it closes the modal, returns from Scorebook if necessary, and scrolls directly to the game organizer.
+- Added accessible dialog dismissal via close button, backdrop, and Escape, plus keyboard focus management and scrolling support on small screens.
+- Preserved the current scoring, guest and cloud data, theme sync, game order, and all existing 54 game URLs. No database changes required.
+- Kept the deploy package lean by omitting the unused legacy `games.json` file.
+
+### [2.2.7] — Dark Mode & Desk Settings
+**Patch**
 - Added a warm dark-wood study theme with soft lamplight, restrained stars, and muted colored notes.
 - Added Light, Dark, and System appearance choices; signed-in appearance preferences synchronize through existing board settings.
 - Applied dark styling to the corkboard, Scorebook, account panel, game organizer, search, score forms, and navigation.
